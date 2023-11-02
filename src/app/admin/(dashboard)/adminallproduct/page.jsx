@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { API_URL } from "../../../../../config/constants";
+import { API_URL, URL_IMAGES } from "../../../../../config/constants";
 import { DateTime } from "luxon";
 
 const AdminAllProduct = () => {
@@ -194,7 +194,7 @@ const AdminAllProduct = () => {
                     <td className="whitespace-nowrap text-center px-4 py-2 font-medium text-gray-900">
                       <div className="w-16 max-h-9 md:w-24 md:max-h-14 rounded mx-auto overflow-hidden">
                         <Image
-                          src={"http://localhost:5000/uploads/" + item.file}
+                          src={`${URL_IMAGES}${item.file}`}
                           alt={item.name}
                           width={100}
                           height={100}

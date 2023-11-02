@@ -41,7 +41,7 @@ const AddCategory = () => {
             onSubmit={handleSubmit}
             encType="multipart/form-data"
             action=""
-            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 bg-white"
           >
             <p className="text-center text-lg font-medium">หมวดหมู่สินค้า</p>
 

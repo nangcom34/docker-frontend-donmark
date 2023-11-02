@@ -5,12 +5,13 @@ import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { API_URL } from "../../../../../../config/constants";
 
 const EditCategory = ({ params }) => {
   const router = useRouter();
   const uri = "http://localhost:5000/api/category/";
   const [category, setCategory] = useState({
-    name: ""
+    name: "",
   });
 
   useEffect(() => {
@@ -18,13 +19,13 @@ const EditCategory = ({ params }) => {
       router.push("/login");
     }
     axios
-      .get(uri + params.id)
+      .get(API_URL + "/category/" + params.id)
       .then((res) => {
         setCategory(res.data);
       })
       .catch((error) => console.log("error", error));
   }, []);
- 
+
   // console.log(product);
   const { name } = category;
 
@@ -33,7 +34,7 @@ const EditCategory = ({ params }) => {
     //console.log(product);
 
     await axios
-      .put(uri + params.id, category)
+      .put(API_URL + "/category/" + params.id, category)
       .then((res) => {
         Swal.fire("สำเร็จ!", "แก้ไขหมวดหมู่สินค้าแล้ว!", "success");
         router.push("/admin/admincategory");
@@ -46,14 +47,14 @@ const EditCategory = ({ params }) => {
       <article className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8">
         <aside className="mx-auto w-full max-w-lg">
           <p className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-          หมวดหมู่สินค้า
+            หมวดหมู่สินค้า
           </p>
 
           <form
             onSubmit={handleSubmit}
             encType="multipart/form-data"
             action=""
-            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 bg-white"
           >
             <p className="text-center text-lg font-medium">หมวดหมู่สินค้า</p>
 

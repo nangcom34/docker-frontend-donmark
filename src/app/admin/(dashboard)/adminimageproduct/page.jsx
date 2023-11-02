@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { API_URL } from "../../../../../config/constants";
+import { API_URL, URL_IMAGES } from "../../../../../config/constants";
 
 const AdminImageProduct = () => {
   const [data, setData] = useState("");
@@ -106,7 +106,7 @@ const AdminImageProduct = () => {
               >
                 <div className="w-full max-h-[400px] rounded-2xl mx-auto overflow-hidden object-center">
                   <Image
-                    src={"http://localhost:5000/uploads/" + item.file}
+                    src={`${URL_IMAGES}${item.file}`}
                     alt={item._id}
                     layout="responsive"
                     width={300}

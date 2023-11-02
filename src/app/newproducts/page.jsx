@@ -7,7 +7,7 @@ import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
-import { API_URL } from "../../../config/constants";
+import { API_URL, URL_IMAGES } from "../../../config/constants";
 
 const NewProducts = () => {
   const [imageProduct, setImageProduct] = useState("");
@@ -34,7 +34,7 @@ const NewProducts = () => {
       <section key={imageProductItem._id} className="flex items-center justify-center w-full max-w-screen-2xl mx-auto">
         {" "}
         <Image
-          src={`http://localhost:5000/uploads/${imageProductItem.file}`}
+          src={`${URL_IMAGES}${imageProductItem.file}`}
           alt={imageProductItem._id}
           width={1920}
           height={1080}

@@ -9,7 +9,7 @@ const ButtonLogout = () => {
     Swal.fire("ออกจากระบบแล้ว", "", "success");
 
     localStorage.removeItem("token");
-    router.push("/");
+    router.push("/login");
   };
   return (
     <button

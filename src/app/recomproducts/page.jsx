@@ -7,7 +7,7 @@ import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
-import { API_URL } from "../../../config/constants";
+import { API_URL, URL_IMAGES } from "../../../config/constants";
 
 const RecommendProducts = () => {
   const [product, setProduct] = useState("");
@@ -74,7 +74,7 @@ const RecommendProducts = () => {
                       className="block w-[150px] sm:w-[210px] md:w-[240px] lg:w-[270px] xl:w-[270px] hover:-translate-y-6 duration-500"
                     >
                       <Image
-                        src={`http://localhost:5000/uploads/${item.file}`}
+                        src={`${URL_IMAGES}${item.file}`}
                         alt="home"
                         width={1024}
                         height={768}

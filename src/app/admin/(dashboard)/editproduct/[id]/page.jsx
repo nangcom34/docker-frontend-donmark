@@ -1,14 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { API_URL } from "../../../../../../config/constants";
 
 const EditProduct = ({ params }) => {
   const router = useRouter();
-  const uri = "http://localhost:5000/api/product/";
   const [product, setProduct] = useState({
     name: "",
     description: "",
@@ -22,7 +21,7 @@ const EditProduct = ({ params }) => {
       router.push("/login");
     }
     axios
-      .get(uri + params.id)
+      .get(API_URL + "/product/" + params.id)
       .then((res) => {
         setProduct(res.data);
         setFileOld(res.data.file);
@@ -45,7 +44,7 @@ const EditProduct = ({ params }) => {
     //console.log(formData);
 
     await axios
-      .put(uri + params.id, formData)
+      .put(API_URL + "/product/" + params.id, formData)
       .then((res) => {
         Swal.fire("สำเร็จ!", "แก้ไขสินค้าแล้ว!", "success");
         router.push("/admin/adminallproduct");

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import axios from "axios";
-import { API_URL } from "../../config/constants";
+import { API_URL, URL_IMAGES } from "../../config/constants";
 import Header from "./layouts/Header";
 import Navbar from "./layouts/Navbar";
 import Footer from "./layouts/Footer";
@@ -41,7 +41,7 @@ export default function Home() {
           >
             {" "}
             <Image
-              src={`http://localhost:5000/uploads/${imageProductItem.file}`}
+              src={`${URL_IMAGES}${imageProductItem.file}`}
               alt={imageProductItem._id}
               width={1920}
               height={1080}
