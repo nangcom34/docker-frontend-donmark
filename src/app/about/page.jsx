@@ -14,7 +14,7 @@ const About = () => {
           เกี่ยวกับเรา
         </h1>
         <section className="grid grid-cols-10 max-w-s h-[400px] lg:h-[550px] px-5 md:px-16 gap-5 md:gap-16 mx-auto max-w-screen-2xl">
-          <article className="col-span-6 max-md:col-span-10 w-full overflow-hidden rounded-2xl shadow-lg shadow-gray-500">
+          <article className="col-span-5 max-md:col-span-10 w-full overflow-hidden rounded-2xl shadow-lg shadow-gray-500">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.4887426637147!2d100.34451917584022!3d13.688822786696534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2bdf00000000f%3A0xb82fe10fae60cb15!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4geC4o-C4teC4meC5hOC4peC4n-C5jCDguYDguK3guYfguJnguYDguJXguK3guKPguYzguYTguJ7guKPguKrguYwg4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sth!2sth!4v1698143505234!5m2!1sth!2sth"
               style={{
@@ -27,7 +27,7 @@ const About = () => {
               }}
             ></iframe>
           </article>
-          <article className="col-span-4 max-md:col-span-10 w-full">
+          <article className="col-span-5 max-md:col-span-10 w-full ml-10">
             <p className="text-md md:text-lg lg:text-xl font-medium mb-2 md:mt-8">
               บริษัท กรีนไลฟ์ เอ็นเตอร์ไพรส์ จำกัด
             </p>
@@ -171,7 +171,7 @@ const About = () => {
           ติดต่อสอบถามข้อมูลสินค้า ขอใบเสนอราคา
         </p>
 
-        <section className="flex flex-wrap items-center justify-start px-5 md:px-28 gap-5 md:gap-x-28 lg:px-72  max-w-screen-2xl">
+        <section className="flex flex-wrap items-center justify-start px-5 md:px-28 gap-5 md:gap-x-6 lg:px-5  max-w-screen-2xl mx-auto">
           <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-[350px] md:w-[400px] h-[240px] p-10 rounded-2xl shadow-lg">
             <h3 className="text-lg md:text-xl lg:text-3xl font-semibold w-full mb-2">
               คุณเบียร์
