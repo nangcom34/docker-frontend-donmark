@@ -10,8 +10,8 @@ import Footer from "../layouts/Footer";
 import { API_URL, URL_IMAGES } from "../../../config/constants";
 
 const RecommendProducts = () => {
-  const [product, setProduct] = useState("");
-  const [category, setCategory] = useState("");
+  const [product, setProduct] = useState([]);
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     loadProduct();
@@ -48,7 +48,13 @@ const RecommendProducts = () => {
       <Navbar />
 
       {category &&
-        category.map((categoryItem) => (
+        category
+          .filter((categoryItem) =>
+            product.some(
+              (productItem) => productItem.category?._id === categoryItem._id
+            )
+          )
+          .map((categoryItem) => (
           <section key={categoryItem._id}>
             <article className="mx-auto max-w-screen-2xl w-full overflow-hidden mb-3 md:mb-10">
               <hr className=" w-1/2 mx-auto" />

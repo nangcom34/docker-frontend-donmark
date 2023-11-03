@@ -57,6 +57,14 @@ export default function Layout({ children }) {
                 </li>
                 <li>
                   <Link
+                    href="/admin/adminimageslide"
+                    className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
+                  >
+                    Promotion
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/admin/adminimageproduct"
                     className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
                   >
