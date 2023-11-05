@@ -4,6 +4,9 @@
 
 body {
     min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 

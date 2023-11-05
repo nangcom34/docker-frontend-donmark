@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { URL_IMAGES } from "../../../config/constants";
 
-const ProductCard = ({ data }) => {
+const HomepageCard = ({ data }) => {
   //console.log(data);
 
   return (
@@ -19,11 +19,8 @@ const ProductCard = ({ data }) => {
           }}
         />
       </div>
-      <div className="w-full overflow-hidden">
+      <div className="w-full overflow-hidden mb-16">
         <p className="text-[16px] md:text-xl font-bold px-10 mt-10 break-all">
-          {data.name}
-        </p>
-        <p className="text-sm md:text-lg py-10 px-20 break-all whitespace-pre-line">
           {data.description.split("\n" || "\r\n").map((line, index) => (
             <React.Fragment key={index}>
               {line}
@@ -36,4 +33,4 @@ const ProductCard = ({ data }) => {
   );
 };
 
-export default ProductCard;
+export default HomepageCard;

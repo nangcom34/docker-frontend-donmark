@@ -9,7 +9,6 @@ import { API_URL } from "../../../../../../config/constants";
 
 const EditCategory = ({ params }) => {
   const router = useRouter();
-  const uri = "http://localhost:5000/api/category/";
   const [category, setCategory] = useState({
     name: "",
   });

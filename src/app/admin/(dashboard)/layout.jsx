@@ -33,13 +33,13 @@ export default function Layout({ children }) {
               </aside>
 
               <aside className="avatar w-full mx-auto px-5 lg:px-12">
-                <div className="w-full rounded-full ring ring-zinc-600 ring-offset-base-100 ring-offset-2 shadow-lg shadow-slate-500">
+                <div className="w-full rounded-full ring ring-red-600 ring-offset-base-300 ring-offset-2 shadow-lg shadow-slate-500 bg-gray-900">
                   <Image
-                    src={`/images/Donmark.jpg`}
+                    src={`/images/logo.png`}
                     alt="donmark"
                     width={300}
                     height={300}
-                    className="w-full h-auto object-fill object-center"
+                    className="w-full h-auto object-fill object-center p-3"
                     style={{
                       loading: "lazy",
                     }}
@@ -65,6 +65,14 @@ export default function Layout({ children }) {
                 </li>
                 <li>
                   <Link
+                    href="/admin/adminhomepage"
+                    className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
+                  >
+                    Homepage
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/admin/adminimageproduct"
                     className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
                   >
@@ -85,6 +93,14 @@ export default function Layout({ children }) {
                     className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
                   >
                     สินค้าทั้งหมด
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/admin/adminjob"
+                    className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
+                  >
+                    สมัครงาน
                   </Link>
                 </li>
               </ul>

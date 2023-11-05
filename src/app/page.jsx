@@ -1,52 +1,39 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import axios from "axios";
 import { API_URL, URL_IMAGES } from "../../config/constants";
 import Header from "./layouts/Header";
 import Navbar from "./layouts/Navbar";
 import Footer from "./layouts/Footer";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "swiper/css/navigation";
-
-// import required modules
-import { Keyboard, Scrollbar, Autoplay } from "swiper/modules";
+import HomepageCard from "./components/HomepageCard";
 
 export default function Home() {
-  const [imageProduct, setImageProduct] = useState("");
-  const [imageSlide, setImageSlide] = useState([]);
+  const [homepageTop, setHomepageTop] = useState([]);
+  const [homepage, setHomepage] = useState([]);
 
   useEffect(() => {
-    loadImageProduct();
-    loadImageSlide();
+    loadHomepageTop();
+    loadHomepage();
   }, []);
-  const loadImageProduct = async () => {
+  const loadHomepageTop = async () => {
     await axios
-      .post(API_URL + "/imageProductsale", {
-        limit: null,
-        sort: "createdAt",
-        order: "asc",
-      })
+      .post(API_URL + "/homepagetoptrue")
       .then((res) => {
         //console.log(res.data);
-        setImageProduct(res.data);
+        setHomepageTop(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const loadImageSlide = async () => {
+  const loadHomepage = async () => {
     await axios
-      .get(API_URL + "/imageSlide")
+      .post(API_URL + "/homepagetopfalse")
       .then((res) => {
         //console.log(res.data);
-        setImageSlide(res.data);
+        setHomepage(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -56,65 +43,88 @@ export default function Home() {
     <main>
       <Header />
       <Navbar />
-      <section className="flex items-center justify-center w-full max-w-screen-xl mx-auto mb-16">
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={30}
-          centeredSlides={false}
-          keyboard={{
-            enabled: true,
-          }}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            800: {
-              slidesPerView: 2,
-              slidesPerGroup: 1,
-            },
-          }}
-          modules={[Autoplay, Scrollbar]}
-          scrollbar={true}
-          className="mySwiper"
-        >
-          {imageSlide &&
-            imageSlide.map((imageSlideItem) => (
-              <SwiperSlide key={imageSlideItem._id}>
-                <Link href={imageSlideItem.urlname} target="_blank">
-                  <Image
-                    src={`${URL_IMAGES}${imageSlideItem.file}`}
-                    alt={imageSlideItem._id}
-                    width={640}
-                    height={640}
-                    style={{
-                      loading: "lazy",
-                    }}
-                  />
-                </Link>
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </section>
-      {imageProduct &&
-        imageProduct.map((imageProductItem) => (
+      <section
+        className={`${
+          homepage && homepageTop.length === 0 ? "h-full min-h-[68vh]" : ""
+        }`}
+      ></section>
+      {homepageTop &&
+        homepageTop.map((homepageTopItem) => (
           <section
-            key={imageProductItem._id}
-            className="flex items-center justify-center w-full max-w-screen-xl mx-auto"
+            key={homepageTopItem._id}
+            className="flex flex-col items-center justify-center w-full max-w-screen-xl mx-auto mb-20"
           >
-            {" "}
             <Image
-              src={`${URL_IMAGES}${imageProductItem.file}`}
-              alt={imageProductItem._id}
-              width={1920}
-              height={1080}
-              className="w-full h-auto object-fill object-center"
+              src={`${URL_IMAGES}${homepageTopItem.file}`}
+              alt={homepageTopItem._id}
+              width={1280}
+              height={768}
+              className="w-full object-fill object-center"
               style={{
                 loading: "lazy",
               }}
             />
+            <p className="text-xs md:text-lg font-semibold leading-relaxed mt-10">
+              {homepageTopItem.description
+                .split("\n" || "\r\n")
+                .map((line, index) => (
+                  <React.Fragment key={index}>{line}</React.Fragment>
+                ))}
+            </p>
           </section>
         ))}
+
+      <section className="flex flex-wrap items-center justify-around gap-3 gap-y-8 md:gap-y-20 my-10 lg:gap-x-4 max-w-screen-xl mx-auto px-2">
+        {homepage &&
+          homepage.map((item) => (
+            <article
+              onClick={() => {
+                document.getElementById(`my_modal_${item._id}`).showModal();
+              }}
+              key={item._id}
+              className="w-[250px] h-[310px] hover:scale-105 duration-300 flex flex-col items-center justify-center cursor-pointer"
+            >
+              <aside className="w-[200px]">
+                <Image
+                  src={`${URL_IMAGES}${item.file}`}
+                  alt="home"
+                  width={200}
+                  height={200}
+                  className="w-[200px] h-[200px] object-cover object-center shadow-md align-middle"
+                  style={{
+                    loading: "lazy",
+                  }}
+                />
+              </aside>
+              <aside className="w-full overflow-hidden">
+                <p className="text-xs md:text-[16px] font-semibold mt-3 leading-relaxed text-ellipsis">
+                  {item.description
+                    .split("\n" || "\r\n")
+                    .slice(0, 3)
+                    .map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        {index === 2 ? "..." : <br />}
+                      </React.Fragment>
+                    ))}
+                </p>
+              </aside>
+              <dialog id={`my_modal_${item._id}`} className="modal">
+                <div className="modal-box p-0 relative lg:max-w-[35%]">
+                  <HomepageCard data={item} />
+                  <div className="modal-action">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn bg-red-600 text-white absolute bottom-3 right-3 hover:text-red-600 hover:bg-white">
+                        CLOSE
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
+            </article>
+          ))}
+      </section>
       <Footer />
     </main>
   );

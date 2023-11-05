@@ -18,16 +18,23 @@ const Navbar = () => {
     // เพิ่มอีเวนต์ลิสเนอร์ในการตรวจจับการ scroll
     window.addEventListener("scroll", handleScroll);
 
-    // นำออกอีเวนต์ลิสเนอร์เมื่อ component ถูกทำลาย
+    // นำออกอีเวนต์ลิสเนอร์เมื่อ component fale
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <main>
       <nav className=" flex items-center justify-center max-w-screen-lg mx-auto max-sm:hidden ">
         <Link
-          href={"/"}
+          href={"/saleproducts"}
           className="flex flex-col items-center justify-center bg-white hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group"
         >
           <div
@@ -180,7 +187,7 @@ const Navbar = () => {
         <div className="flex items-center justify-center">
           <ul className="menu menu-horizontal py-0">
             <li>
-              <Link href={"/"}>
+              <Link href={"/saleproducts"}>
                 <p className=" font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
                   สินค้า
                   <span className="text-red-500 font-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
@@ -220,6 +227,33 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+      </section>
+      <section>
+        <button
+          onClick={scrollToTop}
+          className={` ${
+            isScrolled
+              ? "btn btn-circle btn-base-300 fixed w-16 h-16 hidden md:flex items-center justify-center bottom-10 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
+              : "hidden"
+          }`}
+        >
+          <svg
+            width="100px"
+            height="100px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-10 h-10 object-fill object-center"
+          >
+            <path
+              d="M12 5V19M12 5L6 11M12 5L18 11"
+              stroke="#fff"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </section>
     </main>
   );

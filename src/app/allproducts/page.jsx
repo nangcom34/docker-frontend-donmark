@@ -58,7 +58,11 @@ const AllProducts = () => {
     <>
       <Header />
       <Navbar />
-
+      <section
+        className={`${
+          product.length === 0 ? "h-full min-h-[63vh]" : ""
+        }`}
+      ></section>
       {category &&
         category
           .filter((categoryItem) =>
@@ -74,7 +78,7 @@ const AllProducts = () => {
                   {categoryItem.name}
                 </h2>
               </article>
-              <article className="flex flex-wrap items-center justify-around gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-2xl mx-auto">
+              <article className="flex flex-wrap items-center justify-around gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto min-h-[52vh]">
                 {product &&
                   product
                     .filter(
@@ -110,7 +114,7 @@ const AllProducts = () => {
                             <div className="modal-action">
                               <form method="dialog">
                                 {/* if there is a button in form, it will close the modal */}
-                                <button className="btn absolute bottom-3 right-3">
+                                <button className="btn bg-red-600 text-white absolute bottom-3 right-3 hover:text-red-600 hover:bg-white">
                                   CLOSE
                                 </button>
                               </form>

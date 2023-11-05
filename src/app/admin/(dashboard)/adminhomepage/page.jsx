@@ -7,40 +7,26 @@ import Swal from "sweetalert2";
 import { API_URL, URL_IMAGES } from "../../../../../config/constants";
 import { DateTime } from "luxon";
 
-const AdminAllProduct = () => {
+const AdminHomepage = () => {
   const [data, setData] = useState([]);
-  const [dataFilter, setDataFilter] = useState([]);
-  const [category, setCategory] = useState([]);
 
   useEffect(() => {
     if (!localStorage.token) {
       router.push("/login");
     }
     loadData();
-    loadCategory();
   }, []);
 
   const loadData = async () => {
     try {
-      let filters = { limit: null, sort: "createdAt", order: "desc" };
-      const response = await axios.post(API_URL + "/productby", { filters });
+      const response = await axios.get(API_URL + "/homepage");
       setData(response.data);
-      setDataFilter(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     } catch (error) {
       console.log(error);
     }
   };
-  
-  const loadCategory = async () => {
-    try {
-      const response = await axios.get(API_URL + "/category");
-      setCategory(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
+
   const handleDelete = async (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -63,7 +49,7 @@ const AdminAllProduct = () => {
       .then(async (res) => {
         if (res.isConfirmed) {
           swalWithBootstrapButtons.fire("สำเร็จ!", "ลบข้อมูลสำเร็จ", "success");
-          await axios.delete(API_URL + "/product/" + id).then((res) => {
+          await axios.delete(API_URL + "/homepage/" + id).then((res) => {
             //console.log(res);
             loadData();
           });
@@ -81,12 +67,12 @@ const AdminAllProduct = () => {
     const isChecked = e.target.checked;
     const value = {
       id: id,
-      recommend: isChecked,
+      top: isChecked,
     };
     //console.log(isChecked);
 
     await axios
-      .post(API_URL + "/change-recommend", value)
+      .post(API_URL + "/change-top", value)
       .then((res) => {
         //console.log(res);
         loadData();
@@ -96,26 +82,13 @@ const AdminAllProduct = () => {
       });
   };
 
-  const handleSelectCategory = (e) => {
-    const value = e.target.value;
-
-    if (value === "all") {
-      setDataFilter(data);
-    } else {
-      const filterData = data.filter((item) => {
-        return item.category.name == value;
-      });
-      setDataFilter(filterData);
-    }
-  };
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = dataFilter.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(dataFilter.length / itemsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
     pageNumbers.push(i);
   }
   const renderPageNumbers = pageNumbers.map((number) => (
@@ -134,30 +107,18 @@ const AdminAllProduct = () => {
 
   return (
     <main>
-       <section className="pt-10">
-          {" "}
-          <p className="text-2xl font-bold w-full px-10">รายการสินค้าทั้งหมด</p>
-        </section>
+      <section className="pt-10">
+        {" "}
+        <p className="text-2xl font-bold w-full px-10">Homepage</p>
+      </section>
       <section className="flex flex-col justify-start px-5">
         <Link
-          href={"/admin/addproduct"}
-          className="btn btn-accent  mx-auto mt-4 mb-5 shadow-md max-w-[15rem] w-full border-2 border-b-green-400"
+          href={"/admin/addhomepage"}
+          className="btn btn-accent mx-auto mt-4 mb-5 shadow-md max-w-[15rem] w-full border-2 border-b-green-400"
         >
-          เพิ่มสินค้า
+          เพิ่มข้อมูล
         </Link>
-        <select
-          defaultValue="all"
-          className="select select-bordered w-full max-w-xs mx-auto shadow-md"
-          onChange={(e) => handleSelectCategory(e)}
-        >
-          <option value="all">หมวดหมู่ทั้งหมด</option>
-          {category.length > 0 &&
-            category.map((item) => (
-              <option key={item._id} value={item.name}>
-                {item.name}
-              </option>
-            ))}
-        </select>
+
         <div className="overflow-x-auto mt-3 rounded-xl bg-clip-border shadow-md">
           <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
             <thead className="">
@@ -165,23 +126,13 @@ const AdminAllProduct = () => {
                 <th className="whitespace-nowrap px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
                   รูป
                 </th>
-                <th className="whitespace-nowrap text-left px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
-                  ชื่อสินค้า
-                </th>
+
                 <th className="whitespace-nowrap text-left px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
                   รายละเอียด
                 </th>
+
                 <th className="whitespace-nowrap text-center px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
-                  หมวดหมู่
-                </th>
-                <th className="whitespace-nowrap text-center px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
-                  วันที่เพิ่ม
-                </th>
-                <th className="whitespace-nowrap text-center px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
-                  อัพเดท
-                </th>
-                <th className="whitespace-nowrap text-center px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
-                  สินค้าแนะนำ
+                  Home Top
                 </th>
 
                 <th className="px-4 py-2"></th>
@@ -206,38 +157,23 @@ const AdminAllProduct = () => {
                         />
                       </div>
                     </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-[15rem] overflow-auto break-all">
-                      {item.name}
-                    </td>
 
                     <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-[20rem] w-full overflow-auto break-all">
                       {item.description}
                     </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] truncate hover:text-clip max-w-xs overflow-auto break-all">
-                      {item.category?.name}
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] truncate hover:text-clip max-w-xs overflow-auto break-all">
-                      {DateTime.fromISO(item.createdAt)
-                        .setZone("Asia/Bangkok")
-                        .toFormat("dd-MM-yyyy HH:mm:ss")}
-                    </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] truncate hover:text-clip max-w-xs overflow-auto break-all">
-                      {DateTime.fromISO(item.updatedAt)
-                        .setZone("Asia/Bangkok")
-                        .toRelative({ locale: "th" })}
-                    </td>
+
                     <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-sm w-full overflow-auto break-all text-center">
                       <input
                         type="checkbox"
                         className="toggle toggle-warning"
-                        checked={item.recommend}
+                        checked={item.top}
                         onChange={(e) => handleStatus(e, item._id)}
                       />
                     </td>
 
                     <td className="whitespace-nowrap px-4 py-2">
                       <Link
-                        href={`/admin/editproduct/${item._id}`}
+                        href={`/admin/edithomepage/${item._id}`}
                         className="btn btn-outline btn-primary btn-sm m-1"
                       >
                         แก้ไข
@@ -289,12 +225,12 @@ const AdminAllProduct = () => {
             <a
               href="#"
               className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${
-                currentPage === Math.ceil(dataFilter.length / itemsPerPage)
+                currentPage === Math.ceil(data.length / itemsPerPage)
                   ? "cursor-not-allowed"
                   : ""
               }`}
               onClick={() => {
-                if (currentPage < Math.ceil(dataFilter.length / itemsPerPage)) {
+                if (currentPage < Math.ceil(data.length / itemsPerPage)) {
                   setCurrentPage(currentPage + 1);
                 }
               }}
@@ -320,4 +256,4 @@ const AdminAllProduct = () => {
   );
 };
 
-export default AdminAllProduct;
+export default AdminHomepage;

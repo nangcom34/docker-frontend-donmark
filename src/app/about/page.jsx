@@ -45,7 +45,7 @@ const About = () => {
           </article>
         </section>
 
-        <section className="flex items-center justify-center w-full max-w-screen-lg px-5 md:px-20 md:mt-10 mx-auto">
+        <section className="flex items-center justify-center w-full max-w-screen-lg px-5 md:px-20 md:mt-24 md:mb-10 mx-auto">
           <ul>
             <li>
               <p className="text-sm md:text-md lg:text-lg">
@@ -76,7 +76,7 @@ const About = () => {
               }}
             />
           </aside>
-          <aside className="w-full max-w-screen-lg px-4">
+          <aside className="w-full max-w-screen-lg px-4 mt-16">
             <p className="text-sm md:text-md lg:text-lg">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               ตลอดจนปัจจุบันเราเป็นผู้นำเข้าและเป็นจำหน่ายสินค้าจากผู้ผลิตนานาประเทศจากทั่วทุกมุมโลกเนื่องจากเราเป็นผู้นำเข้าเองจาก

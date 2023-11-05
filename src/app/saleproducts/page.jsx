@@ -1,22 +1,22 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Navbar from "../layouts/Navbar";
+import { API_URL, URL_IMAGES } from "../../../config/constants";
 import axios from "axios";
 import Header from "../layouts/Header";
+import Navbar from "../layouts/Navbar";
 import Footer from "../layouts/Footer";
-import { API_URL, URL_IMAGES } from "../../../config/constants";
 import Slide from "../components/Slide";
 
-const NewProducts = () => {
-  const [imageProduct, setImageProduct] = useState([]);
+export default function Home() {
+  const [imageProduct, setImageProduct] = useState("");
 
   useEffect(() => {
     loadImageProduct();
   }, []);
   const loadImageProduct = async () => {
     await axios
-      .post(API_URL + "/imageProductnew", {
+      .post(API_URL + "/imageProductsale", {
         limit: null,
         sort: "createdAt",
         order: "asc",
@@ -57,6 +57,4 @@ const NewProducts = () => {
       <Footer />
     </main>
   );
-};
-
-export default NewProducts;
+}

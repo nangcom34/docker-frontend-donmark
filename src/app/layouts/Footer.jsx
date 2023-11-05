@@ -80,13 +80,13 @@ const Footer = () => {
         </aside>
         <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
           <Link
-            href={"/about"}
+            href={"/doc"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
             เอกสารรับรอง
           </Link>
           <Link
-            href={"/question"}
+            href={"/job"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
             สมัครงาน

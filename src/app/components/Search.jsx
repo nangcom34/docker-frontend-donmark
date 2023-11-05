@@ -26,8 +26,8 @@ const Search = () => {
             onChange={(e) => setText(e.target.value)}
             value={text}
             type="search"
-            className="input text-xs md:text-sm lg:text-md w-full rounded-md focus:outline-none bg-transparent"
-            placeholder="ค้นหา"
+            className="input text-xs md:text-sm lg:text-md w-full rounded-md focus:outline-none bg-transparent placeholder:text-red-700"
+            placeholder="ค้นหาสินค้า"
           />
           <div
             onClick={handleSearch}
@@ -36,7 +36,7 @@ const Search = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-[#D9D9D9]"
+              className="h-6 w-6 text-[#ff4747]"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
