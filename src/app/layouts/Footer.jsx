@@ -89,7 +89,7 @@ const Footer = () => {
             href={"/job"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
-            สมัครงาน
+            สมัครงาน 
           </Link>
         </aside>
         <aside className="col-span-4 md:col-span-1 flex flex-col items-center justify-center">
