@@ -20,7 +20,7 @@ const HomepageCard = ({ data }) => {
         />
       </div>
       <div className="w-full overflow-hidden mb-16">
-        <p className="text-[16px] md:text-xl font-bold px-10 mt-10 break-all">
+        <p className="text-[16px] md:text-xl px-10 mt-10 break-all">
           {data.description.split("\n" || "\r\n").map((line, index) => (
             <React.Fragment key={index}>
               {line}

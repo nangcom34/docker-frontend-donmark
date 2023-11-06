@@ -79,7 +79,7 @@ const AdminAllProduct = () => {
 
   const handleStatus = async (e, id) => {
     const isChecked = e.target.checked;
-    const value = {
+    const value = { 
       id: id,
       recommend: isChecked,
     };

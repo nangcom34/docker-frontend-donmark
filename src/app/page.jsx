@@ -52,7 +52,7 @@ export default function Home() {
         homepageTop.map((homepageTopItem) => (
           <section
             key={homepageTopItem._id}
-            className="flex flex-col items-center justify-center w-full max-w-screen-xl mx-auto mb-20"
+            className="flex flex-col items-center justify-center w-full max-w-screen-xl mx-auto mb-20 px-3"
           >
             <Image
               src={`${URL_IMAGES}${homepageTopItem.file}`}
@@ -97,7 +97,7 @@ export default function Home() {
                 />
               </aside>
               <aside className="w-full overflow-hidden">
-                <p className="text-xs md:text-[16px] font-semibold mt-3 leading-relaxed text-ellipsis">
+                <p className="text-xs md:text-[16px] mt-3 leading-relaxed text-ellipsis">
                   {item.description
                     .split("\n" || "\r\n")
                     .slice(0, 3)
@@ -110,12 +110,12 @@ export default function Home() {
                 </p>
               </aside>
               <dialog id={`my_modal_${item._id}`} className="modal">
-                <div className="modal-box p-0 relative lg:max-w-[35%]">
+                <div className="modal-box p-0 relative lg:max-w-[30%]">
                   <HomepageCard data={item} />
                   <div className="modal-action">
                     <form method="dialog">
                       {/* if there is a button in form, it will close the modal */}
-                      <button className="btn bg-red-600 text-white absolute bottom-3 right-3 hover:text-red-600 hover:bg-white">
+                      <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
                         CLOSE
                       </button>
                     </form>

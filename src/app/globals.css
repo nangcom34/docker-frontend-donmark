@@ -3,16 +3,20 @@
 @tailwind utilities;
 
 body {
-    min-height: 100vh;
-    height: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 
 .swiper {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .swiper-slide {
@@ -24,19 +28,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
 .swiper-slide img {
-  display: block;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
+  object-position: center;
+
 }
 
-.swiper-slide {
-  width: 80%;
-}
-
-
-
-
+/* .swiper-slide {
+  width: 50%;
+} */

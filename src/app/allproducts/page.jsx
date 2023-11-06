@@ -78,7 +78,7 @@ const AllProducts = () => {
                   {categoryItem.name}
                 </h2>
               </article>
-              <article className="flex flex-wrap items-center justify-around gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto min-h-[52vh]">
+              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto min-h-[52vh] px-5 ">
                 {product &&
                   product
                     .filter(
@@ -93,7 +93,7 @@ const AllProducts = () => {
                             .showModal();
                         }}
                         key={item._id}
-                        className="block w-[100px] sm:w-[150px] md:w-[180px] lg:w-[180px] xl:w-[180px] hover:-translate-y-6 duration-500"
+                        className="block w-[100px] sm:w-[150px] md:w-[180px] lg:w-[180px] xl:w-[180px] hover:-translate-y-6 duration-500 mx-auto"
                       >
                         <Image
                           src={`${URL_IMAGES}${item.file}`}
@@ -114,7 +114,7 @@ const AllProducts = () => {
                             <div className="modal-action">
                               <form method="dialog">
                                 {/* if there is a button in form, it will close the modal */}
-                                <button className="btn bg-red-600 text-white absolute bottom-3 right-3 hover:text-red-600 hover:bg-white">
+                                <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
                                   CLOSE
                                 </button>
                               </form>

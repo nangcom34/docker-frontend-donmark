@@ -174,7 +174,7 @@ const JobCard = ({ data }) => {
             และสามารถติดต่อสอบถามได้ทาง Social Media
           </p>
           <div className="col-span-2 md:col-span-5 xl:col-span-8 flex items-center justify-center md:justify-start gap-4">
-            <Link href={"https://page.line.me/donmark"}>
+            <Link href={"https://page.line.me/donmark"} target="_black">
               {" "}
               <Image
                 src={`/images/line.png`}
@@ -187,7 +187,7 @@ const JobCard = ({ data }) => {
                 }}
               />
             </Link>
-            <Link href={"https://www.facebook.com/donmarkOfficial/"}>
+            <Link href={"https://www.facebook.com/donmarkOfficial/"} target="_black">
               {" "}
               <Image
                 src={`/images/fb.png`}

@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Search from "../components/Search";
 
 const Header = () => {
+  const [value, setValue] = useState(false); // ตั้งค่าเริ่มต้นเป็น false
+  const toggleValue = () => {
+    setValue(!value); // สลับค่า value ระหว่าง true และ false
+    //console.log(value)
+  };
   return (
     <header className="navbar bg-[#ED2024] md:sticky top-0 z-30 duration-500">
       <article className="flex-1 ml-5">
@@ -11,12 +17,12 @@ const Header = () => {
           className="btn btn-ghost normal-case text-xl w-24 sm:w-36 md:w-56 group relative hover:bg-white duration-500"
         >
           <svg
-            width="100%"
-            height="100%"
+            width="170"
+            height="170"
             viewBox="0 0 113 13"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="text-white absolute group-hover:opacity-0"
+            className="text-white absolute group-hover:opacity-0 px-8 md:px-2"
           >
             <path
               d="M74.7208 2.34839H71.8004L65.5222 12.749H68.7579L70.0108 10.6312L71.4487 8.28945L73.2668 5.2752L75.075 8.2897L76.5104 10.6309L77.7636 12.749H80.9991L74.7208 2.34839Z"
@@ -57,12 +63,12 @@ const Header = () => {
           </svg>
 
           <svg
-            width="100%"
-            height="100%"
+            width="170"
+            height="170"
             viewBox="0 0 113 13"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="text-white absolute opacity-0 group-hover:opacity-100"
+            className="text-white absolute opacity-0 group-hover:opacity-100 px-8 md:px-2"
           >
             <path
               d="M74.7208 2.34839H71.8004L65.5222 12.749H68.7579L70.0108 10.6312L71.4487 8.28945L73.2668 5.2752L75.075 8.2897L76.5104 10.6309L77.7636 12.749H80.9991L74.7208 2.34839Z"
@@ -133,7 +139,6 @@ const Header = () => {
                 width="100%"
                 height="100%"
                 viewBox="0 0 512 512"
-              
               >
                 <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
               </svg>
@@ -143,29 +148,6 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link href={"/saleproducts"} className="justify-between">
-                สินค้า
-                <span className="badge text-red-500">ลดราคา</span>
-              </Link>
-            </li>
-            <li>
-              <Link href={"/newproducts"} className="justify-between">
-                สินค้า
-                <span className="badge text-red-500">ใหม่</span>
-              </Link>
-            </li>
-            <li>
-              <Link href={"/recomproducts"} className="justify-between">
-                สินค้า
-                <span className="badge text-red-500">แนะนำ</span>
-              </Link>
-            </li>
-            <li>
-              <Link href={"/allproducts"} className="justify-between">
-                สินค้าทั้งหมด
-              </Link>
-            </li>
             <li>
               <Link href={"/about"} className="justify-between">
                 ตัวแทนจำหน่าย
@@ -179,6 +161,86 @@ const Header = () => {
           </ul>
         </aside>
       </article>
+      <section>
+        <button
+          className={`btn btn-circle btn-base-300 fixed w-16 h-16 hidden md:flex items-center justify-center bottom-10 right-32 z-50 text-white align-middle bg-red-600 
+              
+          `}
+          onClick={toggleValue}
+        >
+          <label
+            className="btn btn-circle swap swap-rotate bg-transparent text-white border-0 hover:text-red-600"
+            onClick={toggleValue}
+          >
+            {/* this hidden checkbox controls the state */}
+            <input type="checkbox" checked={value} />
+
+            {/* hamburger icon */}
+
+            <svg
+              id="Capa_1"
+              style={{ enableBackground: "new 0 0 58 58" }}
+              version="1.1"
+              viewBox="0 0 58 58"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              className="swap-off fill-current"
+            >
+              <g>
+                <path
+                  d="M25,9.586C11.193,9.586,0,19.621,0,32c0,4.562,1.524,8.803,4.135,12.343C3.792,48.433,2.805,54.194,0,57c0,0,8.47-1.191,14.273-4.651c0.006-0.004,0.009-0.01,0.014-0.013c1.794-1.106,3.809-2.397,4.302-2.783c0.301-0.417,0.879-0.543,1.328-0.271c0.298,0.181,0.487,0.512,0.488,0.86c0.003,0.582-0.008,0.744-3.651,3.018c2.582,0.81,5.355,1.254,8.245,1.254c13.807,0,25-10.035,25-22.414S38.807,9.586,25,9.586z"
+                  style={{ fill: "#0391FD" }}
+                />
+                <path
+                  d="M58,23.414C58,11.035,46.807,1,33,1c-9.97,0-18.575,5.234-22.589,12.804C14.518,11.153,19.553,9.586,25,9.586c13.807,0,25,10.035,25,22.414c0,4.735-1.642,9.124-4.437,12.743C51.162,47.448,58,48.414,58,48.414c-2.805-2.805-3.792-8.566-4.135-12.657C56.476,32.217,58,27.976,58,23.414z"
+                  style={{ fill: "#0F71D3" }}
+                />
+                <path
+                  d="M32.5,26h-14c-0.552,0-1-0.447-1-1s0.448-1,1-1h14c-0.552,0-1-0.447-1-1s0.448-1,1-1z"
+                  style={{ fill: "#FFFFFF" }}
+                />
+                <path
+                  d="M38,33H13c-0.552,0-1-0.447-1-1s0.448-1,1-1h25c-0.552,0-1-0.447-1-1s0.448-1,1-1z"
+                  style={{ fill: "#FFFFFF" }}
+                />
+                <path
+                  d="M38,40H13c-0.552,0-1-0.447-1-1s0.448-1,1-1h25c-0.552,0-1-0.447-1-1s0.448-1,1-1z"
+                  style={{ fill: "#FFFFFF" }}
+                />
+              </g>
+            </svg>
+
+            {/* close icon */}
+            <svg
+              className="swap-on fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512"
+            >
+              <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+            </svg>
+          </label>
+        </button>
+        <Link href={"https://page.line.me/donmark"} target="_black">
+          <Image
+            src={`/images/line2.png`}
+            alt="line"
+            width={80}
+            height={80}
+            className={` ${
+              value === true
+                ? "fixed w-[80px] rounded-3xl shadow-lg hidden md:flex items-center justify-center bottom-36 right-[7.5rem] z-50 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500"
+                : "w-[80px] fixed hidden items-center justify-center bottom-36 right-[7.5rem] z-50 text-white align-middle bg-red-600 object-center -translate-y-20 duration-500"
+            }   
+              
+              `}
+            style={{
+              loading: "lazy",
+            }}
+          />
+        </Link>
+      </section>
     </header>
   );
 };

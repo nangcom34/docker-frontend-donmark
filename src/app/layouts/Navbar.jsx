@@ -32,7 +32,7 @@ const Navbar = () => {
   };
   return (
     <main>
-      <nav className=" flex items-center justify-center max-w-screen-lg mx-auto max-sm:hidden ">
+      <nav className=" flex items-center justify-center max-w-screen-lg mx-auto ">
         <Link
           href={"/saleproducts"}
           className="flex flex-col items-center justify-center bg-white hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group"
@@ -185,7 +185,7 @@ const Navbar = () => {
         }`}
       >
         <div className="flex items-center justify-center">
-          <ul className="menu menu-horizontal py-0">
+          <ul className="menu menu-horizontal py-0 gap-14">
             <li>
               <Link href={"/saleproducts"}>
                 <p className=" font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
@@ -233,7 +233,7 @@ const Navbar = () => {
           onClick={scrollToTop}
           className={` ${
             isScrolled
-              ? "btn btn-circle btn-base-300 fixed w-16 h-16 hidden md:flex items-center justify-center bottom-10 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
+              ? "btn btn-circle btn-base-300 fixed w-14 h-14 hidden md:flex items-center justify-center bottom-10 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
               : "hidden"
           }`}
         >

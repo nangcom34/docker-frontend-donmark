@@ -97,14 +97,14 @@ const AdminImageProduct = () => {
         >
           เพิ่มรูปสินค้า
         </Link>
-        <article className="mx-auto w-full flex flex-wrap items-center justify-evenly mb-2 gap-3">
+        <article className="mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-2 gap-3">
           {data &&
             data?.map((item) => (
               <aside
                 key={item._id}
                 className="mx-auto max-w-[300px] w-full flex flex-col items-center justify-between shadow-lg shadow-slate-400 rounded-2xl my-2 bg-slate-100"
               >
-                <div className="w-full max-h-[400px] rounded-2xl mx-auto overflow-hidden object-center">
+                <div className="w-full max-h-[250px] flex items-center justify-center rounded-2xl mx-auto overflow-hidden">
                   <Image
                     src={`${URL_IMAGES}${item.file}`}
                     alt={item._id}

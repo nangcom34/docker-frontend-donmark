@@ -54,30 +54,17 @@ const Footer = () => {
             href={"/allproducts"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
-            สินค้าทั้งหมด{" "}
-            {/* <Link
+            แคตตาล็อก{" "}
+            <Link
               href={"/images/CAT.pdf"}
               download
-              className="text-red-400 text-xs md:text-sm lg:text-lg hover:underline"
+              className="text-white text-xs md:text-sm lg:text-lg hover:underline"
             >
               (ดาวน์โหลด PDF)
-            </Link> */}
+            </Link>
           </Link>
         </aside>
-        <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
-          <Link
-            href={"/about"}
-            className="mb-4 text-white text-xs md:text-sm lg:text-lg"
-          >
-            เกี่ยวกับเรา
-          </Link>
-          <Link
-            href={"/question"}
-            className="mb-4 text-white text-xs md:text-sm lg:text-lg"
-          >
-            คำถามที่พบบ่อย
-          </Link>
-        </aside>
+
         <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
           <Link
             href={"/doc"}
@@ -89,7 +76,15 @@ const Footer = () => {
             href={"/job"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
-            สมัครงาน 
+            สมัครงาน
+          </Link>
+        </aside>
+        <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
+          <Link
+            href={"/question"}
+            className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+          >
+            คำถามที่พบบ่อย
           </Link>
         </aside>
         <aside className="col-span-4 md:col-span-1 flex flex-col items-center justify-center">

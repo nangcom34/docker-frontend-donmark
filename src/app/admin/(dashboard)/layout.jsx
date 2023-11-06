@@ -33,7 +33,7 @@ export default function Layout({ children }) {
               </aside>
 
               <aside className="avatar w-full mx-auto px-5 lg:px-12">
-                <div className="w-full rounded-full ring ring-red-600 ring-offset-base-300 ring-offset-2 shadow-lg shadow-slate-500 bg-gray-900">
+                <div className="w-full rounded-full ring ring-red-600 ring-offset-base-300 ring-offset-2 shadow-lg shadow-slate-500 ">
                   <Image
                     src={`/images/logo.png`}
                     alt="donmark"

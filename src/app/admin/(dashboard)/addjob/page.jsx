@@ -365,7 +365,7 @@ const AddJob = () => {
                 อีเมลผู้ติดต่อ
               </label>
 
-              <input
+              <textarea
                 onChange={handleChange}
                 type="text"
                 name="ContactEmail"

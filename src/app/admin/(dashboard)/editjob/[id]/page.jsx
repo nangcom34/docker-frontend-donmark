@@ -499,7 +499,7 @@ const EditJob = ({ params }) => {
                 อีเมลผู้ติดต่อ
               </label>
 
-              <input
+              <textarea
                 onChange={(e) => {
                   setJob((job) => ({
                     ...job,

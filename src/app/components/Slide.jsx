@@ -32,7 +32,7 @@ const Slide = () => {
   return (
     <section
     className={`${
-      imageSlide.length === 0 ? "hidden" : "flex items-center justify-center w-full h-[640px] max-w-screen-xl mx-auto mb-16" 
+      imageSlide.length === 0 ? "hidden" : "flex items-center justify-center w-full h-[320px] md:h-[640px] max-w-screen-xl mx-auto mb-16" 
     } `}
   >
       <Swiper
@@ -48,13 +48,13 @@ const Slide = () => {
         }}
         breakpoints={{
           800: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             slidesPerGroup: 1,
           },
         }}
         modules={[Autoplay, Scrollbar]}
         scrollbar={true}
-        className="mySwiper"
+        className="mySwiper mx-auto"
       >
         {imageSlide &&
           imageSlide.map((imageSlideItem) => (
@@ -63,8 +63,9 @@ const Slide = () => {
                 <Image
                   src={`${URL_IMAGES}${imageSlideItem.file}`}
                   alt={imageSlideItem._id}
-                  width={640}
+                  width={1280}
                   height={640}
+                  className="mx-auto"
                   style={{
                     loading: "lazy",
                   }}
