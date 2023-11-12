@@ -15,9 +15,11 @@ import "swiper/css/navigation";
 import { Keyboard, Scrollbar, Autoplay } from "swiper/modules";
 const Slide = () => {
   const [imageSlide, setImageSlide] = useState([]);
+
   useEffect(() => {
     loadImageSlide();
   }, []);
+
   const loadImageSlide = async () => {
     await axios
       .get(API_URL + "/imageSlide")
@@ -31,49 +33,51 @@ const Slide = () => {
   };
   return (
     <section
-    className={`${
-      imageSlide.length === 0 ? "hidden" : "flex items-center justify-center w-full h-[320px] md:h-[640px] max-w-screen-xl mx-auto mb-16" 
-    } `}
-  >
-      <Swiper
-        slidesPerView={"auto"}
-        spaceBetween={30}
-        centeredSlides={false}
-        keyboard={{
-          enabled: true,
-        }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        breakpoints={{
-          800: {
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-          },
-        }}
-        modules={[Autoplay, Scrollbar]}
-        scrollbar={true}
-        className="mySwiper mx-auto"
-      >
-        {imageSlide &&
-          imageSlide.map((imageSlideItem) => (
-            <SwiperSlide key={imageSlideItem._id}>
-              <Link href={imageSlideItem.urlname} target="_blank">
-                <Image
-                  src={`${URL_IMAGES}${imageSlideItem.file}`}
-                  alt={imageSlideItem._id}
-                  width={1280}
-                  height={640}
-                  className="mx-auto"
-                  style={{
-                    loading: "lazy",
-                  }}
-                />
-              </Link>
-            </SwiperSlide>
-          ))}
-      </Swiper>
+      className={`${
+        imageSlide.length === 0
+          ? "hidden"
+          : "flex items-center justify-center w-full h-[320px] md:h-[640px] max-w-screen-xl mx-auto mb-16"
+      } `}
+    >
+      <aside className="h-[320px] md:h-[640px] max-w-screen-2xl">
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={false}
+          keyboard={{
+            enabled: true,
+          }}
+          modules={[Autoplay, Keyboard, Scrollbar]}
+          scrollbar={true}
+          className="mySwiper mx-auto"
+        >
+          {imageSlide &&
+            imageSlide.length > 0 &&
+            imageSlide.map((imageSlideItem) => (
+              <SwiperSlide key={imageSlideItem._id}>
+                <Link href={imageSlideItem.urlname} target="_blank">
+                  <Image
+                    src={`${URL_IMAGES}${imageSlideItem.file}`}
+                    alt={imageSlideItem._id}
+                    width={1280}
+                    height={640}
+                    className="mx-auto"
+                    style={{
+                      loading: "lazy",
+                    }}
+                  />
+                </Link>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </aside>
     </section>
   );
 };

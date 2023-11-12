@@ -19,7 +19,7 @@ export default function Home() {
       .post(API_URL + "/imageProductsale", {
         limit: null,
         sort: "createdAt",
-        order: "asc",
+        order: "desc",
       })
       .then((res) => {
         //console.log(res.data);

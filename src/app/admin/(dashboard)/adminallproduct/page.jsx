@@ -26,7 +26,7 @@ const AdminAllProduct = () => {
       const response = await axios.post(API_URL + "/productby", { filters });
       setData(response.data);
       setDataFilter(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     } catch (error) {
       console.log(error);
     }

@@ -166,13 +166,13 @@ const About = () => {
           </article>
         </section>
 
-        <p className="text-lg md:text-xl lg:text-3xl font-semibold mt-20 mb-5 w-full px-5 md:gap-x-28 lg:px-72 max-w-screen-xl">
+        <p className="text-lg md:text-xl lg:text-3xl font-semibold mt-28 mb-5 w-full px-5   max-w-screen-xl mx-auto">
           ติดต่อสอบถามข้อมูลสินค้า ขอใบเสนอราคา
         </p>
 
-        <section className="flex flex-wrap items-center justify-start px-5 md:px-28 gap-5 md:gap-x-6 lg:px-5  max-w-screen-xl mx-auto">
-          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-[350px] md:w-[400px] h-[240px] p-10 rounded-2xl shadow-lg">
-            <h3 className="text-lg md:text-xl lg:text-3xl font-semibold w-full mb-2">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-5 md:px-28 gap-5 md:gap-x-6 lg:px-5  max-w-screen-xl mx-auto">
+          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-full p-10 rounded-2xl shadow-lg">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold w-full mb-2">
               คุณเบียร์
             </h3>
             <div className="flex items-center justify-start w-full">
@@ -217,8 +217,9 @@ const About = () => {
               </p>
             </div>
           </article>
-          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-[350px] md:w-[400px] h-[240px] p-10 rounded-2xl shadow-lg">
-            <h3 className="text-lg md:text-xl lg:text-3xl font-semibold w-full mb-2">
+
+          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-full p-10 rounded-2xl shadow-lg">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold w-full mb-2">
               คุณเจน
             </h3>
             <div className="flex items-center justify-start w-full">
@@ -267,7 +268,7 @@ const About = () => {
           </article>
         </section>
 
-        <section className="grid grid-cols-3 gap-10 md:gap-20 items-center content-center justify-center w-full max-w-screen-2xl mx-auto px-5 md:px-[15rem] my-10">
+        <section className="grid grid-cols-3 gap-5 md:gap-20 items-center content-center justify-center w-full max-w-screen-2xl mx-auto px-5 md:px-[15rem] my-10">
           <article className="flex items-center justify-center w-2/3 shadow-lg overflow-hidden mx-auto rounded-lg">
             {" "}
             <Image
@@ -309,12 +310,30 @@ const About = () => {
           </article>
         </section>
 
-        <p className="text-lg md:text-xl lg:text-3xl text-center font-semibold mt-16 mb-5 w-full">
+        <p
+          id="sale"
+          className="text-lg md:text-xl lg:text-3xl text-center font-semibold mt-16 mb-5 w-full"
+        >
           ตัวแทนจำหน่าย
         </p>
-
-        <section className="grid grid-cols-5 gap-10 md:gap-20 w-full mx-auto px-5 md:px-[15rem] my-10 max-w-screen-xl">
-          <article className="col-span-1 flex items-center justify-center w-full shadow-sm shadow-slate-600 rounded-xl">
+        <p className="text-sm md:text-lg lg:text-xl text-red-600 font-semibold my-2 w-full max-w-screen-lg mx-auto px-10">
+          จัดจำหน่ายตามร้านตัวแทน และร้านค้าวัสดุทั่วประเทศ
+        </p>
+        <section className="grid grid-cols-3 md:grid-cols-6 gap-10 md:gap-20 w-full mx-auto px-5 md:px-[15rem] my-10 max-w-screen-xl">
+          <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
+            {" "}
+            <Image
+              src="/images/HP.png"
+              alt="HP"
+              width={500}
+              height={500}
+              className="w-[500px] h-auto "
+              style={{
+                loading: "lazy",
+              }}
+            />
+          </article>
+          <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
             <Image
               src="/images/SCG.png"
@@ -327,7 +346,7 @@ const About = () => {
               }}
             />
           </article>
-          <article className="col-span-1 flex items-center justify-center w-full shadow-sm shadow-slate-600 rounded-xl">
+          <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
             <Image
               src="/images/DH.png"
@@ -340,7 +359,7 @@ const About = () => {
               }}
             />
           </article>
-          <article className="col-span-1 flex items-center justify-center w-full shadow-sm shadow-slate-600 rounded-xl">
+          <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
             <Image
               src="/images/MH.png"
@@ -353,7 +372,7 @@ const About = () => {
               }}
             />
           </article>
-          <article className="col-span-1 flex items-center justify-center w-full shadow-sm shadow-slate-600 rounded-xl">
+          <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
             <Image
               src="/images/GB.png"
@@ -366,7 +385,7 @@ const About = () => {
               }}
             />
           </article>
-          <article className="col-span-1 flex items-center justify-center w-full shadow-sm shadow-slate-600 rounded-xl">
+          <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
             <Image
               src="/images/HS.png"
@@ -379,6 +398,18 @@ const About = () => {
               }}
             />
           </article>
+        </section>
+        <section className="grid grid-cols-1 px-5 mx-auto max-w-screen-lg my-10">
+          <Image
+            src="/images/map.jpg"
+            alt="sukkapan"
+            width={1024}
+            height={500}
+            className="w-full h-auto"
+            style={{
+              loading: "lazy",
+            }}
+          />
         </section>
       </main>
       <Footer />

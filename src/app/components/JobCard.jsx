@@ -6,8 +6,8 @@ const JobCard = ({ data }) => {
   //console.log(data);
 
   return (
-    <section className="w-full">
-      <div className="w-full flex items-center justify-center h-[250px] md:[300px] rounded-t-2xl  overflow-hidden bg-red-600 px-28 md:px-48 md:py-24">
+    <section className="w-full max-h-full flex flex-col overflow-hidden">
+      <aside className="w-full flex items-center justify-center h-[250px] md:[300px] rounded-t-2xl bg-red-600 px-28 md:px-48 md:py-24 shadow-xl">
         <svg
           width="500"
           height="500"
@@ -53,168 +53,176 @@ const JobCard = ({ data }) => {
             fill="#fff"
           />
         </svg>
-      </div>
-      <div className="w-full overflow-hidden">
-        <p className="text-[18px] md:text-2xl font-bold px-10 mt-10 text-right">
-          {data.name}
-        </p>
-      </div>
-
-      <div className="w-full">
-        <p className="text-[17px] md:text-lg font-bold px-10 mt-10 mb-5">
-          ตำแหน่ง : {data.position}
-        </p>
-      </div>
-
-      <div className="w-full px-10 grid grid-cols-12 md:grid-cols-10 xl:grid-cols-9 mb-10">
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          รูปแบบงาน :
-        </p>
-        <p className="text-[16px] col-span-8">{data.format}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          จำนวนที่รับ :
-        </p>
-        <p className="text-[16px] col-span-8">{data.amount}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          สถานที่ปฎิบัติงาน :
-        </p>
-        <p className="text-[16px] col-span-8">{data.location}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          เงินเดือน (บาท) :
-        </p>
-        <p className="text-[16px] col-span-8">{data.salary}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          วันหยุด :
-        </p>
-        <p className="text-[16px] col-span-8">{data.dayOff}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          เวลาทำงาน :
-        </p>
-        <p className="text-[16px] col-span-8">{data.time}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          เวลาทำงานอื่นๆ :
-        </p>
-        <p className="text-[16px] col-span-8">{data.timeOther}</p>
-      </div>
-
-      <div className="w-full px-10 mb-8">
-        <p className="font-bold text-[16px] mb-1">หน้าที่ความรับผิดชอบ</p>
-        <p className="text-[16px] col-span-8">
-          {data.responsibilities.split("\n" || "\r\n").map((line, index) => (
-            <React.Fragment key={index}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}
-        </p>
-      </div>
-
-      <div className="w-full px-10 grid grid-cols-12 md:grid-cols-10 xl:grid-cols-9 mb-8">
-        <p className="font-bold text-[16px] col-span-12 md:col-span-10 xl:col-span-9 mb-1">
-          คุณสมบัติ
-        </p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          เพศ :
-        </p>
-        <p className="text-[16px] col-span-8">{data.sex}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          อายุ(ปี) :
-        </p>
-        <p className="text-[16px] col-span-8">{data.age}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          ระดับการศึกษา :
-        </p>
-        <p className="text-[16px] col-span-8">{data.education}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          ประสบการณ์(ปี) :
-        </p>
-        <p className="text-[16px] col-span-8">{data.experience}</p>
-        <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-          อื่นๆ :
-        </p>
-        <p className="text-[16px] col-span-8">{data.other}</p>
-      </div>
-
-      <div className="w-full px-10 mb-8">
-        <p className="font-bold text-[16px] mb-1">สวัสดิการ</p>
-        <p className="text-[16px] col-span-8">
-          {data.welfare.split("\n" || "\r\n").map((line, index) => (
-            <React.Fragment key={index}>
-              - {line}
-              <br />
-            </React.Fragment>
-          ))}
-        </p>
-      </div>
-
-      <div className="grid grid-cols-2">
-        <div className="w-full px-10 grid grid-cols-2 md:grid-cols-5 xl:grid-cols-8  mb-8">
-          <p className="font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  mb-1">
-            สนใจสมัครงานตำแหน่งงานนี้กรุณาติดต่อ
+      </aside>
+      <aside className="w-full overflow-y-auto">
+        {" "}
+        <div className="w-full ">
+          <p className="text-[18px] md:text-2xl font-bold px-10 mt-10 text-right">
+            {data.name}
           </p>
-          <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2">
-            ชื่อผู้ติดต่อ :
+        </div>
+        <div className="w-full">
+          <p className="text-[17px] md:text-lg font-bold px-10 mt-10 mb-5">
+            ตำแหน่ง : {data.position}
           </p>
-          <p className="text-[16px] col-span-1 md:col-span-3 xl:col-span-6">
-            {data.ContactName}
+        </div>
+        <div className="w-full px-10 grid grid-cols-12 md:grid-cols-10 xl:grid-cols-9 mb-10">
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            รูปแบบงาน :
           </p>
-          <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-22 ">
-            เบอร์ผู้ติดต่อ :
+          <p className="text-[16px] col-span-8">{data.format}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            จำนวนที่รับ :
           </p>
-          <p className="text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
-            {data.ContactCall}
+          <p className="text-[16px] col-span-8">{data.amount}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            สถานที่ปฎิบัติงาน :
           </p>
-          <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2 ">
-            อีเมล :
+          <p className="text-[16px] col-span-8">{data.location}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            เงินเดือน (บาท) :
           </p>
-          <p className="text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
-            {data.ContactEmail}
+          <p className="text-[16px] col-span-8">{data.salary}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            วันหยุด :
           </p>
-          <p className="font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  my-3">
-            และสามารถติดต่อสอบถามได้ทาง Social Media
+          <p className="text-[16px] col-span-8">{data.dayOff}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            เวลาทำงาน :
           </p>
-          <div className="col-span-2 md:col-span-5 xl:col-span-8 flex items-center justify-center md:justify-start gap-4">
-            <Link href={"https://page.line.me/donmark"} target="_black">
-              {" "}
-              <Image
-                src={`/images/line.png`}
-                alt="line"
-                width={30}
-                height={30}
-                className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
-                style={{
-                  loading: "lazy",
-                }}
-              />
-            </Link>
-            <Link href={"https://www.facebook.com/donmarkOfficial/"} target="_black">
-              {" "}
-              <Image
-                src={`/images/fb.png`}
-                alt="fb"
-                width={30}
-                height={30}
-                className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
-                style={{
-                  loading: "lazy",
-                }}
-              />
-            </Link>
+          <p className="text-[16px] col-span-8">{data.time}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            เวลาทำงานอื่นๆ :
+          </p>
+          <p className="text-[16px] col-span-8">{data.timeOther}</p>
+        </div>
+        <div className="w-full px-10 mb-8">
+          <p className="font-bold text-[16px] mb-1">หน้าที่ความรับผิดชอบ</p>
+          <p className="text-[16px] col-span-8">
+            {data.responsibilities.split("\n" || "\r\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </p>
+        </div>
+        <div className="w-full px-10 grid grid-cols-12 md:grid-cols-10 xl:grid-cols-9 mb-8">
+          <p className="font-bold text-[16px] col-span-12 md:col-span-10 xl:col-span-9 mb-1">
+            คุณสมบัติ
+          </p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            เพศ :
+          </p>
+          <p className="text-[16px] col-span-8">{data.sex}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            อายุ(ปี) :
+          </p>
+          <p className="text-[16px] col-span-8">{data.age}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            ระดับการศึกษา :
+          </p>
+          <p className="text-[16px] col-span-8">{data.education}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            ประสบการณ์(ปี) :
+          </p>
+          <p className="text-[16px] col-span-8">{data.experience}</p>
+          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            อื่นๆ :
+          </p>
+          <p className="text-[16px] col-span-8">{data.other}</p>
+        </div>
+        <div className="w-full px-10 mb-8">
+          <p className="font-bold text-[16px] mb-1">สวัสดิการ</p>
+          <p className="text-[16px] col-span-8">
+            {data.welfare.split("\n" || "\r\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="w-full px-10 grid grid-cols-2 md:grid-cols-5 xl:grid-cols-8  mb-8">
+            <p className="font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  mb-1">
+              สนใจสมัครงานตำแหน่งงานนี้กรุณาติดต่อ
+            </p>
+            <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2">
+              ชื่อผู้ติดต่อ :
+            </p>
+            <p className="text-[16px] col-span-1 md:col-span-3 xl:col-span-6">
+              {data.ContactName}
+            </p>
+            <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-22 ">
+              เบอร์ผู้ติดต่อ :
+            </p>
+            <p className="text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
+              {data.ContactCall}
+            </p>
+            <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2 ">
+              อีเมล :
+            </p>
+            <p className="text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
+              {data.ContactEmail}
+            </p>
+            <p className="font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  my-3">
+              และสามารถติดต่อสอบถามได้ทาง Social Media
+            </p>
+            <div className="col-span-2 md:col-span-5 xl:col-span-8 flex items-center justify-center md:justify-start gap-4">
+              <Link href={"https://page.line.me/donmark"} target="_black">
+                {" "}
+                <Image
+                  src={`/images/line.png`}
+                  alt="line"
+                  width={30}
+                  height={30}
+                  className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
+                  style={{
+                    loading: "lazy",
+                  }}
+                />
+              </Link>
+              <Link
+                href={"https://www.facebook.com/donmarkOfficial/"}
+                target="_black"
+              >
+                {" "}
+                <Image
+                  src={`/images/fb.png`}
+                  alt="fb"
+                  width={30}
+                  height={30}
+                  className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
+                  style={{
+                    loading: "lazy",
+                  }}
+                />
+              </Link>
+            </div>
+          </div>
+          <div className="shadow-md shadow-gray-500 rounded-2xl md:mr-8 overflow-hidden min-h-[330px] px-2">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.4887426637147!2d100.34451917584022!3d13.688822786696534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2bdf00000000f%3A0xb82fe10fae60cb15!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4geC4o-C4teC4meC5hOC4peC4n-C5jCDguYDguK3guYfguJnguYDguJXguK3guKPguYzguYTguJ7guKPguKrguYwg4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sth!2sth!4v1698143505234!5m2!1sth!2sth"
+              style={{
+                width: "100%",
+                height: "100%",
+                border: 0,
+                allowfullscreen: true,
+                loading: "lazy",
+                referrerpolicy: "no-referrer-when-downgrade",
+              }}
+            ></iframe>
           </div>
         </div>
-        <div className="shadow-md shadow-gray-500 rounded-2xl mr-8 overflow-hidden min-h-[330px]">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.4887426637147!2d100.34451917584022!3d13.688822786696534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2bdf00000000f%3A0xb82fe10fae60cb15!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4geC4o-C4teC4meC5hOC4peC4n-C5jCDguYDguK3guYfguJnguYDguJXguK3guKPguYzguYTguJ7guKPguKrguYwg4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sth!2sth!4v1698143505234!5m2!1sth!2sth"
-            style={{
-              width: "100%",
-              height: "100%",
-              border: 0,
-              allowfullscreen: true,
-              loading: "lazy",
-              referrerpolicy: "no-referrer-when-downgrade",
-            }}
-          ></iframe>
-        </div>
+      </aside>
+      <div className="modal-action">
+        <form method="dialog">
+          {/* if there is a button in form, it will close the modal */}
+          <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
+            CLOSE
+          </button>
+        </form>
       </div>
     </section>
   );

@@ -71,7 +71,7 @@ const RecommendProducts = () => {
                   {categoryItem.name}
                 </h2>
               </article>
-              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto min-h-[52vh] px-5">
+              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto min-h-[52vh] px-5 ">
                 {product &&
                   product
                     .filter(
@@ -86,14 +86,14 @@ const RecommendProducts = () => {
                             .showModal();
                         }}
                         key={item._id}
-                        className="block w-full sm:w-[210px] md:w-[240px] lg:w-[270px] xl:w-[270px] hover:-translate-y-6 duration-500 mx-auto"
+                        className="block w-[100px] sm:w-[150px] md:w-[180px] lg:w-[180px] xl:w-[180px] hover:-translate-y-6 duration-500 mx-auto"
                       >
                         <Image
                           src={`${URL_IMAGES}${item.file}`}
                           alt="home"
                           width={1024}
                           height={768}
-                          className="h-[150px] sm:h-[200px] w-full object-cover md:h-80 rounded-md"
+                          className=" h-[150px] sm:h-[200px] w-full object-cover md:h-[230px] rounded-md"
                           style={{
                             loading: "lazy",
                           }}
@@ -101,17 +101,10 @@ const RecommendProducts = () => {
                         <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg truncate hover:text-clip">
                           {item.name}
                         </p>
-                        <dialog id={`my_modal_${item._id}`} className="modal">
-                          <div className="modal-box p-0 relative lg:max-w-[35%]">
+                        <dialog id={`my_modal_${item._id}`} className="modal m-auto">
+                          <div className="modal-box p-0 relative xl:max-w-[768px] max-h-[90vh] overflow-hidden flex">
                             <ProductCard data={item} />
-                            <div className="modal-action">
-                              <form method="dialog">
-                                {/* if there is a button in form, it will close the modal */}
-                                <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
-                                  CLOSE
-                                </button>
-                              </form>
-                            </div>
+                            
                           </div>
                         </dialog>
                       </aside>

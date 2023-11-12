@@ -27,7 +27,7 @@ const EditHomepage = ({ params }) => {
       .catch((error) => console.log("error", error));
   }, []);
   // console.log(product);
-  const { description } = homepage;
+  const { description,name } = homepage;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +61,7 @@ const EditHomepage = ({ params }) => {
       <article className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8">
         <aside className="mx-auto w-full max-w-lg">
           <p className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-          Homepage
+          บทความ
           </p>
 
           <form
@@ -70,7 +70,29 @@ const EditHomepage = ({ params }) => {
             action=""
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 bg-white"
           >
-            <p className="text-center text-lg font-medium">Homepage</p>
+            <p className="text-center text-lg font-medium">บทความ</p>
+
+            <div>
+              <label htmlFor="name" className="sr-only">
+                name
+              </label>
+
+              <div className="relative">
+                <textarea
+                  onChange={(e) => {
+                    setHomepage((homepage) => ({
+                      ...homepage,
+                      name: e.target.value,
+                    }));
+                  }}
+                  value={name}
+                  type="text"
+                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  placeholder="ชื่อบทความ"
+                />
+              </div>
+            </div>
+
 
             <div>
               <label htmlFor="description" className="sr-only">
@@ -117,7 +139,7 @@ const EditHomepage = ({ params }) => {
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
             >
-              แก้ไขข้อมูล
+              แก้ไขบทความ
             </button>
           </form>
         </aside>

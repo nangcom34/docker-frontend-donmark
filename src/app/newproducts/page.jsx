@@ -19,7 +19,7 @@ const NewProducts = () => {
       .post(API_URL + "/imageProductnew", {
         limit: null,
         sort: "createdAt",
-        order: "asc",
+        order: "desc",
       })
       .then((res) => {
         //console.log(res.data);

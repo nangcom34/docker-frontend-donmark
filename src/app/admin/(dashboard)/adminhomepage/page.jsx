@@ -19,7 +19,11 @@ const AdminHomepage = () => {
 
   const loadData = async () => {
     try {
-      const response = await axios.get(API_URL + "/homepage");
+      const response = await axios.post(API_URL + "/homepageby", {
+        limit: null,
+        sort: "createdAt",
+        order: "desc",
+      });
       setData(response.data);
       //console.log(response.data);
     } catch (error) {
@@ -63,24 +67,7 @@ const AdminHomepage = () => {
       });
   };
 
-  const handleStatus = async (e, id) => {
-    const isChecked = e.target.checked;
-    const value = {
-      id: id,
-      top: isChecked,
-    };
-    //console.log(isChecked);
-
-    await axios
-      .post(API_URL + "/change-top", value)
-      .then((res) => {
-        //console.log(res);
-        loadData();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+ 
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -109,14 +96,14 @@ const AdminHomepage = () => {
     <main>
       <section className="pt-10">
         {" "}
-        <p className="text-2xl font-bold w-full px-10">Homepage</p>
+        <p className="text-2xl font-bold w-full px-10">บทความ</p>
       </section>
       <section className="flex flex-col justify-start px-5">
         <Link
           href={"/admin/addhomepage"}
           className="btn btn-accent mx-auto mt-4 mb-5 shadow-md max-w-[15rem] w-full border-2 border-b-green-400"
         >
-          เพิ่มข้อมูล
+          เพิ่มบทความ
         </Link>
 
         <div className="overflow-x-auto mt-3 rounded-xl bg-clip-border shadow-md">
@@ -126,13 +113,11 @@ const AdminHomepage = () => {
                 <th className="whitespace-nowrap px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
                   รูป
                 </th>
-
+                <th className="whitespace-nowrap text-left px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
+                  ชื่อบทความ
+                </th>
                 <th className="whitespace-nowrap text-left px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
                   รายละเอียด
-                </th>
-
-                <th className="whitespace-nowrap text-center px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
-                  Home Top
                 </th>
 
                 <th className="px-4 py-2"></th>
@@ -157,18 +142,11 @@ const AdminHomepage = () => {
                         />
                       </div>
                     </td>
-
+                    <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-[15rem] overflow-auto break-all">
+                      {item.name}
+                    </td>
                     <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-[20rem] w-full overflow-auto break-all">
                       {item.description}
-                    </td>
-
-                    <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-sm w-full overflow-auto break-all text-center">
-                      <input
-                        type="checkbox"
-                        className="toggle toggle-warning"
-                        checked={item.top}
-                        onChange={(e) => handleStatus(e, item._id)}
-                      />
                     </td>
 
                     <td className="whitespace-nowrap px-4 py-2">

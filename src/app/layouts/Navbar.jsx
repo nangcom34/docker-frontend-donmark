@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname()
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -30,15 +33,49 @@ const Navbar = () => {
       behavior: "smooth",
     });
   };
+  //console.log(pathname)
   return (
     <main>
       <nav className=" flex items-center justify-center max-w-screen-lg mx-auto ">
         <Link
-          href={"/saleproducts"}
-          className="flex flex-col items-center justify-center bg-white hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group"
+          href={"/"}
+          className={`${pathname === '/' ? 'bg-red-500 bg-opacity-30' : 'bg-white'} flex flex-col items-center justify-center hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group `}
         >
           <div
-            className={`w-[40px] h-[40px] md:w-[50px] md:h-[50px] relative `}
+            className={`w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative `}
+          >
+            <Image
+              src={`/images/homepage2.png`}
+              alt="homepage2"
+              width={400}
+              height={400}
+              className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
+              style={{
+                loading: "lazy",
+              }}
+            />
+            <Image
+              src={`/images/homepage.png`}
+              alt="homepage"
+              width={400}
+              height={400}
+              className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
+              style={{
+                loading: "lazy",
+              }}
+            />
+          </div>
+          <p className="font-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
+            ข่าวสาร
+          </p>
+        </Link>
+
+        <Link
+          href={"/saleproducts"}
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group ${pathname === '/saleproducts' ? 'bg-red-500 bg-opacity-30' : 'bg-white'}`}
+        >
+          <div
+            className={`w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative `}
           >
             <Image
               src={`/images/sale2.png`}
@@ -71,11 +108,11 @@ const Navbar = () => {
 
         <Link
           href={"/newproducts"}
-          className="flex flex-col items-center justify-center hover:bg-[#ED2024] p-4 duration-500 w-[120px] md:w-[170px] group"
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group ${pathname === "/newproducts" ?"bg-red-500 bg-opacity-30" :"bg-white"}`}
         >
           <div
             id="icon"
-            className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] relative"
+            className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
           >
             <Image
               src={`/images/new2.png`}
@@ -108,11 +145,11 @@ const Navbar = () => {
 
         <Link
           href={"/recomproducts"}
-          className="flex flex-col items-center justify-center hover:bg-[#ED2024] p-4 duration-500 w-[120px] md:w-[170px] group"
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group ${pathname === "/recomproducts" ?"bg-red-500 bg-opacity-30" :"bg-white"}`}
         >
           <div
             id="icon"
-            className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] relative"
+            className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
           >
             <Image
               src={`/images/recom2.png`}
@@ -145,11 +182,11 @@ const Navbar = () => {
 
         <Link
           href={"/allproducts"}
-          className="flex flex-col items-center justify-center hover:bg-[#ED2024] p-4 duration-500 w-[120px] md:w-[170px] group"
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-[120px] md:w-[170px] group ${pathname === "/allproducts" ?"bg-red-500 bg-opacity-30" :"bg-white"}`}
         >
           <div
             id="icon"
-            className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] relative"
+            className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
           >
             <Image
               src={`/images/all2.png`}
@@ -180,15 +217,22 @@ const Navbar = () => {
       <section
         className={` ${
           isScrolled
-            ? "navbar bg-white justify-center items-center min-h-0 fixed p-0 top-[4rem] hidden md:block z-50"
+            ? "navbar bg-white justify-center items-center min-h-0 fixed p-0 top-0 md:top-[4rem] md:block z-50"
             : "navbar bg-white justify-center items-center min-h-0 fixed p-0 top-[4rem] hidden z-50"
         }`}
       >
         <div className="flex items-center justify-center">
-          <ul className="menu menu-horizontal py-0 gap-14">
+          <ul className="menu menu-horizontal py-0 md:gap-[3.5rem]">
             <li>
-              <Link href={"/saleproducts"}>
-                <p className=" font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+              <Link href={"/"} className={` hover:bg-red-600 rounded-t-md group ${pathname === '/' ? 'bg-red-500 bg-opacity-30' : ''}`}>
+                <p className="font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                  ข่าวสาร
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link href={"/saleproducts"} className={` hover:bg-red-600 rounded-t-md group ${pathname === '/saleproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
+                <p className="font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
                   สินค้า
                   <span className="text-red-500 font-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
                     ลดราคา
@@ -197,9 +241,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href={"/newproducts"}>
+              <Link href={"/newproducts"} className={` hover:bg-red-600 rounded-t-md group ${pathname === '/newproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
                 {" "}
-                <p className=" font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                <p className="font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
                   สินค้า
                   <span className="text-red-500 font-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
                     ใหม่
@@ -208,9 +252,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href={"/recomproducts"}>
+              <Link href={"/recomproducts"} className={` hover:bg-red-600 rounded-t-md group ${pathname === '/recomproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
                 {" "}
-                <p className=" font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                <p className="font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
                   สินค้า
                   <span className="text-red-500 font-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
                     แนะนำ
@@ -218,9 +262,9 @@ const Navbar = () => {
                 </p>
               </Link>
             </li>
-            <li>
-              <Link href={"/allproducts"}>
-                <p className=" font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+            <li >
+              <Link href={"/allproducts"} className={` hover:bg-red-600 rounded-t-md group ${pathname === '/allproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
+                <p className="font-center text-xs sm:text-sm md:text-lg group-hover:text-white">
                   สินค้าทั้งหมด
                 </p>
               </Link>
@@ -228,12 +272,13 @@ const Navbar = () => {
           </ul>
         </div>
       </section>
+
       <section>
         <button
           onClick={scrollToTop}
           className={` ${
             isScrolled
-              ? "btn btn-circle btn-base-300 fixed w-14 h-14 hidden md:flex items-center justify-center bottom-10 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
+              ? "btn btn-circle btn-base-300 fixed w-14 h-14 hidden sm:flex items-center justify-center bottom-44 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
               : "hidden"
           }`}
         >

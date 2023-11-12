@@ -19,7 +19,11 @@ export default function Home() {
   }, []);
   const loadHomepageTop = async () => {
     await axios
-      .post(API_URL + "/homepagetoptrue")
+      .post(API_URL + "/homepageby", {
+        limit: 1,
+        sort: "countView",
+        order: "desc",
+      })
       .then((res) => {
         //console.log(res.data);
         setHomepageTop(res.data);
@@ -30,15 +34,44 @@ export default function Home() {
   };
   const loadHomepage = async () => {
     await axios
-      .post(API_URL + "/homepagetopfalse")
+      .post(API_URL + "/homepageby", {
+        limit: null,
+        sort: "createdAt",
+        order: "desc",
+      })
       .then((res) => {
-        //console.log(res.data);
+        console.log(res.data);
         setHomepage(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const handleCountViews = async (id, countView) => {
+    const updatedCount = countView + 1;
+    const value = {
+      id: id,
+      countView: updatedCount,
+    };
+    //console.log(value);
+
+    await axios
+      .post(API_URL + "/change-view", value)
+      .then((res) => {
+        //console.log(res);
+        setHomepage((prevHomepage) =>
+          prevHomepage.map((item) =>
+            item._id === id ? { ...item, countView: updatedCount } : item
+          )
+        );
+      })
+
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <main>
       <Header />
@@ -76,55 +109,60 @@ export default function Home() {
 
       <section className="flex flex-wrap items-center justify-around gap-3 gap-y-8 md:gap-y-20 my-10 lg:gap-x-4 max-w-screen-xl mx-auto px-2">
         {homepage &&
-          homepage.map((item) => (
-            <article
-              onClick={() => {
-                document.getElementById(`my_modal_${item._id}`).showModal();
-              }}
-              key={item._id}
-              className="w-[250px] h-[310px] hover:scale-105 duration-300 flex flex-col items-center justify-center cursor-pointer"
-            >
-              <aside className="w-[200px]">
-                <Image
-                  src={`${URL_IMAGES}${item.file}`}
-                  alt="home"
-                  width={200}
-                  height={200}
-                  className="w-[200px] h-[200px] object-cover object-center shadow-md align-middle"
-                  style={{
-                    loading: "lazy",
-                  }}
-                />
-              </aside>
-              <aside className="w-full overflow-hidden">
-                <p className="text-xs md:text-[16px] mt-3 leading-relaxed text-ellipsis">
-                  {item.description
-                    .split("\n" || "\r\n")
-                    .slice(0, 3)
-                    .map((line, index) => (
-                      <React.Fragment key={index}>
-                        {line}
-                        {index === 2 ? "..." : <br />}
-                      </React.Fragment>
-                    ))}
-                </p>
-              </aside>
-              <dialog id={`my_modal_${item._id}`} className="modal">
-                <div className="modal-box p-0 relative lg:max-w-[30%]">
-                  <HomepageCard data={item} />
-                  <div className="modal-action">
-                    <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
-                        CLOSE
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </dialog>
-            </article>
-          ))}
+          homepage.map((item) => {
+            if (item._id !== homepageTop[0]?._id) {
+              return (
+                <>
+                  <article
+                    onClick={() => {
+                      handleCountViews(item._id, item.countView);
+                      document
+                        .getElementById(`my_modal_${item._id}`)
+                        .showModal();
+                    }}
+                    key={item._id}
+                    className="w-[250px] h-[310px] hover:scale-105 duration-300 flex flex-col items-center justify-center cursor-pointer"
+                  >
+                    <aside className="w-[200px]">
+                      <Image
+                        src={`${URL_IMAGES}${item.file}`}
+                        alt="home"
+                        width={200}
+                        height={200}
+                        className="w-[200px] h-[200px] object-cover object-center shadow-md align-middle"
+                        style={{
+                          loading: "lazy",
+                        }}
+                      />
+                    </aside>
+                    <aside className="w-full overflow-hidden">
+                      <p className="text-xs md:text-[16px] mt-3 leading-relaxed text-ellipsis">
+                        {item.description
+                          .split("\n" || "\r\n")
+                          .slice(0, 3)
+                          .map((line, index) => (
+                            <React.Fragment key={index}>
+                              {line}
+                              {index === 2 ? "..." : <br />}
+                            </React.Fragment>
+                          ))}
+                      </p>
+                    </aside>
+                  </article>
+
+                  <dialog id={`my_modal_${item._id}`} className="modal m-auto">
+                    <div className="modal-box p-0 relative xl:max-w-[768px] max-h-[90vh] overflow-hidden flex">
+                      <HomepageCard data={item} />
+                     
+                    </div>
+                  </dialog>
+                </>
+              );
+            }
+            return null; // ไม่แสดง item ที่ตรงกับ homepageTop
+          })}
       </section>
+
       <Footer />
     </main>
   );

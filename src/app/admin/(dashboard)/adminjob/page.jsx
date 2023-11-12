@@ -20,9 +20,13 @@ const AdminJob = () => {
 
   const loadData = async () => {
     try {
-      const response = await axios.get(API_URL + "/job");
+      const response = await axios.post(API_URL + "/jobby", {
+        limit: null,
+        sort: "createdAt",
+        order: "desc",
+      });
       setData(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -111,7 +115,7 @@ const AdminJob = () => {
                   onClick={() => {
                     document.getElementById(`my_modal_${item._id}`).showModal();
                   }}
-                  className="w-[30%] flex items-center justify-center mx-5 cursor-pointer"
+                  className="w-[30%] max-md:hidden flex items-center justify-center mx-5 cursor-pointer"
                 >
                   <Image
                     src={`/images/job.png`}
@@ -124,7 +128,7 @@ const AdminJob = () => {
                     }}
                   />
                 </div>
-                <div className="flex flex-col flex-wrap justify-center mr-5 overflow-auto w-full">
+                <div className="flex flex-col flex-wrap justify-center md:mr-5 overflow-auto w-full">
                   <div
                     onClick={() => {
                       document
@@ -203,28 +207,10 @@ const AdminJob = () => {
                   </div>
                 </div>
               </div>
-              <dialog id={`my_modal_${item._id}`} className="modal">
-                <div className="modal-box p-0 relative max-w-screen-xl">
+              <dialog id={`my_modal_${item._id}`} className="modal m-auto">
+                <div className="modal-box p-0 relative max-w-screen-xl overflow-hidden flex">
                   <JobCard data={item} />
-                  <div className="modal-action">
-                    <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
-                        CLOSE
-                      </button>
-                      <button className="btn absolute top-3 right-1 bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
-                        <svg
-                          className="swap-on fill-current"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="32"
-                          height="32"
-                          viewBox="0 0 512 512"
-                        >
-                          <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-                        </svg>
-                      </button>
-                    </form>
-                  </div>
+                  
                 </div>
               </dialog>
             </aside>

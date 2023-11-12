@@ -23,13 +23,15 @@ export default function Layout({ children }) {
     <html lang="en">
       <body className={notosansthai.className}>
         <main className="grid grid-cols-12 w-full bg-gray-300">
-          <section className="col-span-4 md:col-span-3 lg:col-span-2 flex h-screen flex-col justify-between border-e bg-white relative">
-            <article className="px-4 py-6">
+          <section className="col-span-4 md:col-span-3 lg:col-span-2 flex min-h-screen flex-col justify-between border-e bg-white relative">
+            <article className="px-4 py-6 h-full w-full relative">
               <aside className="w-full flex flex-col items-center justify-center mt-4 mb-10">
                 <h1 className=" text-sm md:text-3xl font-bold text-slate-700 text-center">
                   ระบบจัดการข้อมูล
                 </h1>
-                <h3 className=" text-sm md:text-3xl font-semibold text-slate-700">DONMARK</h3>
+                <h3 className=" text-sm md:text-3xl font-semibold text-slate-700">
+                  DONMARK
+                </h3>
               </aside>
 
               <aside className="avatar w-full mx-auto px-5 lg:px-12">
@@ -68,7 +70,7 @@ export default function Layout({ children }) {
                     href="/admin/adminhomepage"
                     className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
                   >
-                    Homepage
+                    บทความ
                   </Link>
                 </li>
                 <li>
@@ -104,8 +106,8 @@ export default function Layout({ children }) {
                   </Link>
                 </li>
               </ul>
-              <ButtonLogout />
             </article>
+            <ButtonLogout />
           </section>
           <section className="col-span-8 md:col-span-9 lg:col-span-10 h-screen overflow-x-hidden overflow-y-scroll">
             {children}

@@ -4,12 +4,17 @@ import { useRouter } from "next/navigation";
 import { API_URL } from "../../../../config/constants";
 import axios from "axios";
 import { DateTime } from "luxon";
+import Barchart from "@/app/components/Barchart";
 
 const Admin = () => {
   const router = useRouter();
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
   const [images, setImages] = useState([]);
+  const [visitor, setVisitor] = useState([]);
+  const [homepage, setHomepage] = useState([]);
+  const [promotion, setPromotion] = useState([]);
+  const [job, setJob] = useState([]);
   useEffect(() => {
     // ตรวจสอบว่ามีโทเคนหรือไม่
     if (!localStorage.token) {
@@ -18,6 +23,10 @@ const Admin = () => {
     loadProduct();
     loadCategory();
     loadImages();
+    loadJob();
+    loadVisitors();
+    loadHomepage();
+    loadPromotion();
   }, []);
   const loadProduct = async () => {
     await axios
@@ -52,6 +61,54 @@ const Admin = () => {
         console.log(error);
       });
   };
+  const loadJob = async () => {
+    await axios
+      .get(API_URL + "/job")
+      .then((res) => {
+        //console.log(res.data);
+        setJob(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const loadVisitors = async () => {
+    await axios
+      .get(API_URL + "/visitors")
+      .then((res) => {
+        //console.log(res.data);
+        setVisitor(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const loadHomepage = async () => {
+    await axios
+      .get(API_URL + "/homepage")
+      .then((res) => {
+        //console.log(res.data);
+        setHomepage(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const loadPromotion = async () => {
+    await axios
+      .get(API_URL + "/imageSlide")
+      .then((res) => {
+        //console.log(res.data);
+        setPromotion(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  //console.log(visitor);
+  //console.log(homepage);
+  //console.log(promotion);
+  //console.log(job);
   //console.log(category);
   //console.log(product);
   //console.log(images);
@@ -66,55 +123,75 @@ const Admin = () => {
     (products) => products.recommend === true
   );
   const recommendCount = recommendProduct.length;
-  // ใช้ฟังก์ชัน Array.reduce() เพื่อหาค่า createdAt ที่มีค่ามากที่สุดใน images
-  const maxCreatedAtimages = images.reduce(
-    (max, image) =>
-      new Date(image.createdAt) > new Date(max.createdAt) ? image : max,
-    images[0]
-  );
-  const maxCreatedAtsaleImages = saleImages.reduce(
-    (max, image) =>
-      new Date(image.createdAt) > new Date(max.createdAt) ? image : max,
-    images[0]
-  );
-  const maxCreatedAtnewImages = newImages.reduce(
-    (max, image) =>
-      new Date(image.createdAt) > new Date(max.createdAt) ? image : max,
-    images[0]
-  );
-  const maxCreatedAtproduct = product.reduce(
-    (max, products) =>
-      new Date(product.createdAt) > new Date(max.createdAt) ? products : max,
-    product[0]
-  );
-  const maxCreatedAtrecommendProduct = recommendProduct.reduce(
-    (max, products) =>
-      new Date(product.createdAt) > new Date(max.createdAt) ? products : max,
-    product[0]
-  );
 
-  // ดึงค่า updatedAt จาก maxCreatedAt
-  let imagesUpdatedAt = "";
-  if (maxCreatedAtimages) {
-    imagesUpdatedAt = maxCreatedAtimages.updatedAt;
+  // ใช้ฟังก์ชัน Array.reduce() เพื่อหาค่า updatedAt ที่มีค่ามากที่สุด
+  
+  let imagesUpdatedAt = ""; //วันอัพเดทล่าสุดของรูปสินค้าลดราคา / ใหม่
+  if (images.length > 0) {
+    imagesUpdatedAt = images.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
   }
-  let saleImagesUpdatedAt = "";
-  if (maxCreatedAtsaleImages) {
-    saleImagesUpdatedAt = maxCreatedAtsaleImages.updatedAt;
+  let saleImagesUpdatedAt = ""; //วันอัพเดทล่าสุดของรูปสินค้าลดราคา
+  if (saleImages.length > 0) {
+    saleImagesUpdatedAt = saleImages.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
   }
-  let newImagesUpdatedAt = "";
-  if (maxCreatedAtnewImages) {
-    newImagesUpdatedAt = maxCreatedAtnewImages.updatedAt;
+  let newImagesUpdatedAt = ""; //วันอัพเดทล่าสุดของรูปสินค้าใหม่
+  if (newImages.length > 0) {
+    newImagesUpdatedAt = newImages.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
   }
-  let productUpdatedAt = "";
-  if (maxCreatedAtproduct) {
-    productUpdatedAt = maxCreatedAtproduct.updatedAt;
+  let productUpdatedAt = ""; //วันอัพเดทล่าสุดของสินค้าทั้งหมด
+  if (product.length > 0) {
+    productUpdatedAt = product.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
   }
-  let recommendProductUpdatedAt = "";
-  if (maxCreatedAtrecommendProduct) {
-    recommendProductUpdatedAt = maxCreatedAtrecommendProduct.updatedAt;
+  let recommendProductUpdatedAt = ""; //วันอัพเดทล่าสุดของสินค้าแนะนำ
+  if (recommendProduct.length > 0) {
+    recommendProductUpdatedAt = recommendProduct.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
   }
-  const percenRecommend = (recommendCount / product.length) * 100;
+  let HomepageUpdatedAt = "";//วันอัพเดทล่าสุดของบทความ
+  if (homepage.length > 0) {
+    HomepageUpdatedAt = homepage.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
+  }
+  let PromotionUpdatedAt = "";//วันอัพเดทล่าสุดของpromotion
+  if (promotion.length > 0) {
+    PromotionUpdatedAt = promotion.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
+  }
+  let JobUpdatedAt = "";//วันอัพเดทล่าสุดของรายการสมัครงาน
+  if (job.length > 0) {
+    JobUpdatedAt = job.reduce((prev, current) => {
+      return new Date(prev.updatedAt) > new Date(current.updatedAt)
+        ? prev
+        : current;
+    });
+  }
+
+  const percenRecommend = (recommendCount / product.length) * 100; //เปอร์เซ็นสินค้าแนะนำ
 
   return (
     <>
@@ -125,6 +202,262 @@ const Admin = () => {
         </section>
         <section className="p-4">
           <article className="mt-12">
+            <aside className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+              {visitor.map((item) => (
+                <div
+                  key={item._id}
+                  className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
+                >
+                  <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-red-600 to-red-400 text-white shadow-red-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg
+                      fill="none"
+                      height="27"
+                      viewBox="0 0 35 27"
+                      width="35"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.60001 12.6C7.1464 12.6 8.39999 11.3464 8.39999 9.8C8.39999 8.25361 7.1464 7 5.60001 7C4.05361 7 2.8 8.25361 2.8 9.8C2.8 11.3464 4.05361 12.6 5.60001 12.6Z"
+                        stroke="#fff"
+                        stroke-miterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M8.3 23.6H2.60001C1.70001 23.6 1.10001 22.9 1.10001 22V19.2C1.10001 17 2.8 15.3 5 15.3H8.5"
+                        stroke="#fff"
+                        stroke-miterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M17.6 10C20.0301 10 22 8.03007 22 5.60001C22 3.16996 20.0301 1.20001 17.6 1.20001C15.17 1.20001 13.2 3.16996 13.2 5.60001C13.2 8.03007 15.17 10 17.6 10Z"
+                        stroke="#fff"
+                        stroke-miterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M24.1 25.2H10.7C9.3 25.2 8.2 24.1 8.2 22.7V18.4C8.2 15 11.1 12.2 14.6 12.2H20.3C23.8 12.2 26.7 15 26.7 18.4V22.7C26.6 24.1 25.5 25.2 24.1 25.2Z"
+                        stroke="#fff"
+                        stroke-miterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M29 12.6C30.5464 12.6 31.8 11.3464 31.8 9.8C31.8 8.25361 30.5464 7 29 7C27.4536 7 26.2 8.25361 26.2 9.8C26.2 11.3464 27.4536 12.6 29 12.6Z"
+                        stroke="#fff"
+                        stroke-miterlimit="10"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M26.3 23.6H32C32.9 23.6 33.5 22.9 33.5 22V19.2C33.5 17 31.8 15.3 29.6 15.3H26.1"
+                        stroke="#fff"
+                        stroke-miterlimit="10"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </div>
+                  <div className="p-4 text-right">
+                    <p className="block antialiased  text-[16px] leading-normal font-normal ">
+                      ยอดเข้าชมเว็บไซต์
+                    </p>
+
+                    <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                      {item.visitors}
+                    </h4>
+                  </div>
+                  <div className="border-t  p-4">
+                    <p className="block antialiased  text-base leading-relaxed font-normal ">
+                      <strong className="text-green-500">
+                        {DateTime.fromISO(item.updatedAt)
+                          .setZone("Asia/Bangkok")
+                          .toRelative({ locale: "th" })}
+                      </strong>
+                      &nbsp;อัพเดท
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-sky-600 to-sky-400 text-white shadow-sky-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center p-4">
+                  <svg
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 1H1v18h18V1H3zm14 2v14H3V3h14zm4 18H5v2h18V5h-2v16zM15 5H5v2h10V5zM5 9h10v2H5V9zm7 4H5v2h7v-2z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+                <div className="p-4 text-right">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
+                    บทความ
+                  </p>
+                  <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                    {homepage.length}
+                  </h4>
+                </div>
+                <div className="border-t  p-4">
+                  <p className="block antialiased  text-base leading-relaxed font-normal ">
+                    <strong className="text-green-500">
+                      {DateTime.fromISO(HomepageUpdatedAt.updatedAt)
+                        .setZone("Asia/Bangkok")
+                        .toRelative({ locale: "th" })}
+                    </strong>
+                    &nbsp;อัพเดท
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-amber-600 to-amber-400 text-white shadow-amber-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center p-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    enableBackground="new 0 0 15.118 15.107"
+                    version="1.1"
+                    viewBox="0 0 15.118 15.107"
+                    xmlSpace="preserve"
+                  >
+                    <path
+                      fill="#fff"
+                      d="M14.059 5.436V3.245l-2.204-1.102L9.712 0 7.559.538 5.406 0 3.263 2.143 1.059 3.245v2.191L0 7.554l1.059 2.118v2.191l2.204 1.102 2.143 2.143 2.153-.538 2.153.538 2.143-2.143 2.204-1.102V9.672l1.059-2.118-1.059-2.118zm-1 4v1.809l-1.724.862L9.406 14l-1.847-.462L5.712 14l-1.8-1.8-1.854-.956V9.436l-.94-1.882.941-1.882V3.863l1.724-.862 1.93-1.894 1.847.462 1.847-.462 1.8 1.8 1.854.956v1.809L14 7.554l-.941 1.882z"
+                    ></path>
+                    <path
+                      fill="#fff"
+                      d="M3.316 7.054H11.800999999999998V8.054H3.316z"
+                      transform="rotate(-45.001 7.559 7.554)"
+                    ></path>
+                    <path
+                      fill="#fff"
+                      d="M5.559 7.054c.827 0 1.5-.673 1.5-1.5s-.673-1.5-1.5-1.5-1.5.673-1.5 1.5.673 1.5 1.5 1.5zm0-2a.5.5 0 110 1 .5.5 0 010-1zM9.559 8.054c-.827 0-1.5.673-1.5 1.5s.673 1.5 1.5 1.5 1.5-.673 1.5-1.5-.673-1.5-1.5-1.5zm0 2a.5.5 0 110-1 .5.5 0 010 1z"
+                    ></path>
+                  </svg>
+                </div>
+                <div className="p-4 text-right">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
+                    รูป Promotion
+                  </p>
+                  <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                    {promotion.length}
+                  </h4>
+                </div>
+                <div className="border-t  p-4">
+                  <p className="block antialiased  text-base leading-relaxed font-normal ">
+                    <strong className="text-green-500">
+                      {DateTime.fromISO(PromotionUpdatedAt.updatedAt)
+                        .setZone("Asia/Bangkok")
+                        .toRelative({ locale: "th" })}
+                    </strong>
+                    &nbsp;อัพเดท
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-fuchsia-600 to-fuchsia-400 text-white shadow-fuchsia-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="40"
+                    height="40"
+                    version="1.1"
+                    viewBox="0 0 16.933 16.933"
+                  >
+                    <g>
+                      <path
+                        fill="#fff"
+                        d="M7.937.53a.265.265 0 00-.263.263v.793h-.53a.265.265 0 00-.187.453l1.587 1.588c.104.103.27.103.374 0l1.588-1.588a.265.265 0 00-.188-.453h-.53V.793a.265.265 0 00-.263-.264zM5.826 2.642a.265.265 0 00-.27.267v.375c.008.345.521.345.53 0V2.91a.265.265 0 00-.26-.267zm5.81 0a.265.265 0 00-.26.267v.375c.009.345.522.345.53 0V2.91a.265.265 0 00-.27-.267zM4.382 3.697l.194.194c.262.247.617-.129.373-.373l-.194-.194a.264.264 0 00-.182-.08.265.265 0 00-.19.453zm8.325-.373l-.194.194c-.244.244.111.62.373.373l.194-.194a.265.265 0 00-.191-.453.264.264 0 00-.182.08zm-8.036 3.19a1.307 1.307 0 00-.967-.43A1.323 1.323 0 002.63 8.181c-.477.36-.778.948-.778 1.609v.263c0 .443.358.793.793.794h1.697c.09.211.198.412.315.606l-2.843 2.295c-.683.551-.62 1.588-.021 2.185.597.598 1.634.664 2.185-.019l2.295-2.845a4.73 4.73 0 002.457.689 4.766 4.766 0 004.39-2.911h1.697a.793.793 0 00.793-.794V9.79c0-.661-.301-1.25-.778-1.609a1.323 1.323 0 00-1.073-2.097c-.386 0-.728.168-.968.43a4.754 4.754 0 00-8.12 0zm-.7-2.016a.265.265 0 100 .53h.376c.345-.009.345-.522 0-.53zm9.144 0c-.345.008-.345.521 0 .53h.376a.265.265 0 100-.53zm-4.385.264a4.237 4.237 0 014.235 4.234 4.234 4.234 0 01-8.467 0c0-2.34 1.9-4.234 4.232-4.234zm0 .53a3.704 3.704 0 10.003 7.407 3.704 3.704 0 00-.003-7.408zm0 .528a3.18 3.18 0 013.176 3.176 3.176 3.176 0 01-6.35 0A3.177 3.177 0 018.73 5.82zM7.408 7.672c0 .29.09.556.25.775-.477.36-.78.948-.78 1.608v.264c0 .442.359.793.794.793H9.79a.793.793 0 00.793-.793v-.264c0-.66-.302-1.249-.779-1.608a1.323 1.323 0 10-2.397-.775zM3.704 8.73c.096 0 .19-.012.28-.032-.007.099-.016.197-.016.297 0 .46.069.902.19 1.322H2.645a.263.263 0 01-.264-.265V9.79c0-.54.268-1.001.65-1.244.196.115.427.185.673.185zM15.08 9.79v.263a.263.263 0 01-.264.265h-1.513c.121-.42.19-.863.19-1.322 0-.1-.009-.198-.015-.297.09.02.183.032.28.032.245 0 .476-.07.672-.185.382.243.65.704.65 1.244zM8.06 8.812c.195.115.426.184.672.184.246 0 .477-.07.672-.184.383.242.651.704.651 1.243v.264a.263.263 0 01-.264.264c-.727 0-1.442.002-2.118 0a.263.263 0 01-.264-.264v-.264c0-.54.268-1 .65-1.243z"
+                        style={{
+                          lineHeight: "normal",
+                          fontVariantLigatures: "normal",
+                          fontVariantPosition: "normal",
+                          fontVariantCaps: "normal",
+                          fontVariantNumeric: "normal",
+                          fontVariantAlternates: "normal",
+                          fontFeatureSettings: "normal",
+                          WebkitTextIndent: "0",
+                          textIndent: "0",
+                          WebkitTextAlign: "start",
+                          textAlign: "start",
+                          WebkitTextDecorationLine: "none",
+                          textDecorationLine: "none",
+                          WebkitTextDecorationStyle: "solid",
+                          textDecorationStyle: "solid",
+                          WebkitTextDecorationColor: "#fff",
+                          textDecorationColor: "#fff",
+                          WebkitTextTransform: "none",
+                          textTransform: "none",
+                          WebkitTextOrientation: "mixed",
+                          textOrientation: "mixed",
+                          whiteSpace: "normal",
+                          shapePadding: "0",
+                          isolation: "auto",
+                          mixBlendMode: "normal",
+                          solidColor: "#fff",
+                          solidOpacity: "1",
+                        }}
+                        fillOpacity="1"
+                        fillRule="nonzero"
+                        stroke="none"
+                        strokeDasharray="none"
+                        strokeDashoffset="0"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeMiterlimit="4"
+                        strokeOpacity="1"
+                        strokeWidth="0.529"
+                        baselineShift="baseline"
+                        clipRule="nonzero"
+                        color="#fff"
+                        colorInterpolation="sRGB"
+                        colorInterpolationFilters="linearRGB"
+                        colorRendering="auto"
+                        direction="ltr"
+                        display="inline"
+                        dominantBaseline="auto"
+                        enableBackground="accumulate"
+                        fontFamily="sans-serif"
+                        fontSize="medium"
+                        fontStretch="normal"
+                        fontStyle="normal"
+                        fontVariant="normal"
+                        fontWeight="normal"
+                        imageRendering="auto"
+                        letterSpacing="normal"
+                        opacity="1"
+                        overflow="visible"
+                        shapeRendering="auto"
+                        textAnchor="start"
+                        textDecoration="none"
+                        textRendering="auto"
+                        vectorEffect="none"
+                        visibility="visible"
+                        wordSpacing="normal"
+                        writingMode="lr-tb"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+                <div className="p-4 text-right">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
+                    รายการสมัครงาน
+                  </p>
+                  <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                    {job.length}
+                  </h4>
+                </div>
+                <div className="border-t  p-4">
+                  <p className="block antialiased  text-base leading-relaxed font-normal ">
+                    <strong className="text-green-500">
+                      {DateTime.fromISO(JobUpdatedAt.updatedAt)
+                        .setZone("Asia/Bangkok")
+                        .toRelative({ locale: "th" })}
+                    </strong>
+                    &nbsp;อัพเดท
+                  </p>
+                </div>
+              </div>
+            </aside>
+
             <aside className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
               <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
                 <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
@@ -147,7 +480,7 @@ const Admin = () => {
                   </svg>
                 </div>
                 <div className="p-4 text-right">
-                  <p className="block antialiased  text-sm leading-normal font-normal ">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
                     รายการสินค้าทั้งหมด
                   </p>
                   <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
@@ -157,7 +490,7 @@ const Admin = () => {
                 <div className="border-t  p-4">
                   <p className="block antialiased  text-base leading-relaxed font-normal ">
                     <strong className="text-green-500">
-                      {DateTime.fromISO(productUpdatedAt)
+                      {DateTime.fromISO(productUpdatedAt.updatedAt)
                         .setZone("Asia/Bangkok")
                         .toRelative({ locale: "th" })}
                     </strong>
@@ -200,7 +533,7 @@ const Admin = () => {
                   </svg>
                 </div>
                 <div className="p-4 text-right">
-                  <p className="block antialiased  text-sm leading-normal font-normal ">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
                     รูปสินค้าใหม่ / ลดราคา
                   </p>
                   <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
@@ -210,7 +543,7 @@ const Admin = () => {
                 <div className="border-t  p-4">
                   <p className="block antialiased  text-base leading-relaxed font-normal ">
                     <strong className="text-green-500">
-                      {DateTime.fromISO(imagesUpdatedAt)
+                      {DateTime.fromISO(imagesUpdatedAt.updatedAt)
                         .setZone("Asia/Bangkok")
                         .toRelative({ locale: "th" })}
                     </strong>
@@ -233,7 +566,7 @@ const Admin = () => {
                   </svg>
                 </div>
                 <div className="p-4 text-right">
-                  <p className="block antialiased  text-sm leading-normal font-normal ">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
                     รูปสินค้าใหม่
                   </p>
                   <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
@@ -243,7 +576,7 @@ const Admin = () => {
                 <div className="border-t  p-4">
                   <p className="block antialiased  text-base leading-relaxed font-normal ">
                     <strong className="text-green-500">
-                      {DateTime.fromISO(saleImagesUpdatedAt)
+                      {DateTime.fromISO(saleImagesUpdatedAt.updatedAt)
                         .setZone("Asia/Bangkok")
                         .toRelative({ locale: "th" })}
                     </strong>
@@ -272,7 +605,7 @@ const Admin = () => {
                   </svg>
                 </div>
                 <div className="p-4 text-right">
-                  <p className="block antialiased  text-sm leading-normal font-normal ">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
                     รูปสินค้าลดราคา
                   </p>
                   <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
@@ -282,7 +615,7 @@ const Admin = () => {
                 <div className="border-t  p-4">
                   <p className="block antialiased  text-base leading-relaxed font-normal ">
                     <strong className="text-green-500">
-                      {DateTime.fromISO(newImagesUpdatedAt)
+                      {DateTime.fromISO(newImagesUpdatedAt.updatedAt)
                         .setZone("Asia/Bangkok")
                         .toRelative({ locale: "th" })}
                     </strong>
@@ -292,7 +625,7 @@ const Admin = () => {
               </div>
             </aside>
 
-            <aside className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
+            <aside className="mb-12 grid grid-cols-1 gap-6 xl:grid-cols-3">
               <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                 <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                   <div>
@@ -402,7 +735,7 @@ const Admin = () => {
                 </div>
 
                 <div className="p-4 text-right">
-                  <p className="block antialiased  text-sm leading-normal font-normal ">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
                     สินค้าแนะนำ
                   </p>
                   <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
@@ -425,7 +758,7 @@ const Admin = () => {
                 <div className="p-4">
                   <p className="block antialiased text-base leading-relaxed font-normal sm:mt-5">
                     <strong className="text-green-500">
-                      {DateTime.fromISO(recommendProductUpdatedAt)
+                      {DateTime.fromISO(recommendProductUpdatedAt.updatedAt)
                         .setZone("Asia/Bangkok")
                         .toRelative({ locale: "th" })}
                     </strong>
@@ -433,6 +766,10 @@ const Admin = () => {
                   </p>
                 </div>
               </div>
+            </aside>
+
+            <aside className="mb-12 grid gap-y-10 gap-x-6">
+              <Barchart data={homepage}/>
             </aside>
           </article>
         </section>

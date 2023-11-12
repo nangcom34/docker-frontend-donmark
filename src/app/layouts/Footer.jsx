@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <main className="relative bottom-0 left-0 mt-5">
+    <main className="relative bottom-0 left-0 mt-5 z-20">
       <section className="grid grid-cols-4 md:grid-cols-6 w-full rounded-t-3xl bg-[#ED2024]  pt-6 px-4 duration-500">
         <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
           <Link
@@ -17,7 +17,7 @@ const Footer = () => {
             href={"/about"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
-            บริการช่วยเหลือ
+            เกี่ยวกับเรา
           </Link>
         </aside>
         <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
@@ -54,7 +54,7 @@ const Footer = () => {
             href={"/allproducts"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
-            แคตตาล็อก{" "}
+            E-Catalog{" "}
             <Link
               href={"/images/CAT.pdf"}
               download
