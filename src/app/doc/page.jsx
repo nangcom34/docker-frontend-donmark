@@ -12,20 +12,50 @@ const Doc = () => {
       <Navbar />
 
       <section className="mx-auto max-w-screen-xl w-full overflow-hidden min-h-[70vh] px-14 gap-5 flex flex-col pt-20">
-        <Link
-          href={"/pdf/ใบอนุญาตก๊อกน้ำ.pdf"}
-          target="_blank"
-          className="text-lg font-semibold hover:text-red-700 hover:scale-105 hover:translate-x-8 duration-300"
-        >
-          ใบอนุญาตก๊อกน้ำ
-        </Link>
-        <Link
-          href={"/pdf/ใบอนุญาตก๊อกน้ำเดี่ยวผสม.pdf"}
-          target="_blank"
-          className="text-lg font-semibold hover:text-red-700 hover:scale-105 hover:translate-x-8 duration-300"
-        >
-          ใบอนุญาตก๊อกน้ำเดี่ยวผสม
-        </Link>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th></th>
+                <th className="text-xl">เอกสารรับรอง</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              <tr className="hover">
+                <th className="text-lg">1</th>
+                <td>
+                  {" "}
+                  <Link
+                    href={"/pdf/ใบอนุญาตก๊อกน้ำ.pdf"}
+                    target="_blank"
+                    className="text-lg hover:text-red-700 hover:scale-105 hover:translate-x-8 duration-300"
+                  >
+                    ใบอนุญาตก๊อกน้ำ
+                  </Link>
+                </td>
+              </tr>
+              {/* row 2 */}
+              <tr className="hover">
+                <th className="text-lg">2</th>
+                <td>
+                  {" "}
+                  <Link
+                    href={"/pdf/ใบอนุญาตก๊อกน้ำเดี่ยวผสม.pdf"}
+                    target="_blank"
+                    className="text-lg hover:text-red-700 hover:scale-105 hover:translate-x-8 duration-300"
+                  >
+                    ใบอนุญาตก๊อกน้ำเดี่ยวผสม
+                  </Link>
+                </td>
+              </tr>
+              <tr className="hover">
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <Footer />
