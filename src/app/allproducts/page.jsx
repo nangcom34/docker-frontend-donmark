@@ -150,7 +150,7 @@ const AllProducts = () => {
                           id={`my_modal_${item._id}`}
                           className="modal m-auto"
                         >
-                          <div className="modal-box p-0 relative xl:max-w-[768px] max-h-[90vh] overflow-hidden flex">
+                          <div className="modal-box p-0 relative max-h-[90vh] overflow-hidden flex">
                             <ProductCard data={item} />
                           </div>
                         </dialog>
