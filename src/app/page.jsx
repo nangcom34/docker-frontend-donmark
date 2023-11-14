@@ -40,7 +40,7 @@ export default function Home() {
         order: "desc",
       })
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         setHomepage(res.data);
       })
       .catch((error) => {

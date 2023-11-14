@@ -48,7 +48,7 @@ export default function Layout({ children }) {
                   />
                 </div>
               </aside>
-              <ul className="mt-6 space-y-1">
+              <ul className="mt-6 space-y-1 overflow-y-auto">
                 <li>
                   <Link
                     href="/admin"
@@ -57,6 +57,7 @@ export default function Layout({ children }) {
                     Dashboard
                   </Link>
                 </li>
+                
                 <li>
                   <Link
                     href="/admin/adminimageslide"
@@ -103,6 +104,14 @@ export default function Layout({ children }) {
                     className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
                   >
                     สมัครงาน
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/admin/adminquestion"
+                    className="block rounded-lg px-4 py-2 text-sm md:text-lg font-medium text-slate-500 hover:bg-gray-100 hover:text-gray-700 text-center sm:text-left"
+                  >
+                    คำถามที่พบบ่อย
                   </Link>
                 </li>
               </ul>
