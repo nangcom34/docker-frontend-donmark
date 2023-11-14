@@ -404,8 +404,8 @@ const About = () => {
         
         <section className="grid grid-cols-1 px-5 mx-auto max-w-screen-lg my-10">
           <Image
-            src="/images/map.jpg"
-            alt="sukkapan"
+            src="/images/map.png"
+            alt="map"
             width={1024}
             height={500}
             className="w-full h-auto"
