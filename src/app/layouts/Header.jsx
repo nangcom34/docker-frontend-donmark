@@ -186,7 +186,7 @@ const Header = () => {
       {isVisible && (
       <section>
         <button
-          className="btn btn-circle swap swap-rotatee bg-white z-10 fixed bottom-[15rem] right-[1.5rem] w-20 h-20 text-red-600 border-red-600 max-sm:hidden"
+          className="btn btn-circle swap swap-rotatee bg-white z-10 fixed bottom-[15rem] right-10 w-14 h-14 text-red-600 border-red-600 max-sm:hidden"
           onClick={toggleValue}
         >
           {/* this hidden checkbox controls the state */}
@@ -250,8 +250,8 @@ const Header = () => {
             height={100}
             className={` ${
               value === true
-                ? "rounded-full shadow-lg flex items-center justify-center fixed bottom-[21rem] right-[2rem] w-16 h-16 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 object-fill"
-                : "rounded-full shadow-lg flex items-center justify-center fixed bottom-[21rem] right-[1.5rem] w-20 h-20 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 translate-x-80 object-fill"
+                ? "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-10 w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 object-fill"
+                : "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-[1.5rem] w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 translate-x-80 object-fill"
             }   
               
               `}

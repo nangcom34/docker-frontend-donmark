@@ -11,6 +11,7 @@ import { API_URL, URL_IMAGES } from "../../../config/constants";
 const RecommendProducts = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState([]);
 
   useEffect(() => {
     loadProduct();
@@ -29,6 +30,7 @@ const RecommendProducts = () => {
       .then((res) => {
         //console.log(res.data);
         setProduct(res.data);
+        setCategoryFilter(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -45,35 +47,80 @@ const RecommendProducts = () => {
         console.log(error);
       });
   };
+
+  const handleSelectCategory = (e) => {
+    const value = e.target.value;
+
+    if (value === "all") {
+      setCategoryFilter(product);
+    } else {
+      const filterCategory = product.filter((item) => {
+        return item.category.name == value;
+      });
+      setCategoryFilter(filterCategory);
+    }
+  };
+
   return (
     <>
       <Header />
       <Navbar />
+      <section
+        className={`w-full max-w-screen-xl flex flex-col items-center justify-center mx-auto`}
+      >
+        {" "}
+        <hr className=" w-1/2 mx-auto" />
+        <select
+          defaultValue="all"
+          className="select select-bordered border-red-600 focus:outline-red-600 w-full max-w-xs mx-auto shadow-md my-5 text-xs sm:text-[16px] font-medium"
+          onChange={(e) => handleSelectCategory(e)}
+        >
+          <option disabled>ตัวกรองหมวดหมู่</option>
+          <option value="all">หมวดหมู่ทั้งหมด</option>
+          {category.length > 0 &&
+            category.map((item) => (
+              <option key={item._id} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+        </select>
+      </section>
 
       <section
         className={`${
-          product.length === 0 ? "h-full min-h-[63vh]" : ""
+          categoryFilter.length === 0 ? "h-full min-h-[63vh] mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
         }`}
-      ></section>
+      >
+        <h3 className="text-lg font-semibold">ไม่พบสินค้า</h3>
+        <Image
+          src={`/images/logo.png`}
+          alt="logo"
+          width={100}
+          height={100}
+          className="w-[100px] object-cover animate-spin"
+          style={{
+            loading: "lazy",
+          }}
+        />
+      </section>
 
       {category &&
         category
           .filter((categoryItem) =>
-            product.some(
+            categoryFilter.some(
               (productItem) => productItem.category?._id === categoryItem._id
             )
           )
           .map((categoryItem) => (
-            <section key={categoryItem._id}>
+            <section key={categoryItem._id} className="min-h-[52vh]">
               <article className="mx-auto max-w-screen-xl w-full overflow-hidden mb-3 md:mb-10">
-                <hr className=" w-1/2 mx-auto" />
-                <h2 className="mt-8 px-5 lg:px-0 font-bold text-right text-sm sm:text-[16px] md:text-xl lg:text-3xl uppercase">
+                <h2 className="mt-8 px-5 lg:px-0 font-bold text-right text-sm sm:text-[16px] md:text-xl lg:text-3xl uppercase ">
                   {categoryItem.name}
                 </h2>
               </article>
-              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto min-h-[52vh] px-5 ">
-                {product &&
-                  product
+              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto px-5 ">
+                {categoryFilter &&
+                  categoryFilter
                     .filter(
                       (productItem) =>
                         productItem.category?._id === categoryItem?._id
@@ -101,10 +148,12 @@ const RecommendProducts = () => {
                         <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg truncate hover:text-clip">
                           {item.name}
                         </p>
-                        <dialog id={`my_modal_${item._id}`} className="modal m-auto">
+                        <dialog
+                          id={`my_modal_${item._id}`}
+                          className="modal m-auto"
+                        >
                           <div className="modal-box p-0 relative max-h-[90vh] overflow-hidden flex">
                             <ProductCard data={item} />
-                            
                           </div>
                         </dialog>
                       </aside>

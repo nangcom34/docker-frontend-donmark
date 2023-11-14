@@ -8,10 +8,12 @@ import { API_URL } from "../../../../../../config/constants";
 
 const EditProduct = ({ params }) => {
   const router = useRouter();
+  const [categories, setCategories] = useState([]);
   const [product, setProduct] = useState({
     name: "",
     description: "",
     file: "",
+    category: "",
   });
 
   const [fileOld, setFileOld] = useState();
@@ -20,6 +22,7 @@ const EditProduct = ({ params }) => {
     if (!localStorage.token) {
       router.push("/login");
     }
+    loadCategory()
     axios
       .get(API_URL + "/product/" + params.id)
       .then((res) => {
@@ -28,8 +31,20 @@ const EditProduct = ({ params }) => {
       })
       .catch((error) => console.log("error", error));
   }, []);
-  // console.log(product);
-  const { name, description } = product;
+
+  const loadCategory = async () => {
+    await axios
+      .get(API_URL + "/category")
+      .then((res) => {
+        setCategories(res.data);
+        //console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+   //console.log(product);
+  const { name, description,category } = product;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -132,6 +147,34 @@ const EditProduct = ({ params }) => {
                   className="textarea textarea-ghost w-full border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="รายละเอียดสินค้า"
                 ></textarea>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="category" className="sr-only">
+                category
+              </label>
+              <div className="relative">
+                <select
+                   onChange={(e) => {
+                    setProduct((product) => ({
+                      ...product,
+                      category: e.target.value,
+                    }));
+                  }}
+                  className="select select-primary w-full h-14 border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  value={category}
+                >
+                  <option disabled >
+                    เลือกหมวดหมู่
+                  </option>
+                  {categories.length > 0 &&
+                    categories.map((item) => (
+                      <option key={item._id} value={item._id}>
+                        {item.name}
+                      </option>
+                    ))}
+                </select>
               </div>
             </div>
 

@@ -2,12 +2,14 @@
 import React from "react";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import Navbar from "../layouts/Navbar";
 
 const Question = () => {
   return (
     <>
       {" "}
       <Header />
+      <Navbar/>
       <main className=" min-h-[73vh]">
         <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold text-center mt-16 mb-5 w-full">
           คำถามที่พบบ่อย ?

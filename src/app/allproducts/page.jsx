@@ -98,9 +98,21 @@ const AllProducts = () => {
 
       <section
         className={`${
-          categoryFilter.length === 0 ? "h-full min-h-[63vh]" : ""
+          categoryFilter.length === 0 ? "h-full min-h-[63vh] w-full mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
         }`}
-      ></section>
+      >
+        <h3 className="text-lg font-semibold">ไม่พบสินค้า</h3>
+        <Image
+          src={`/images/logo.png`}
+          alt="logo"
+          width={100}
+          height={100}
+          className="w-[100px] object-cover animate-spin"
+          style={{
+            loading: "lazy",
+          }}
+        />
+      </section>
 
       {category &&
         category
@@ -110,13 +122,13 @@ const AllProducts = () => {
             )
           )
           .map((categoryItem) => (
-            <section key={categoryItem._id}>
+            <section key={categoryItem._id} className="min-h-[52vh]">
               <article className="mx-auto max-w-screen-xl w-full overflow-hidden mb-3 md:mb-10">
                 <h2 className="mt-8 px-5 lg:px-0 font-bold text-right text-sm sm:text-[16px] md:text-xl lg:text-3xl uppercase">
                   {categoryItem.name}
                 </h2>
               </article>
-              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto min-h-[52vh] px-5 ">
+              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto px-5 ">
                 {categoryFilter &&
                   categoryFilter
                     .filter(

@@ -143,7 +143,7 @@ const JobCard = ({ data }) => {
             ))}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 mb-5">
           <div className="w-full px-10 grid grid-cols-2 md:grid-cols-5 xl:grid-cols-8  mb-8">
             <p className="font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  mb-1">
               สนใจสมัครงานตำแหน่งงานนี้กรุณาติดต่อ
@@ -201,7 +201,7 @@ const JobCard = ({ data }) => {
               </Link>
             </div>
           </div>
-          <div className="shadow-md shadow-gray-500 rounded-2xl md:mr-8 overflow-hidden min-h-[330px] px-2">
+          <div className="shadow-md shadow-gray-500 rounded-2xl md:mr-8 overflow-hidden min-h-[330px] mx-2">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.4887426637147!2d100.34451917584022!3d13.688822786696534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2bdf00000000f%3A0xb82fe10fae60cb15!2z4Lia4Lij4Li04Lip4Lix4LiXIOC4geC4o-C4teC4meC5hOC4peC4n-C5jCDguYDguK3guYfguJnguYDguJXguK3guKPguYzguYTguJ7guKPguKrguYwg4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sth!2sth!4v1698143505234!5m2!1sth!2sth"
               style={{

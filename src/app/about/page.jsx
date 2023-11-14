@@ -3,12 +3,14 @@ import React from "react";
 import Image from "next/image";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
+import Navbar from "../layouts/Navbar";
 
 const About = () => {
   return (
     <>
       {" "}
       <Header />
+      <Navbar/>
       <main className=" w-full h-auto">
         <section className="flex items-center justify-center w-full max-w-screen-lg px-5 md:px-20 md:mt-24 md:mb-10 mx-auto mt-16">
           <ul>
@@ -166,12 +168,12 @@ const About = () => {
           </article>
         </section>
 
-        <p className="text-lg md:text-xl lg:text-3xl font-semibold mt-28 mb-5 w-full px-5   max-w-screen-xl mx-auto">
+        <p className="text-lg md:text-xl lg:text-3xl font-semibold mt-28 mb-5 w-full px-5   max-w-screen-xl mx-auto text-center">
           ติดต่อสอบถามข้อมูลสินค้า ขอใบเสนอราคา
         </p>
 
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-5 md:px-28 gap-5 md:gap-x-6 lg:px-5  max-w-screen-xl mx-auto">
-          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-full p-10 rounded-2xl shadow-lg">
+        <section className="grid grid-cols-1 sm:grid-cols-2 px-5 md:px-10 gap-5 md:gap-x-5 max-w-screen-xl mx-auto">
+          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-full p-10 rounded-2xl shadow-lg mx-auto max-w-[28rem]">
             <h3 className="text-lg md:text-xl lg:text-2xl font-semibold w-full mb-2">
               คุณเบียร์
             </h3>
@@ -218,7 +220,7 @@ const About = () => {
             </div>
           </article>
 
-          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-full p-10 rounded-2xl shadow-lg">
+          <article className="flex flex-col items-center justify-start gap-2 bg-[#D9D9D9] bg-opacity-60 w-full p-10 rounded-2xl shadow-lg mx-auto max-w-[28rem]">
             <h3 className="text-lg md:text-xl lg:text-2xl font-semibold w-full mb-2">
               คุณเจน
             </h3>
@@ -268,8 +270,8 @@ const About = () => {
           </article>
         </section>
 
-        <section className="grid grid-cols-3 gap-5 md:gap-20 items-center content-center justify-center w-full max-w-screen-2xl mx-auto px-5 md:px-[15rem] my-10">
-          <article className="flex items-center justify-center w-2/3 shadow-lg overflow-hidden mx-auto rounded-lg">
+        <section className="grid grid-cols-3 gap-5 md:gap-10 items-center content-center justify-center w-full max-w-screen-2xl mx-auto px-5 lg:px-[15rem] my-10">
+          <article className="flex items-center justify-center w-full max-w-[200px] shadow-lg overflow-hidden mx-auto rounded-lg">
             {" "}
             <Image
               src="/images/Donmark.jpg"
@@ -282,7 +284,7 @@ const About = () => {
               }}
             />
           </article>
-          <article className=" flex items-center justify-center w-2/3 shadow-lg overflow-hidden mx-auto rounded-lg">
+          <article className=" flex items-center justify-center w-full max-w-[200px] shadow-lg overflow-hidden mx-auto rounded-lg">
             {" "}
             <Image
               src="/images/DMG.png"
@@ -295,7 +297,7 @@ const About = () => {
               }}
             />
           </article>
-          <article className=" flex items-center justify-center w-2/3 shadow-lg overflow-hidden mx-auto rounded-lg">
+          <article className=" flex items-center justify-center w-full max-w-[200px] shadow-lg overflow-hidden mx-auto rounded-lg">
             {" "}
             <Image
               src="/images/Fenix.png"
@@ -319,7 +321,7 @@ const About = () => {
         <p className="text-sm md:text-lg lg:text-xl text-red-600 font-semibold my-2 w-full max-w-screen-lg mx-auto px-10">
           จัดจำหน่ายตามร้านตัวแทน และร้านค้าวัสดุทั่วประเทศ
         </p>
-        <section className="grid grid-cols-3 md:grid-cols-6 gap-10 md:gap-20 w-full mx-auto px-5 md:px-[15rem] my-10 max-w-screen-xl">
+        <section className="grid grid-cols-3 md:grid-cols-6 gap-5 lg:gap-20 w-full mx-auto px-5 lg:px-[15rem] my-10 max-w-screen-xl">
           <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
             <Image
@@ -399,6 +401,7 @@ const About = () => {
             />
           </article>
         </section>
+        
         <section className="grid grid-cols-1 px-5 mx-auto max-w-screen-lg my-10">
           <Image
             src="/images/map.jpg"

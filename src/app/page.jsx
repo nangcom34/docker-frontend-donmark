@@ -78,9 +78,20 @@ export default function Home() {
       <Navbar />
       <section
         className={`${
-          homepage && homepageTop.length === 0 ? "h-full min-h-[68vh]" : ""
+          homepage && homepageTop.length === 0 ? "h-full min-h-[63vh] mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
         }`}
-      ></section>
+      >
+        <Image
+          src={`/images/logo.png`}
+          alt="logo"
+          width={100}
+          height={100}
+          className="w-[100px] object-cover animate-spin"
+          style={{
+            loading: "lazy",
+          }}
+        />
+      </section>
       {homepageTop &&
         homepageTop.map((homepageTopItem) => (
           <section
