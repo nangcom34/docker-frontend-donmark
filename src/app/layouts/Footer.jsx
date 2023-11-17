@@ -82,6 +82,7 @@ const Footer = () => {
             {data &&
               data.map((item) => (
                 <Link
+                  key={item._id}
                   href={`${URL_IMAGES}${item.file}`}
                   download
                   className="text-white text-xs md:text-sm lg:text-lg hover:underline"
