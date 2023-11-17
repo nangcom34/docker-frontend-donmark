@@ -214,13 +214,13 @@ const Navbar = () => {
           </p>
         </Link>
       </nav>
-      <section
+      <article
         className={` ${isScrolled
-            ? "navbar bg-white justify-center items-center min-h-0 fixed py-0 top-0 md:top-[4.2rem] md:block z-50 max-w-screen-lg mx-auto left-[50%] -translate-x-[50%] duration-500 "
+            ? "navbar bg-white justify-center items-center min-h-0 fixed py-0 top-0 md:top-[4.2rem] md:flex z-50 w-full min-w-[100vw] shadow-sm"
             : " hidden "
           }`}
       >
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center max-w-screen-lg">
           <ul className="menu menu-horizontal flex items-center justify-center flex-nowrap">
             <li>
               <Link href={"/"} className={`w-[120px] md:w-[150px] lg:w-[170px] flex item-center justify-center flex-nowrap hover:bg-red-600 rounded-t-md group ${pathname === '/' ? 'bg-red-500 bg-opacity-30' : ''}`}>
@@ -270,7 +270,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-      </section>
+      </article>
 
       <section>
         <button
