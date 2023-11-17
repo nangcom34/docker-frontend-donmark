@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { API_URL } from "../../../../config/constants";
+import { API_URL, URL_IMAGES } from "../../../../config/constants";
 import axios from "axios";
 import { DateTime } from "luxon";
 import Barchart from "@/app/components/Barchart";
+import Link from "next/link";
 
 const Admin = () => {
   const router = useRouter();
@@ -15,6 +16,7 @@ const Admin = () => {
   const [homepage, setHomepage] = useState([]);
   const [promotion, setPromotion] = useState([]);
   const [job, setJob] = useState([]);
+  const [catalog, setCatalog] = useState([]);
   useEffect(() => {
     // ตรวจสอบว่ามีโทเคนหรือไม่
     if (!localStorage.token) {
@@ -27,6 +29,7 @@ const Admin = () => {
     loadVisitors();
     loadHomepage();
     loadPromotion();
+    loadCatalog()
   }, []);
   const loadProduct = async () => {
     await axios
@@ -105,6 +108,21 @@ const Admin = () => {
         console.log(error);
       });
   };
+  const loadCatalog = async () => {
+    await axios
+      .post(API_URL + "/catalogby", {
+        limit: 1,
+        sort: "createdAt",
+        order: "desc",
+      })
+      .then((res) => {
+        //console.log(res.data);
+        setCatalog(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   //console.log(visitor);
   //console.log(homepage);
   //console.log(promotion);
@@ -125,7 +143,7 @@ const Admin = () => {
   const recommendCount = recommendProduct.length;
 
   // ใช้ฟังก์ชัน Array.reduce() เพื่อหาค่า updatedAt ที่มีค่ามากที่สุด
-  
+
   let imagesUpdatedAt = ""; //วันอัพเดทล่าสุดของรูปสินค้าลดราคา / ใหม่
   if (images.length > 0) {
     imagesUpdatedAt = images.reduce((prev, current) => {
@@ -196,14 +214,53 @@ const Admin = () => {
   return (
     <>
       <main className="min-h-screen bg-gray-50/50">
-        <section className="pt-10">
+        <section className="pt-10 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5">
           {" "}
-          <p className="text-2xl font-bold w-full px-10">Dashboard</p>
+          <p className="text-2xl font-bold px-10 lg:col-span-2">Dashboard</p>
+          {catalog && catalog.map((item) => (
+            <div
+              key={item._id}
+              className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
+            >
+              <div className="p-4 text-center">
+                <p className="block antialiased text-lg font-semibold leading-normal">
+                  E-Catalog
+                </p>
+              </div>
+              <div className="border-t  p-4">
+                <Link
+                  href={`${URL_IMAGES}${item.file}`}
+                  download
+                  className="block antialiased text-base leading-relaxed font-normal hover:text-red-600"
+                >
+                  {item.file}
+                </Link>
+
+              </div>
+              <div className="border-t  p-4 grid grid-cols-col lg:grid-cols-2">
+                <p className="block antialiased  text-base leading-relaxed font-normal ">
+
+                  &nbsp;อัพเดทเมื่อ {" "}
+                  <strong className="text-green-500">
+                    {DateTime.fromISO(item.updatedAt)
+                      .setZone("Asia/Bangkok")
+                      .toRelative({ locale: "th" })}
+                  </strong>
+                </p>
+                <div className="flex items-center justify-center lg:justify-end"><Link
+                  href={`/admin/editcatalog/${item._id}`}
+                  className="btn btn-outline btn-primary btn-sm m-1"
+                >
+                  แก้ไข
+                </Link></div>
+              </div>
+            </div>
+          ))}
         </section>
         <section className="p-4">
           <article className="mt-12">
             <aside className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-              {visitor.map((item) => (
+              {visitor && visitor.map((item) => (
                 <div
                   key={item._id}
                   className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
@@ -769,7 +826,7 @@ const Admin = () => {
             </aside>
 
             <aside className="mb-12 grid gap-y-10 gap-x-6">
-              <Barchart data={homepage}/>
+              <Barchart data={homepage} />
             </aside>
           </article>
         </section>

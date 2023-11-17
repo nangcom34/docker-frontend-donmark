@@ -1,8 +1,31 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import { API_URL, URL_IMAGES } from "../../../config/constants";
 
 const Footer = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+  const loadData = async () => {
+    await axios
+      .post(API_URL + "/catalogby", {
+        limit: 1,
+        sort: "createdAt",
+        order: "desc",
+      })
+      .then((res) => {
+        //console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <main className="relative bottom-0 left-0 mt-5 z-20">
       <section className="grid grid-cols-4 md:grid-cols-6 w-full rounded-t-3xl bg-[#ED2024]  pt-6 px-4 duration-500">
@@ -31,7 +54,7 @@ const Footer = () => {
             </span>
           </Link>
           <Link
-            href={"/"}
+            href={"/saleproducts"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
             สินค้า{" "}
@@ -50,19 +73,24 @@ const Footer = () => {
               แนะนำ
             </span>
           </Link>
+
           <Link
             href={"/allproducts"}
             className="mb-4 text-white text-xs md:text-sm lg:text-lg"
           >
             E-Catalog{" "}
-            <Link
-              href={"/images/CAT.pdf"}
-              download
-              className="text-white text-xs md:text-sm lg:text-lg hover:underline"
-            >
-              (ดาวน์โหลด PDF)
-            </Link>
+            {data &&
+              data.map((item) => (
+                <Link
+                  href={`${URL_IMAGES}${item.file}`}
+                  download
+                  className="text-white text-xs md:text-sm lg:text-lg hover:underline"
+                >
+                  (ดาวน์โหลด PDF)
+                </Link>
+              ))}
           </Link>
+
         </aside>
 
         <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
