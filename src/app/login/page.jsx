@@ -58,7 +58,14 @@ const LoginPage = () => {
     <main>
       <div className="mx-auto max-w-screen-xl h-screen px-4 py-16 sm:px-6 lg:px-8 flex items-center justify-center -translate-y-20">
         <div className="mx-auto max-w-lg min-w-fit">
-          <Image
+         
+
+          <form
+            onSubmit={handleSubmit}
+            action=""
+            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+          >
+             <Image
             src={`/images/donmark.png`}
             alt="donmark"
             width={1920}
@@ -68,12 +75,6 @@ const LoginPage = () => {
               loading: "lazy",
             }}
           />
-
-          <form
-            onSubmit={handleSubmit}
-            action=""
-            className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
-          >
             <p className="text-center text-lg font-medium">
               เข้าสู่ระบบจัดการข้อมูล
             </p>
