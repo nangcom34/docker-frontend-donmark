@@ -12,7 +12,7 @@ const AddQuestion = () => {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     useEffect(() => {
-        if (!localStorage.token) {
+        if (!localStorage.donmarktoken) {
             router.push("/login");
         }
     }, []);

@@ -35,7 +35,7 @@ const Navbar = () => {
   };
   //console.log(pathname)
   return (
-    <main>
+    <main className="w-full">
       <nav className=" flex items-center justify-center max-w-screen-lg mx-auto ">
         <Link
           href={"/"}
@@ -50,9 +50,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
             <Image
               src={`/images/homepage.png`}
@@ -60,9 +58,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
           </div>
           <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
@@ -83,9 +79,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
             <Image
               src={`/images/sale.png`}
@@ -93,9 +87,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
           </div>
           <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
@@ -120,9 +112,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
             <Image
               src={`/images/new.png`}
@@ -130,9 +120,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
           </div>
           <p className=" text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
@@ -157,9 +145,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
             <Image
               src={`/images/recom.png`}
@@ -167,9 +153,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
           </div>
           <p className=" text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
@@ -194,9 +178,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
             <Image
               src={`/images/all.png`}
@@ -204,9 +186,7 @@ const Navbar = () => {
               width={400}
               height={400}
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
           </div>
           <p className=" text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
@@ -216,8 +196,8 @@ const Navbar = () => {
       </nav>
       <article
         className={` ${isScrolled
-            ? "navbar bg-white justify-center items-center min-h-0 fixed py-0 top-0 md:top-[4.2rem] md:flex z-50 w-full min-w-[100vw] shadow-sm"
-            : " hidden "
+          ? "navbar bg-white justify-center items-center min-h-0 fixed py-0 top-0 sm:top-[4rem] md:top-[4.2rem] hidden sm:flex z-50 w-full min-w-[100vw] shadow-sm"
+          : " hidden "
           }`}
       >
         <div className="flex items-center justify-center max-w-screen-lg">
@@ -276,8 +256,8 @@ const Navbar = () => {
         <button
           onClick={scrollToTop}
           className={` ${isScrolled
-              ? "btn btn-circle btn-base-300 fixed w-14 h-14 hidden sm:flex items-center justify-center bottom-44 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
-              : "hidden"
+            ? "btn btn-circle btn-base-300 fixed w-14 h-14 hidden sm:flex items-center justify-center bottom-44 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
+            : "hidden"
             }`}
         >
           <svg

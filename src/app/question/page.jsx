@@ -30,12 +30,12 @@ const Question = () => {
   };
 
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
       <section
         className={`${
-          questions && questions.length === 0 ? "h-full min-h-[63vh] mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
+          questions && questions.length === 0 ? "flex-grow mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
         }`}
       >
         <Image
@@ -49,12 +49,12 @@ const Question = () => {
           }}
         />
       </section>
-      <main className={`${
-          questions && questions.length === 0 ?"hidden":" min-h-[63vh]"}`}>
+      <section className={`${
+          questions && questions.length === 0 ?"hidden":" flex-grow"}`}>
         <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold text-center mt-16 mb-5 w-full">
           ❓ คำถามที่พบบ่อย ❔
         </h1>
-        <section className="mx-auto px-5 max-w-screen-xl my-10 space-y-1">
+        <article className="mx-auto px-5 max-w-screen-xl my-10 space-y-1">
           {questions &&
             questions.map((item) => (
               <article key={item._id} className="collapse collapse-arrow bg-base-200">
@@ -81,10 +81,10 @@ const Question = () => {
             ))}
 
 
-        </section>
-      </main>
+        </article>
+      </section>
       <Footer />
-    </>
+    </main>
   );
 };
 

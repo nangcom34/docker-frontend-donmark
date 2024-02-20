@@ -7,11 +7,11 @@ import Footer from "../layouts/Footer";
 
 const Doc = () => {
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
 
-      <section className="mx-auto max-w-screen-xl w-full overflow-hidden min-h-[70vh] px-14 gap-5 flex flex-col pt-20">
+      <section className="flex-grow mx-auto max-w-screen-xl w-full overflow-hidden px-14 gap-5 flex flex-col pt-20">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -59,7 +59,7 @@ const Doc = () => {
       </section>
 
       <Footer />
-    </>
+    </main>
   );
 };
 

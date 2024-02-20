@@ -30,7 +30,7 @@ const LoginPage = () => {
           "success"
         );
 
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("donmarktoken", res.data.token);
         router.push("/admin");
       })
       .catch((error) => {
@@ -71,9 +71,7 @@ const LoginPage = () => {
             width={1920}
             height={1080}
             className="w-full h-auto object-fill object-center"
-            style={{
-              loading: "lazy",
-            }}
+            loading= "lazy"
           />
             <p className="text-center text-lg font-medium">
               เข้าสู่ระบบจัดการข้อมูล

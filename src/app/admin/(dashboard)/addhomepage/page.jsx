@@ -14,7 +14,7 @@ const AddHomepage = () => {
   const [file, setFile] = useState(null);
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
   }, []);

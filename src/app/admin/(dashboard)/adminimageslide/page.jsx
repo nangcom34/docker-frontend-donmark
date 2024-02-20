@@ -10,7 +10,7 @@ const AdminImageSlide = () => {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();
@@ -91,10 +91,7 @@ const AdminImageSlide = () => {
                     width={300}
                     height={400}
                     className="w-full h-auto object-cover object-center"
-                    style={{
-                      loading: "lazy",
-                      
-                    }}
+                    loading= "lazy"
                   />
                 </div>
                 <div className="px-4 py-2 max-w-sm w-full overflow-auto break-all text-center mt-2">

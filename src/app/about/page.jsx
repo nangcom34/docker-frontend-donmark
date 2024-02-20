@@ -7,11 +7,11 @@ import Navbar from "../layouts/Navbar";
 
 const About = () => {
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       {" "}
       <Header />
       <Navbar/>
-      <main className=" w-full h-auto">
+      <main className="flex-grow w-full ">
         <section className="flex items-center justify-center w-full max-w-screen-lg px-5 md:px-20 md:mt-24 md:mb-10 mx-auto mt-16">
           <ul>
             <li>
@@ -416,7 +416,7 @@ const About = () => {
         </section>
       </main>
       <Footer />
-    </>
+    </main>
   );
 };
 

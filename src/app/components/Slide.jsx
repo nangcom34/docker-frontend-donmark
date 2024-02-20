@@ -36,10 +36,10 @@ const Slide = () => {
       className={`${
         imageSlide.length === 0
           ? "hidden"
-          : "flex items-center justify-center w-full h-[320px] md:h-[640px] max-w-screen-xl mx-auto mb-16"
+          : "flex items-center justify-center h-[160px] sm:h-[320px] md:h-[640px] w-screen max-w-screen-xl mx-auto mb-16 overflow-hidden"
       } `}
     >
-      <aside className="h-[320px] md:h-[640px] max-w-screen-2xl">
+      <aside className="h-[160px] sm:h-[320px] md:h-[640px] max-w-screen-sm  sm:max-w-screen-sm  md:max-w-screen-md lg:max-w-screen-2xl">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -68,10 +68,8 @@ const Slide = () => {
                     alt={imageSlideItem._id}
                     width={1280}
                     height={640}
-                    className="mx-auto"
-                    style={{
-                      loading: "lazy",
-                    }}
+                    className="mx-auto object-fit"
+                    loading= "lazy"
                   />
                 </Link>
               </SwiperSlide>

@@ -22,9 +22,7 @@ const Loading = () => {
           width={100}
           height={100}
           className="w-[100px] object-cover animate-spin"
-          style={{
-            loading: "lazy",
-          }}
+          loading= "lazy"
         />
         <aside className="flex items-center justify-center gap-2">
           <span className="loading loading-ring loading-sm"></span>

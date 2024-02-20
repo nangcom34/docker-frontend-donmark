@@ -11,7 +11,7 @@ const AdminHomepage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();
@@ -136,9 +136,7 @@ const AdminHomepage = () => {
                           width={100}
                           height={100}
                           className="w-full h-auto object-cover object-center"
-                          style={{
-                            loading: "lazy",
-                          }}
+                          loading= "lazy"
                         />
                       </div>
                     </td>

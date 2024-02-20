@@ -14,7 +14,7 @@ const EditImageProduct = ({ params }) => {
   const [fileOld, setFileOld] = useState();
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     axios

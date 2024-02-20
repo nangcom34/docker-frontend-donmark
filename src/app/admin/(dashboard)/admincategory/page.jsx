@@ -10,7 +10,7 @@ const AdminCategory = () => {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();

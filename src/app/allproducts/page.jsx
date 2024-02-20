@@ -9,6 +9,7 @@ import Footer from "../layouts/Footer";
 import { useSearchParams } from "next/navigation";
 import { API_URL, URL_IMAGES } from "../../../config/constants";
 
+
 const AllProducts = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
@@ -72,7 +73,7 @@ const AllProducts = () => {
   //console.log(product);
 
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
       <section
@@ -97,9 +98,8 @@ const AllProducts = () => {
       </section>
 
       <section
-        className={`${
-          categoryFilter.length === 0 ? "h-full min-h-[63vh] w-full mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
-        }`}
+        className={`${categoryFilter.length === 0 ? "flex-grow w-full mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
+          }`}
       >
         <h3 className="text-lg font-semibold">ไม่พบสินค้า</h3>
         <Image
@@ -122,7 +122,7 @@ const AllProducts = () => {
             )
           )
           .map((categoryItem) => (
-            <section key={categoryItem._id} className="min-h-[52vh]">
+            <section key={categoryItem._id} className="flex-grow">
               <article className="mx-auto max-w-screen-xl w-full overflow-hidden mb-3 md:mb-10">
                 <h2 className="mt-8 px-5 lg:px-0 font-bold text-right text-sm sm:text-[16px] md:text-xl lg:text-3xl uppercase">
                   {categoryItem.name}
@@ -151,11 +151,9 @@ const AllProducts = () => {
                           width={1024}
                           height={768}
                           className=" h-[150px] sm:h-[200px] w-full object-cover md:h-[230px] rounded-md"
-                          style={{
-                            loading: "lazy",
-                          }}
+                          loading="lazy"
                         />
-                        <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg truncate hover:text-clip">
+                        <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg whitespace-normal">
                           {item.name}
                         </p>
                         <dialog
@@ -172,7 +170,7 @@ const AllProducts = () => {
             </section>
           ))}
       <Footer />
-    </>
+    </main>
   );
 };
 

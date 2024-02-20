@@ -31,13 +31,13 @@ const NewProducts = () => {
   };
 
   return (
-    <main>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
       <Slide />
       <section
         className={`${
-          imageProduct.length === 0 ? "h-full min-h-[63vh] mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
+          imageProduct.length === 0 ? "flex-grow mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
         }`}
       >
         <Image
@@ -46,16 +46,14 @@ const NewProducts = () => {
           width={100}
           height={100}
           className="w-[100px] object-cover animate-spin"
-          style={{
-            loading: "lazy",
-          }}
+          loading= "lazy"
         />
       </section>
       {imageProduct &&
         imageProduct.map((imageProductItem) => (
           <section
             key={imageProductItem._id}
-            className="flex items-center justify-center w-full max-w-screen-xl mx-auto"
+            className="flex-grow flex items-center justify-center w-full max-w-screen-xl mx-auto"
           >
             {" "}
             <Image
@@ -64,9 +62,7 @@ const NewProducts = () => {
               width={1280}
               height={1280}
               className="w-full h-auto object-fill object-center"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </section>
         ))}

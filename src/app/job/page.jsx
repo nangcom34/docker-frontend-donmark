@@ -32,7 +32,7 @@ const Job = () => {
   };
 
   return (
-    <main>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
       <section className="flex items-center justify-center w-full max-w-screen-xl mx-auto mb-20">
@@ -42,9 +42,7 @@ const Job = () => {
           width={1280}
           height={768}
           className="w-full h-auto object-cover object-center"
-          style={{
-            loading: "lazy",
-          }}
+          loading= "lazy"
         />
       </section>
       {job &&
@@ -64,26 +62,24 @@ const Job = () => {
                   width={188}
                   height={188}
                   className="w-full object-fill"
-                  style={{
-                    loading: "lazy",
-                  }}
+                  loading= "lazy"
                 />
               </div>
               <div className="flex flex-col flex-wrap justify-center mr-5 overflow-auto w-full">
                 <div className="flex flex-wrap items-center justify-between cursor-pointer">
-                  <p className=" text-neutral-700 text-base font-semibold">
+                  <p className="whitespace-normal text-neutral-700 text-base font-semibold">
                     {item.name}
                   </p>
-                  <p className="text-right text-neutral-700 text-base font-semibold ">
+                  <p className="whitespace-normaltext-right text-neutral-700 text-base font-semibold ">
                     {DateTime.fromISO(item.createdAt)
                       .setZone("Asia/Bangkok")
                       .toRelative({ locale: "th" })}
                   </p>
                 </div>
-                <p className="  text-neutral-700 text-sm font-semibold mb-1 cursor-pointer">
+                <p className="whitespace-normal  text-neutral-700 text-sm font-semibold mb-1 cursor-pointer">
                   ตำแหน่ง : {item.position}
                 </p>
-                <p className="  text-neutral-700 text-[13px] font-normal mb-3 block cursor-pointer">
+                <p className="whitespace-normal  text-neutral-700 text-[13px] font-normalmb-3 block cursor-pointer">
                   {item.responsibilities
                     .split("\n" || "\r\n")
                     .slice(0, 3)
@@ -96,17 +92,17 @@ const Job = () => {
                 </p>
 
                 <div className="flex flex-col justify-center cursor-pointer">
-                  <p className="  text-neutral-700 text-[13px] font-semibold mb-1">
+                  <p className="whitespace-normal  text-neutral-700 text-[13px] font-semibold mb-1">
                     เงินเดือน(บาท) : {item.salary}
                   </p>
-                  <p className="  text-neutral-700 text-[13px] font-semibold mb-1">
+                  <p className="whitespace-normal  text-neutral-700 text-[13px] font-semibold mb-1">
                     {item.location}
                   </p>
                 </div>
               </div>
             </div>
             <dialog id={`my_modal_${item._id}`} className="modal m-auto">
-              <div className="modal-box p-0 relative max-w-screen-xl overflow-hidden flex">
+              <div className="modal-box p-0 relative md:max-w-screen-md xl:max-w-screen-xl overflow-hidden flex">
                 <JobCard data={item} />
                 
               </div>
