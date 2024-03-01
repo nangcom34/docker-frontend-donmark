@@ -221,7 +221,7 @@ const JobCard = ({ data }) => {
       <div className="modal-action p-0 m-0">
         <form method="dialog">
           {/* if there is a button in form, it will close the modal */}
-          <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white text-[10px] md:text-sm mb-1 mr-1 md:mb-5 md:mr-5">
+          <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white text-[9px] md:text-sm mb-1 mr-1 md:mb-5 md:mr-5">
             CLOSE
           </button>
         </form>
