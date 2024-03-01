@@ -10,7 +10,7 @@ const AdminImageProduct = () => {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();
@@ -112,21 +112,23 @@ const AdminImageProduct = () => {
                     width={300}
                     height={400}
                     className="w-full h-auto object-cover object-center"
-                    style={{
-                      loading: "lazy",
-                      
-                    }}
+                    loading= "lazy"
                   />
                 </div>
                 <div className="px-4 py-2 max-w-sm w-full overflow-auto break-all text-center mt-2">
-                  <p>สินค้าลดราคา</p>
-                      <input
-                        type="checkbox"
-                        className="toggle toggle-warning"
-                        checked={item.sale}
-                        onChange={(e) => handleStatus(e, item._id)}
-                      />
-                    </div>
+
+                  <label className="flex cursor-pointer items-center justify-center gap-1">
+                    <span className="label-text">สินค้าใหม่</span>
+                    <input
+                      type="checkbox"
+                      className="toggle toggle-warning"
+                      checked={item.sale}
+                      onChange={(e) => handleStatus(e, item._id)}
+                    />
+                    <span className="label-text">สินค้าลดราคา</span>
+                  </label>
+
+                </div>
                 <div className="whitespace-nowrap px-4 py-2">
                   <Link
                     href={`/admin/editimageproduct/${item._id}`}

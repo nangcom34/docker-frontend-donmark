@@ -13,7 +13,7 @@ const AdminAllProduct = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();
@@ -31,7 +31,7 @@ const AdminAllProduct = () => {
       console.log(error);
     }
   };
-  
+
   const loadCategory = async () => {
     try {
       const response = await axios.get(API_URL + "/category");
@@ -40,7 +40,7 @@ const AdminAllProduct = () => {
       console.log(error);
     }
   };
-  
+
   const handleDelete = async (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -79,7 +79,7 @@ const AdminAllProduct = () => {
 
   const handleStatus = async (e, id) => {
     const isChecked = e.target.checked;
-    const value = { 
+    const value = {
       id: id,
       recommend: isChecked,
     };
@@ -121,11 +121,10 @@ const AdminAllProduct = () => {
   const renderPageNumbers = pageNumbers.map((number) => (
     <li
       key={number}
-      className={`inline-block w-8 h-8 text-center leading-8 ${
-        number === currentPage
-          ? "bg-blue-600 text-white"
-          : "bg-white text-gray-900"
-      } rounded border border-gray-100 cursor-pointer`}
+      className={`inline-block w-8 h-8 text-center leading-8 ${number === currentPage
+        ? "bg-blue-600 text-white"
+        : "bg-white text-gray-900"
+        } rounded border border-gray-100 cursor-pointer`}
       onClick={() => setCurrentPage(number)}
     >
       {number}
@@ -134,10 +133,10 @@ const AdminAllProduct = () => {
 
   return (
     <main>
-       <section className="pt-10">
-          {" "}
-          <p className="text-2xl font-bold w-full px-10">รายการสินค้าทั้งหมด</p>
-        </section>
+      <section className="pt-10">
+        {" "}
+        <p className="text-2xl font-bold w-full px-10">รายการสินค้าทั้งหมด</p>
+      </section>
       <section className="flex flex-col justify-start px-5">
         <Link
           href={"/admin/addproduct"}
@@ -200,9 +199,7 @@ const AdminAllProduct = () => {
                           width={100}
                           height={100}
                           className="w-full h-auto object-cover object-center"
-                          style={{
-                            loading: "lazy",
-                          }}
+                          loading= "lazy"
                         />
                       </div>
                     </td>
@@ -219,7 +216,7 @@ const AdminAllProduct = () => {
                     <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] truncate hover:text-clip max-w-xs overflow-auto break-all">
                       {DateTime.fromISO(item.createdAt)
                         .setZone("Asia/Bangkok")
-                        .toFormat("dd-MM-yyyy HH:mm:ss")}
+                        .toLocaleString({ locale: "th", day: "2-digit", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" })}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] truncate hover:text-clip max-w-xs overflow-auto break-all">
                       {DateTime.fromISO(item.updatedAt)
@@ -258,9 +255,8 @@ const AdminAllProduct = () => {
           <li>
             <a
               href="#"
-              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${
-                currentPage === 1 ? "cursor-not-allowed" : ""
-              }`}
+              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${currentPage === 1 ? "cursor-not-allowed" : ""
+                }`}
               onClick={() => {
                 if (currentPage > 1) {
                   setCurrentPage(currentPage - 1);
@@ -288,11 +284,10 @@ const AdminAllProduct = () => {
           <li>
             <a
               href="#"
-              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${
-                currentPage === Math.ceil(dataFilter.length / itemsPerPage)
-                  ? "cursor-not-allowed"
-                  : ""
-              }`}
+              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${currentPage === Math.ceil(dataFilter.length / itemsPerPage)
+                ? "cursor-not-allowed"
+                : ""
+                }`}
               onClick={() => {
                 if (currentPage < Math.ceil(dataFilter.length / itemsPerPage)) {
                   setCurrentPage(currentPage + 1);

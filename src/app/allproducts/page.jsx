@@ -9,12 +9,14 @@ import Footer from "../layouts/Footer";
 import { useSearchParams } from "next/navigation";
 import { API_URL, URL_IMAGES } from "../../../config/constants";
 
+
 const AllProducts = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState([]);
   const searchParams = useSearchParams();
   const search = searchParams.get("query");
+
 
   // Log ค่า text
   //console.log(search);
@@ -35,18 +37,22 @@ const AllProducts = () => {
     //console.log(filters);
     await axios
       .post(API_URL + "/productby", { filters })
-      .then((res) => {
+      .then(async (res) => {
         //console.log(res.data);
         setProduct(res.data);
+        await res.data.sort((a, b) => new Date(b.category.createdAt) - new Date(a.category.createdAt));
         setCategoryFilter(res.data);
+
+
       })
       .catch((error) => {
         console.log(error);
       });
   };
   const loadCategory = async () => {
+    let filtersCategory = { limit: null, sort: "createdAt", order: "desc" };
     await axios
-      .get(API_URL + "/category")
+      .post(API_URL + "/categoryby", { filtersCategory })
       .then((res) => {
         //console.log(res.data);
         setCategory(res.data);
@@ -71,8 +77,10 @@ const AllProducts = () => {
   //console.log(categoryFilter);
   //console.log(product);
 
+
+
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
       <section
@@ -97,21 +105,32 @@ const AllProducts = () => {
       </section>
 
       <section
-        className={`${
-          categoryFilter.length === 0 ? "h-full min-h-[63vh] w-full mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
-        }`}
+        className={`${categoryFilter.length === 0 ? "flex-grow w-full mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
+          }`}
       >
         <h3 className="text-lg font-semibold">ไม่พบสินค้า</h3>
+        <aside className="flex items-center justify-center gap-2">
+          <span className="loading loading-ring loading-sm"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-lg"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-sm"></span>
+        </aside>
         <Image
           src={`/images/logo.png`}
           alt="logo"
           width={100}
           height={100}
-          className="w-[100px] object-cover animate-spin"
-          style={{
-            loading: "lazy",
-          }}
+          className="w-[100px] object-cover"
+          loading="lazy"
         />
+        <aside className="flex items-center justify-center gap-2">
+          <span className="loading loading-ring loading-sm"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-lg"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-sm"></span>
+        </aside>
       </section>
 
       {category &&
@@ -122,13 +141,13 @@ const AllProducts = () => {
             )
           )
           .map((categoryItem) => (
-            <section key={categoryItem._id} className="min-h-[52vh]">
+            <section key={categoryItem._id} className="flex-grow">
               <article className="mx-auto max-w-screen-xl w-full overflow-hidden mb-3 md:mb-10">
                 <h2 className="mt-8 px-5 lg:px-0 font-bold text-right text-sm sm:text-[16px] md:text-xl lg:text-3xl uppercase">
                   {categoryItem.name}
                 </h2>
               </article>
-              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto px-5 ">
+              <article className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 gap-y-8 md:gap-y-20 my-10 lg:gap-x-5 max-w-screen-xl mx-auto px-5 ">
                 {categoryFilter &&
                   categoryFilter
                     .filter(
@@ -151,18 +170,16 @@ const AllProducts = () => {
                           width={1024}
                           height={768}
                           className=" h-[150px] sm:h-[200px] w-full object-cover md:h-[230px] rounded-md"
-                          style={{
-                            loading: "lazy",
-                          }}
+                          loading="lazy"
                         />
-                        <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg truncate hover:text-clip">
+                        <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg whitespace-normal">
                           {item.name}
                         </p>
                         <dialog
                           id={`my_modal_${item._id}`}
                           className="modal m-auto"
                         >
-                          <div className="modal-box p-0 relative max-h-[90vh] overflow-hidden flex">
+                          <div className="modal-box p-0 relative max-w-screen-xl overflow-hidden flex">
                             <ProductCard data={item} />
                           </div>
                         </dialog>
@@ -172,7 +189,7 @@ const AllProducts = () => {
             </section>
           ))}
       <Footer />
-    </>
+    </main>
   );
 };
 

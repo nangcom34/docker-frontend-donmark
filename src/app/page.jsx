@@ -73,29 +73,40 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
       <section
-        className={`${
-          homepage && homepageTop.length === 0 ? "h-full min-h-[63vh] mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
-        }`}
+        className={`${homepage && homepageTop.length === 0 ? "flex-grow mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
+          }`}
       >
+        <aside className="flex items-center justify-center gap-2">
+          <span className="loading loading-ring loading-sm"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-lg"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-sm"></span>
+        </aside>
         <Image
           src={`/images/logo.png`}
           alt="logo"
           width={100}
           height={100}
-          className="w-[100px] object-cover animate-spin"
-          style={{
-            loading: "lazy",
-          }}
+          className="w-[100px] object-cover"
+          loading= "lazy"
         />
+        <aside className="flex items-center justify-center gap-2">
+          <span className="loading loading-ring loading-sm"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-lg"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-sm"></span>
+        </aside>
       </section>
       {homepageTop &&
-        homepageTop.map((homepageTopItem) => (
+        homepageTop.map((homepageTopItem,index) => (
           <section
-            key={homepageTopItem._id}
+            key={index}
             className="flex flex-col items-center justify-center w-full max-w-screen-xl mx-auto mb-20 px-3"
           >
             <Image
@@ -104,15 +115,15 @@ export default function Home() {
               width={1280}
               height={768}
               className="w-full object-fill object-center"
-              style={{
-                loading: "lazy",
-              }}
+              priority={true}
             />
-            <p className="text-xs md:text-lg font-semibold leading-relaxed mt-10">
+            <p className="text-xs md:text-lg font-normal leading-relaxed break-all mt-10 whitespace-normal">
               {homepageTopItem.description
-                .split("\n" || "\r\n")
-                .map((line, index) => (
-                  <React.Fragment key={index}>{line}</React.Fragment>
+                .split("\n" || "\r\n").map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
                 ))}
             </p>
           </section>
@@ -120,10 +131,10 @@ export default function Home() {
 
       <section className="flex flex-wrap items-center justify-around gap-3 gap-y-8 md:gap-y-20 my-10 lg:gap-x-4 max-w-screen-xl mx-auto px-2">
         {homepage &&
-          homepage.map((item) => {
+          homepage.map((item,index) => {
             if (item._id !== homepageTop[0]?._id) {
               return (
-                <>
+                <main key={index}>
                   <article
                     onClick={() => {
                       handleCountViews(item._id, item.countView);
@@ -141,13 +152,11 @@ export default function Home() {
                         width={200}
                         height={200}
                         className="w-[200px] h-[200px] object-cover object-center shadow-md align-middle"
-                        style={{
-                          loading: "lazy",
-                        }}
+                        loading= "lazy"
                       />
                     </aside>
                     <aside className="w-full overflow-hidden">
-                      <p className="text-xs md:text-[16px] mt-3 leading-relaxed text-ellipsis">
+                      <p className="text-xs md:text-[16px] mt-3 leading-relaxed text-ellipsis whitespace-normal">
                         {item.description
                           .split("\n" || "\r\n")
                           .slice(0, 3)
@@ -164,10 +173,10 @@ export default function Home() {
                   <dialog id={`my_modal_${item._id}`} className="modal m-auto">
                     <div className="modal-box p-0 relative max-h-[90vh] overflow-hidden flex">
                       <HomepageCard data={item} />
-                     
+
                     </div>
                   </dialog>
-                </>
+                </main>
               );
             }
             return null; // ไม่แสดง item ที่ตรงกับ homepageTop

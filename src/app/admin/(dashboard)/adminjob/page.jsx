@@ -12,7 +12,7 @@ const AdminJob = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();
@@ -97,6 +97,7 @@ const AdminJob = () => {
         {" "}
         <p className="text-2xl font-bold w-full px-10">รายการรับสมัครงาน</p>
       </section>
+      
       <section className="flex flex-col justify-start px-5">
         <Link
           href={"/admin/addjob"}
@@ -123,9 +124,7 @@ const AdminJob = () => {
                     width={188}
                     height={188}
                     className="w-full object-fill"
-                    style={{
-                      loading: "lazy",
-                    }}
+                    loading= "lazy"
                   />
                 </div>
                 <div className="flex flex-col flex-wrap justify-center md:mr-5 overflow-auto w-full">

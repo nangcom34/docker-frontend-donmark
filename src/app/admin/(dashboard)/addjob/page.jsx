@@ -11,7 +11,7 @@ const AddJob = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({});
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
   }, []);

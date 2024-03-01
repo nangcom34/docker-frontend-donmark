@@ -10,15 +10,16 @@ const AdminCategory = () => {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();
   }, []);
- 
+
   const loadData = async () => {
+    let filtersCategory = { limit: null, sort: "createdAt", order: "desc" }
     await axios
-      .get(API_URL+'/category')
+      .post(API_URL + "/categoryby", { filtersCategory })
       .then((res) => {
         //console.log(res.data);
         setData(res.data);
@@ -63,7 +64,7 @@ const AdminCategory = () => {
       });
   };
 
-  
+
 
   return (
     <main>

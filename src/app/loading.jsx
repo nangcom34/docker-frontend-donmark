@@ -6,9 +6,9 @@ import Footer from "./layouts/Footer";
 
 const Loading = () => {
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       <Header />
-      <section className="mx-auto max-w-xl w-full flex flex-col items-center justify-center h-[77vh]">
+      <section className="mx-auto max-w-xl w-full flex-grow flex flex-col items-center justify-center">
         <aside className="flex items-center justify-center gap-2">
           <span className="loading loading-ring loading-sm"></span>
           <span className="loading loading-ring loading-md"></span>
@@ -21,10 +21,8 @@ const Loading = () => {
           alt="logo"
           width={100}
           height={100}
-          className="w-[100px] object-cover animate-spin"
-          style={{
-            loading: "lazy",
-          }}
+          className="w-[100px] object-cover"
+          loading= "lazy"
         />
         <aside className="flex items-center justify-center gap-2">
           <span className="loading loading-ring loading-sm"></span>
@@ -35,7 +33,7 @@ const Loading = () => {
         </aside>
       </section>
       <Footer />
-    </>
+    </main>
   );
 };
 

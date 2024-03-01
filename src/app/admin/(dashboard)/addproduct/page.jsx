@@ -16,7 +16,7 @@ const AddProduct = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadCategory();

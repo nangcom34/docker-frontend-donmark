@@ -6,15 +6,15 @@ const JobCard = ({ data }) => {
   //console.log(data);
 
   return (
-    <section className="w-full max-h-full flex flex-col overflow-hidden">
-      <aside className="w-full flex items-center justify-center h-[250px] md:[300px] rounded-t-2xl bg-red-600 px-28 md:px-48 md:py-24 shadow-xl">
+    <section className="w-full flex flex-col overflow-hidden">
+      <aside className="w-full flex items-center justify-center h-auto max-h-[10vh] xl:max-h-[15vh] rounded-t-2xl bg-red-600 px-28 md:px-48 md:py-24 shadow-xl flex-1">
         <svg
-          width="500"
-          height="500"
+          width="250"
+          height="250"
           viewBox="0 0 113 13"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="text-white"
+          className="text-white max-h-[20vh]"
         >
           <path
             d="M74.7208 2.34839H71.8004L65.5222 12.749H68.7579L70.0108 10.6312L71.4487 8.28945L73.2668 5.2752L75.075 8.2897L76.5104 10.6309L77.7636 12.749H80.9991L74.7208 2.34839Z"
@@ -54,51 +54,50 @@ const JobCard = ({ data }) => {
           />
         </svg>
       </aside>
-      <aside className="w-full overflow-y-auto">
-        {" "}
+      <aside className="w-full lg:mb-1 overflow-y-auto flex-grow">
         <div className="w-full ">
-          <p className="text-[18px] md:text-2xl font-bold px-10 mt-10 text-right">
+          <p className="whitespace-normal text-[18px] md:text-2xl font-bold px-10 mt-10 text-right">
             {data.name}
           </p>
         </div>
         <div className="w-full">
-          <p className="text-[17px] md:text-lg font-bold px-10 mt-10 mb-5">
+          <p className="whitespace-normal text-[17px] md:text-lg font-bold px-10 mt-10 mb-5">
             ตำแหน่ง : {data.position}
           </p>
         </div>
         <div className="w-full px-10 grid grid-cols-12 md:grid-cols-10 xl:grid-cols-9 mb-10">
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             รูปแบบงาน :
           </p>
-          <p className="text-[16px] col-span-8">{data.format}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.format}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             จำนวนที่รับ :
           </p>
-          <p className="text-[16px] col-span-8">{data.amount}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.amount}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             สถานที่ปฎิบัติงาน :
           </p>
-          <p className="text-[16px] col-span-8">{data.location}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.location}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             เงินเดือน (บาท) :
           </p>
-          <p className="text-[16px] col-span-8">{data.salary}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.salary}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             วันหยุด :
           </p>
-          <p className="text-[16px] col-span-8">{data.dayOff}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.dayOff}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             เวลาทำงาน :
           </p>
-          <p className="text-[16px] col-span-8">{data.time}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.time}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             เวลาทำงานอื่นๆ :
           </p>
-          <p className="text-[16px] col-span-8">{data.timeOther}</p>
+          <p className="whitespace-normal text-[16px] col-span-8">{data.timeOther}</p>
         </div>
         <div className="w-full px-10 mb-8">
-          <p className="font-bold text-[16px] mb-1">หน้าที่ความรับผิดชอบ</p>
-          <p className="text-[16px] col-span-8">
+          <p className="whitespace-normal font-bold text-[16px] mb-1">หน้าที่ความรับผิดชอบ</p>
+          <p className="whitespace-normal text-[16px] col-span-8">
             {data.responsibilities.split("\n" || "\r\n").map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -108,33 +107,33 @@ const JobCard = ({ data }) => {
           </p>
         </div>
         <div className="w-full px-10 grid grid-cols-12 md:grid-cols-10 xl:grid-cols-9 mb-8">
-          <p className="font-bold text-[16px] col-span-12 md:col-span-10 xl:col-span-9 mb-1">
+          <p className="whitespace-normal font-bold text-[16px] col-span-12 md:col-span-10 xl:col-span-9 mb-1">
             คุณสมบัติ
           </p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             เพศ :
           </p>
-          <p className="text-[16px] col-span-8">{data.sex}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.sex}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             อายุ(ปี) :
           </p>
-          <p className="text-[16px] col-span-8">{data.age}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.age}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             ระดับการศึกษา :
           </p>
-          <p className="text-[16px] col-span-8">{data.education}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
-            ประสบการณ์(ปี) :
+          <p className="whitespace-normal text-[16px] col-span-8">{data.education}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+            ประสบการณ์ :
           </p>
-          <p className="text-[16px] col-span-8">{data.experience}</p>
-          <p className="font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
+          <p className="whitespace-normal text-[16px] col-span-8">{data.experience}</p>
+          <p className="whitespace-normal font-bold text-[16px] col-span-4 md:col-span-2 xl:col-span-1">
             อื่นๆ :
           </p>
-          <p className="text-[16px] col-span-8">{data.other}</p>
+          <p className="whitespace-normal text-[16px] col-span-8">{data.other}</p>
         </div>
         <div className="w-full px-10 mb-8">
-          <p className="font-bold text-[16px] mb-1">สวัสดิการ</p>
-          <p className="text-[16px] col-span-8">
+          <p className="whitespace-normal font-bold text-[16px] mb-1">สวัสดิการ</p>
+          <p className="whitespace-normal text-[16px] col-span-8">
             {data.welfare.split("\n" || "\r\n").map((line, index) => (
               <React.Fragment key={index}>
                 {line}
@@ -145,28 +144,34 @@ const JobCard = ({ data }) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 mb-5">
           <div className="w-full px-10 grid grid-cols-2 md:grid-cols-5 xl:grid-cols-8  mb-8">
-            <p className="font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  mb-1">
+            <p className="whitespace-normal font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  mb-1">
               สนใจสมัครงานตำแหน่งงานนี้กรุณาติดต่อ
             </p>
-            <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2">
+            <p className="whitespace-normal font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2">
               ชื่อผู้ติดต่อ :
             </p>
-            <p className="text-[16px] col-span-1 md:col-span-3 xl:col-span-6">
+            <p className="whitespace-normal text-[16px] col-span-1 md:col-span-3 xl:col-span-6">
               {data.ContactName}
             </p>
-            <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-22 ">
+            <p className="whitespace-normal font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-22 ">
               เบอร์ผู้ติดต่อ :
             </p>
-            <p className="text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
+            <p className="whitespace-normal text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
               {data.ContactCall}
             </p>
-            <p className="font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2 ">
+            <p className="whitespace-normal font-bold text-[16px] col-span-1 md:col-span-2 xl:col-span-2 ">
               อีเมล :
             </p>
-            <p className="text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
-              {data.ContactEmail}
+            <p className="whitespace-normal text-[16px] ol-span-1 md:col-span-3 xl:col-span-6">
+              {data.ContactEmail.split("\n" || "\r\n").map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+
             </p>
-            <p className="font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  my-3">
+            <p className="whitespace-normal font-bold text-[16px] col-span-2 md:col-span-5 xl:col-span-8  my-3">
               และสามารถติดต่อสอบถามได้ทาง Social Media
             </p>
             <div className="col-span-2 md:col-span-5 xl:col-span-8 flex items-center justify-center md:justify-start gap-4">
@@ -178,9 +183,7 @@ const JobCard = ({ data }) => {
                   width={30}
                   height={30}
                   className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
-                  style={{
-                    loading: "lazy",
-                  }}
+                  loading="lazy"
                 />
               </Link>
               <Link
@@ -194,9 +197,7 @@ const JobCard = ({ data }) => {
                   width={30}
                   height={30}
                   className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
-                  style={{
-                    loading: "lazy",
-                  }}
+                  loading="lazy"
                 />
               </Link>
             </div>
@@ -216,10 +217,11 @@ const JobCard = ({ data }) => {
           </div>
         </div>
       </aside>
-      <div className="modal-action">
+      
+      <div className="modal-action p-0 m-0">
         <form method="dialog">
           {/* if there is a button in form, it will close the modal */}
-          <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">
+          <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white text-[10px] md:text-sm mb-1 mr-1 md:mb-5 md:mr-5">
             CLOSE
           </button>
         </form>

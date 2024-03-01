@@ -11,7 +11,7 @@ const AdminQuestion = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.token) {
+    if (!localStorage.donmarktoken) {
       router.push("/login");
     }
     loadData();
@@ -98,6 +98,7 @@ const AdminQuestion = () => {
         {" "}
         <p className="text-2xl font-bold w-full px-10">คำถามที่พบบ่อย</p>
       </section>
+      
       <section className="flex flex-col justify-start px-5">
         <Link
           href={"/admin/addquestion"}

@@ -14,13 +14,11 @@ const HomepageCard = ({ data }) => {
           width={1024}
           height={768}
           className="w-full object-cover object-center"
-          style={{
-            loading: "lazy",
-          }}
+          loading= "lazy"
         />
       </div>
       <div className="w-full mb-5 overflow-y-auto flex-grow">
-        <p className="text-[16px] md:text-xl px-10 mt-10 break-all">
+        <p className="text-[16px] md:text-xl px-10 mt-10 whitespace-normal">
           {data.description.split("\n" || "\r\n").map((line, index) => (
             <React.Fragment key={index}>
               {line}
@@ -29,7 +27,7 @@ const HomepageCard = ({ data }) => {
           ))}
         </p>
       </div>
-      <div className="modal-action">
+      <div className="modal-action flex-1">
         <form method="dialog">
           {/* if there is a button in form, it will close the modal */}
           <button className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white mb-5 mr-5">

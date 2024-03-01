@@ -37,8 +37,9 @@ const RecommendProducts = () => {
       });
   };
   const loadCategory = async () => {
+    let filtersCategory = { limit: null, sort: "createdAt", order: "desc" };
     await axios
-      .get(API_URL + "/category")
+      .post(API_URL + "/categoryby", { filtersCategory })
       .then((res) => {
         //console.log(res.data);
         setCategory(res.data);
@@ -62,7 +63,7 @@ const RecommendProducts = () => {
   };
 
   return (
-    <>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
       <section
@@ -88,20 +89,32 @@ const RecommendProducts = () => {
 
       <section
         className={`${
-          categoryFilter.length === 0 ? "h-full min-h-[63vh] mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
+          categoryFilter.length === 0 ? " flex-grow mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
         }`}
       >
         <h3 className="text-lg font-semibold">ไม่พบสินค้า</h3>
+        <aside className="flex items-center justify-center gap-2">
+          <span className="loading loading-ring loading-sm"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-lg"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-sm"></span>
+        </aside>
         <Image
           src={`/images/logo.png`}
           alt="logo"
           width={100}
           height={100}
-          className="w-[100px] object-cover animate-spin"
-          style={{
-            loading: "lazy",
-          }}
+          className="w-[100px] object-cover"
+          loading="lazy"
         />
+        <aside className="flex items-center justify-center gap-2">
+          <span className="loading loading-ring loading-sm"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-lg"></span>
+          <span className="loading loading-ring loading-md"></span>
+          <span className="loading loading-ring loading-sm"></span>
+        </aside>
       </section>
 
       {category &&
@@ -112,7 +125,7 @@ const RecommendProducts = () => {
             )
           )
           .map((categoryItem) => (
-            <section key={categoryItem._id} className="min-h-[52vh]">
+            <section key={categoryItem._id} className=" flex-grow">
               <article className="mx-auto max-w-screen-xl w-full overflow-hidden mb-3 md:mb-10">
                 <h2 className="mt-8 px-5 lg:px-0 font-bold text-right text-sm sm:text-[16px] md:text-xl lg:text-3xl uppercase ">
                   {categoryItem.name}
@@ -141,18 +154,16 @@ const RecommendProducts = () => {
                           width={1024}
                           height={768}
                           className=" h-[150px] sm:h-[200px] w-full object-cover md:h-[230px] rounded-md"
-                          style={{
-                            loading: "lazy",
-                          }}
+                          loading= "lazy"
                         />
-                        <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg truncate hover:text-clip">
+                        <p className="mt-1 font-bold text-xs sm:text-sm md:text-md lg:text-lg whitespace-normal">
                           {item.name}
                         </p>
                         <dialog
                           id={`my_modal_${item._id}`}
                           className="modal m-auto"
                         >
-                          <div className="modal-box p-0 relative max-h-[90vh] overflow-hidden flex">
+                          <div className="modal-box p-0 relative overflow-hidden flex">
                             <ProductCard data={item} />
                           </div>
                         </dialog>
@@ -162,7 +173,7 @@ const RecommendProducts = () => {
             </section>
           ))}
       <Footer />
-    </>
+    </main>
   );
 };
 
