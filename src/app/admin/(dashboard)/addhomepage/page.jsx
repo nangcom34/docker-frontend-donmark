@@ -50,7 +50,7 @@ const AddHomepage = () => {
     <section className="flex flex-col justify-start px-5">
       <article className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8">
         <aside className="mx-auto w-full max-w-lg">
-          <p className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
+          <p className="text-center text-2xl font-bold text-red-600 sm:text-3xl">
             บทความ
           </p>
 

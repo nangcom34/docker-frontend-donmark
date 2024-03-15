@@ -55,7 +55,7 @@ const AddJob = () => {
     <section className="flex flex-col justify-start px-5">
       <article className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8">
         <aside className="mx-auto w-full max-w-screen-lg">
-          <p className="text-center text-2xl font-bold text-blue-600 sm:text-3xl bg-white rounded-xl p-5 shadow-md">
+          <p className="text-center text-2xl font-bold text-red-600 sm:text-3xl bg-white rounded-xl p-5 shadow-md">
             รายการสมัครงาน
           </p>
 

@@ -171,7 +171,7 @@ export default function Home() {
                   </article>
 
                   <dialog id={`my_modal_${item._id}`} className="modal m-auto">
-                    <div className="modal-box p-0 relative max-h-[90vh] overflow-hidden flex">
+                    <div className="modal-box p-0 relative max-w-screen-lg  overflow-hidden flex">
                       <HomepageCard data={item} />
 
                     </div>

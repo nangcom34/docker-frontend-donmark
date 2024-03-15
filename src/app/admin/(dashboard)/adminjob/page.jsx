@@ -95,13 +95,13 @@ const AdminJob = () => {
     <main>
       <section className="pt-10">
         {" "}
-        <p className="text-2xl font-bold w-full px-10">รายการรับสมัครงาน</p>
+        <p className="text-2xl font-bold w-full px-10 text-red-600">รายการรับสมัครงาน</p>
       </section>
       
       <section className="flex flex-col justify-start px-5">
         <Link
           href={"/admin/addjob"}
-          className="btn btn-accent  mx-auto mt-4 mb-5 shadow-md max-w-[15rem] w-full border-2 border-b-green-400"
+          className="btn bg-indigo-600 border-0 text-white hover:text-black duration-300 mx-auto mt-4 mb-5 shadow-md max-w-[15rem] w-full"
         >
           เพิ่ม
         </Link>

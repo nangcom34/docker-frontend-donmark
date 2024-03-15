@@ -683,6 +683,56 @@ const Admin = () => {
             </aside>
 
             <aside className="mb-12 grid grid-cols-1 gap-6 xl:grid-cols-3">
+
+              <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md col-span-1">
+                <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-yellow-600 to-yellow-400 text-white shadow-yellow-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                  <svg
+                    fill="#ffffff"
+                    height="800px"
+                    width="800px"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                    viewBox="-63 65 128 128"
+                    xmlSpace="preserve"
+                    stroke="#ffffff"
+                    className="w-6 h-6 text-white"
+                  >
+                    <path d="M46.8,154L18,160.6c-0.2,1.4-0.8,2.9-1.7,4.1c-1.7,2.6-4.3,4.5-7.3,5.3c-3,0.7-6.2,0.2-8.8-1.6l-24.8-15.8 c-1.2-0.7-1.4-2.1-0.7-3.2s2.1-1.4,3.1-0.7l24.9-15.8c3.3,2,7.6,1.1,9.7-2.1s1.1-7.6-2.1-9.7l-31-19.6c-5.1-3.2-11-5.7-16.6-2.9 L-63,144.8v29.4l18.4-13.7c2.9-0.7,6.1-0.1,8.8,1.6l21.6,13.6c5.3,3.3,11.8,4.1,17.4,2.6L50,167.6c3.7-0.8,6.2-4.5,5.3-8.5 C54.3,155.5,50.6,153.2,46.8,154z M26.4,81.3C8.2,81.3-6.5,96-6.5,114.2c0,18.2,14.7,32.9,32.9,32.9c18.2,0,32.9-14.7,32.9-32.9 C59.3,96,44.5,81.3,26.4,81.3z M45.1,102l-22.6,31.2L8,117.5c-1.6-1.8-1.5-4.5,0.2-6.2c1.8-1.6,4.5-1.5,6.2,0.2l7.3,7.9L38,96.9 c1.4-1.9,4.1-2.4,6.1-1C46,97.3,46.5,100.1,45.1,102z" />
+                  </svg>
+                </div>
+
+                <div className="p-4 text-right">
+                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
+                    สินค้าแนะนำ
+                  </p>
+                  <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                    {recommendCount}
+                  </h4>
+                </div>
+                <div className="border-y p-4 w-full flex items-center justify-center sm:py-10">
+                  <div
+                    className="radial-progress bg-gradient-to-tr from-slate-300 to-slate-100s text-yellow-500"
+                    style={{
+                      "--value": `${percenRecommend.toFixed(0)}`,
+                      "--size": "11rem",
+                      "--thickness": "1.5rem",
+                    }}
+                  >
+                    {percenRecommend.toFixed(0)}%
+                  </div>
+                </div>
+
+                <div className="p-4">
+                  <p className="block antialiased text-base leading-relaxed font-normal sm:mt-5">
+                    <strong className="text-green-500">
+                      {DateTime.fromISO(recommendProductUpdatedAt.updatedAt)
+                        .setZone("Asia/Bangkok")
+                        .toRelative({ locale: "th" })}
+                    </strong>
+                    &nbsp;อัพเดท
+                  </p>
+                </div>
+              </div>
               <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
                 <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                   <div>
@@ -774,55 +824,7 @@ const Admin = () => {
                 </div>
               </div>
 
-              <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md col-span-1">
-                <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-yellow-600 to-yellow-400 text-white shadow-yellow-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-                  <svg
-                    fill="#ffffff"
-                    height="800px"
-                    width="800px"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    viewBox="-63 65 128 128"
-                    xmlSpace="preserve"
-                    stroke="#ffffff"
-                    className="w-6 h-6 text-white"
-                  >
-                    <path d="M46.8,154L18,160.6c-0.2,1.4-0.8,2.9-1.7,4.1c-1.7,2.6-4.3,4.5-7.3,5.3c-3,0.7-6.2,0.2-8.8-1.6l-24.8-15.8 c-1.2-0.7-1.4-2.1-0.7-3.2s2.1-1.4,3.1-0.7l24.9-15.8c3.3,2,7.6,1.1,9.7-2.1s1.1-7.6-2.1-9.7l-31-19.6c-5.1-3.2-11-5.7-16.6-2.9 L-63,144.8v29.4l18.4-13.7c2.9-0.7,6.1-0.1,8.8,1.6l21.6,13.6c5.3,3.3,11.8,4.1,17.4,2.6L50,167.6c3.7-0.8,6.2-4.5,5.3-8.5 C54.3,155.5,50.6,153.2,46.8,154z M26.4,81.3C8.2,81.3-6.5,96-6.5,114.2c0,18.2,14.7,32.9,32.9,32.9c18.2,0,32.9-14.7,32.9-32.9 C59.3,96,44.5,81.3,26.4,81.3z M45.1,102l-22.6,31.2L8,117.5c-1.6-1.8-1.5-4.5,0.2-6.2c1.8-1.6,4.5-1.5,6.2,0.2l7.3,7.9L38,96.9 c1.4-1.9,4.1-2.4,6.1-1C46,97.3,46.5,100.1,45.1,102z" />
-                  </svg>
-                </div>
 
-                <div className="p-4 text-right">
-                  <p className="block antialiased  text-[16px] leading-normal font-normal ">
-                    สินค้าแนะนำ
-                  </p>
-                  <h4 className="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
-                    {recommendCount}
-                  </h4>
-                </div>
-                <div className="border-y p-4 w-full flex items-center justify-center sm:py-10">
-                  <div
-                    className="radial-progress bg-gradient-to-tr from-slate-300 to-slate-100s text-yellow-500"
-                    style={{
-                      "--value": `${percenRecommend.toFixed(0)}`,
-                      "--size": "11rem",
-                      "--thickness": "1.5rem",
-                    }}
-                  >
-                    {percenRecommend.toFixed(0)}%
-                  </div>
-                </div>
-
-                <div className="p-4">
-                  <p className="block antialiased text-base leading-relaxed font-normal sm:mt-5">
-                    <strong className="text-green-500">
-                      {DateTime.fromISO(recommendProductUpdatedAt.updatedAt)
-                        .setZone("Asia/Bangkok")
-                        .toRelative({ locale: "th" })}
-                    </strong>
-                    &nbsp;อัพเดท
-                  </p>
-                </div>
-              </div>
             </aside>
 
             <aside className="mb-12 grid gap-y-10 gap-x-6">

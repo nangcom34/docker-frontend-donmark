@@ -1,6 +1,6 @@
 'use client'
 import { Noto_Sans_Thai } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Swal from "sweetalert2";
@@ -17,6 +17,17 @@ export default function Layout({ children }) {
   const router = useRouter();
   const pathname = usePathname()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+
+  useEffect(() => {
+    // สร้าง setTimeout เพื่อเรียก handleLogout หลังจาก 3 ชั่วโมง
+    const timeout = setTimeout(() => {
+      handleLogout();
+    }, 3 * 60 * 60 * 1000); // หน่วยเวลาใน milliseconds (3 ชั่วโมง)
+
+    // ให้ทำการ clear timeout เพื่อป้องกัน memory leak
+    return () => clearTimeout(timeout);
+  }, []);
 
   const handleLogout = () => {
     Swal.fire("ออกจากระบบแล้ว", "", "success");
@@ -90,11 +101,11 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin' ? 'bg-red-100' : 'bg-white'} `}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin' ? 'bg-red-50' : 'bg-white'} `}
                   >
                     <span>
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-red-400"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -116,11 +127,11 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin/adminhomepage"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminhomepage' ? 'bg-red-100' : 'bg-white'}`}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminhomepage' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-red-400"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -139,11 +150,11 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin/adminimageslide"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminimageslide' ? 'bg-red-100' : 'bg-white'}`}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminimageslide' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-red-400"
                         xmlns="http://www.w3.org/2000/svg"
                         enableBackground="new 0 0 15.118 15.107"
                         version="1.1"
@@ -151,16 +162,16 @@ export default function Layout({ children }) {
                         xmlSpace="preserve"
                       >
                         <path
-                          fill="#9CA3AF "
+                          fill="#f87171 "
                           d="M14.059 5.436V3.245l-2.204-1.102L9.712 0 7.559.538 5.406 0 3.263 2.143 1.059 3.245v2.191L0 7.554l1.059 2.118v2.191l2.204 1.102 2.143 2.143 2.153-.538 2.153.538 2.143-2.143 2.204-1.102V9.672l1.059-2.118-1.059-2.118zm-1 4v1.809l-1.724.862L9.406 14l-1.847-.462L5.712 14l-1.8-1.8-1.854-.956V9.436l-.94-1.882.941-1.882V3.863l1.724-.862 1.93-1.894 1.847.462 1.847-.462 1.8 1.8 1.854.956v1.809L14 7.554l-.941 1.882z"
                         ></path>
                         <path
-                          fill="#9CA3AF"
+                          fill="#f87171"
                           d="M3.316 7.054H11.800999999999998V8.054H3.316z"
                           transform="rotate(-45.001 7.559 7.554)"
                         ></path>
                         <path
-                          fill="#9CA3AF"
+                          fill="#f87171"
                           d="M5.559 7.054c.827 0 1.5-.673 1.5-1.5s-.673-1.5-1.5-1.5-1.5.673-1.5 1.5.673 1.5 1.5 1.5zm0-2a.5.5 0 110 1 .5.5 0 010-1zM9.559 8.054c-.827 0-1.5.673-1.5 1.5s.673 1.5 1.5 1.5 1.5-.673 1.5-1.5-.673-1.5-1.5-1.5zm0 2a.5.5 0 110-1 .5.5 0 010 1z"
                         ></path>
                       </svg>
@@ -173,11 +184,11 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin/admincategory"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/admincategory' ? 'bg-red-100' : 'bg-white'}`}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/admincategory' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
-                      <svg className="w-6 h-6 text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 4.6C3 4.03995 3 3.75992 3.10899 3.54601C3.20487 3.35785 3.35785 3.20487 3.54601 3.10899C3.75992 3 4.03995 3 4.6 3H19.4C19.9601 3 20.2401 3 20.454 3.10899C20.6422 3.20487 20.7951 3.35785 20.891 3.54601C21 3.75992 21 4.03995 21 4.6V6.33726C21 6.58185 21 6.70414 20.9724 6.81923C20.9479 6.92127 20.9075 7.01881 20.8526 7.10828C20.7908 7.2092 20.7043 7.29568 20.5314 7.46863L14.4686 13.5314C14.2957 13.7043 14.2092 13.7908 14.1474 13.8917C14.0925 13.9812 14.0521 14.0787 14.0276 14.1808C14 14.2959 14 14.4182 14 14.6627V17L10 21V14.6627C10 14.4182 10 14.2959 9.97237 14.1808C9.94787 14.0787 9.90747 13.9812 9.85264 13.8917C9.7908 13.7908 9.70432 13.7043 9.53137 13.5314L3.46863 7.46863C3.29568 7.29568 3.2092 7.2092 3.14736 7.10828C3.09253 7.01881 3.05213 6.92127 3.02763 6.81923C3 6.70414 3 6.58185 3 6.33726V4.6Z" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <svg className="w-6 h-6 text-red-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 4.6C3 4.03995 3 3.75992 3.10899 3.54601C3.20487 3.35785 3.35785 3.20487 3.54601 3.10899C3.75992 3 4.03995 3 4.6 3H19.4C19.9601 3 20.2401 3 20.454 3.10899C20.6422 3.20487 20.7951 3.35785 20.891 3.54601C21 3.75992 21 4.03995 21 4.6V6.33726C21 6.58185 21 6.70414 20.9724 6.81923C20.9479 6.92127 20.9075 7.01881 20.8526 7.10828C20.7908 7.2092 20.7043 7.29568 20.5314 7.46863L14.4686 13.5314C14.2957 13.7043 14.2092 13.7908 14.1474 13.8917C14.0925 13.9812 14.0521 14.0787 14.0276 14.1808C14 14.2959 14 14.4182 14 14.6627V17L10 21V14.6627C10 14.4182 10 14.2959 9.97237 14.1808C9.94787 14.0787 9.90747 13.9812 9.85264 13.8917C9.7908 13.7908 9.70432 13.7043 9.53137 13.5314L3.46863 7.46863C3.29568 7.29568 3.2092 7.2092 3.14736 7.10828C3.09253 7.01881 3.05213 6.92127 3.02763 6.81923C3 6.70414 3 6.58185 3 6.33726V4.6Z" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
                     <span className={`${!isSidebarOpen ? 'lg:hidden' : ''}`}>หมวดหมู่สินค้า</span>
@@ -188,32 +199,32 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin/adminimageproduct"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminimageproduct' ? 'bg-red-100' : 'bg-white'}`}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminimageproduct' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-red-400"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                       >
                         <path
                           d="M8 11C9.10457 11 10 10.1046 10 9C10 7.89543 9.10457 7 8 7C6.89543 7 6 7.89543 6 9C6 10.1046 6.89543 11 8 11Z"
-                          stroke="#9CA3AF"
+                          stroke="#f87171"
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                         <path
                           d="M6.56055 21C12.1305 8.89998 16.7605 6.77998 22.0005 14.63"
-                          stroke="#9CA3AF"
+                          stroke="#f87171"
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
                         <path
                           d="M18 3H6C3.79086 3 2 4.79086 2 7V17C2 19.2091 3.79086 21 6 21H18C20.2091 21 22 19.2091 22 17V7C22 4.79086 20.2091 3 18 3Z"
-                          stroke="#9CA3AF"
+                          stroke="#f87171"
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -228,11 +239,11 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin/adminallproduct"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminallproduct' ? 'bg-red-100' : 'bg-white'}`}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminallproduct' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-red-400"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
@@ -240,12 +251,12 @@ export default function Layout({ children }) {
                       >
                         <path
                           d="M4 15.8294V15.75V8C4 7.69114 4.16659 7.40629 4.43579 7.25487L4.45131 7.24614L11.6182 3.21475L11.6727 3.18411C11.8759 3.06979 12.1241 3.06979 12.3273 3.18411L19.6105 7.28092C19.8511 7.41625 20 7.67083 20 7.94687V8V15.75V15.8294C20 16.1119 19.8506 16.3733 19.6073 16.5167L12.379 20.7766C12.1451 20.9144 11.8549 20.9144 11.621 20.7766L4.39267 16.5167C4.14935 16.3733 4 16.1119 4 15.8294Z"
-                          stroke="#9CA3AF"
+                          stroke="#f87171"
                           strokeWidth="2"
                         />
-                        <path d="M12 21V12" stroke="#9CA3AF" strokeWidth="2" />
-                        <path d="M12 12L4 7.5" stroke="#9CA3AF" strokeWidth="2" />
-                        <path d="M20 7.5L12 12" stroke="#9CA3AF" strokeWidth="2" />
+                        <path d="M12 21V12" stroke="#f87171" strokeWidth="2" />
+                        <path d="M12 12L4 7.5" stroke="#f87171" strokeWidth="2" />
+                        <path d="M20 7.5L12 12" stroke="#f87171" strokeWidth="2" />
                       </svg>
 
                     </span>
@@ -258,11 +269,11 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin/adminjob"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminjob' ? 'bg-red-100' : 'bg-white'}`}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminjob' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-red-400"
                         xmlns="http://www.w3.org/2000/svg"
                         width="40"
                         height="40"
@@ -271,7 +282,7 @@ export default function Layout({ children }) {
                       >
                         <g>
                           <path
-                            fill="#9CA3AF"
+                            fill="#f87171"
                             d="M7.937.53a.265.265 0 00-.263.263v.793h-.53a.265.265 0 00-.187.453l1.587 1.588c.104.103.27.103.374 0l1.588-1.588a.265.265 0 00-.188-.453h-.53V.793a.265.265 0 00-.263-.264zM5.826 2.642a.265.265 0 00-.27.267v.375c.008.345.521.345.53 0V2.91a.265.265 0 00-.26-.267zm5.81 0a.265.265 0 00-.26.267v.375c.009.345.522.345.53 0V2.91a.265.265 0 00-.27-.267zM4.382 3.697l.194.194c.262.247.617-.129.373-.373l-.194-.194a.264.264 0 00-.182-.08.265.265 0 00-.19.453zm8.325-.373l-.194.194c-.244.244.111.62.373.373l.194-.194a.265.265 0 00-.191-.453.264.264 0 00-.182.08zm-8.036 3.19a1.307 1.307 0 00-.967-.43A1.323 1.323 0 002.63 8.181c-.477.36-.778.948-.778 1.609v.263c0 .443.358.793.793.794h1.697c.09.211.198.412.315.606l-2.843 2.295c-.683.551-.62 1.588-.021 2.185.597.598 1.634.664 2.185-.019l2.295-2.845a4.73 4.73 0 002.457.689 4.766 4.766 0 004.39-2.911h1.697a.793.793 0 00.793-.794V9.79c0-.661-.301-1.25-.778-1.609a1.323 1.323 0 00-1.073-2.097c-.386 0-.728.168-.968.43a4.754 4.754 0 00-8.12 0zm-.7-2.016a.265.265 0 100 .53h.376c.345-.009.345-.522 0-.53zm9.144 0c-.345.008-.345.521 0 .53h.376a.265.265 0 100-.53zm-4.385.264a4.237 4.237 0 014.235 4.234 4.234 4.234 0 01-8.467 0c0-2.34 1.9-4.234 4.232-4.234zm0 .53a3.704 3.704 0 10.003 7.407 3.704 3.704 0 00-.003-7.408zm0 .528a3.18 3.18 0 013.176 3.176 3.176 3.176 0 01-6.35 0A3.177 3.177 0 018.73 5.82zM7.408 7.672c0 .29.09.556.25.775-.477.36-.78.948-.78 1.608v.264c0 .442.359.793.794.793H9.79a.793.793 0 00.793-.793v-.264c0-.66-.302-1.249-.779-1.608a1.323 1.323 0 10-2.397-.775zM3.704 8.73c.096 0 .19-.012.28-.032-.007.099-.016.197-.016.297 0 .46.069.902.19 1.322H2.645a.263.263 0 01-.264-.265V9.79c0-.54.268-1.001.65-1.244.196.115.427.185.673.185zM15.08 9.79v.263a.263.263 0 01-.264.265h-1.513c.121-.42.19-.863.19-1.322 0-.1-.009-.198-.015-.297.09.02.183.032.28.032.245 0 .476-.07.672-.185.382.243.65.704.65 1.244zM8.06 8.812c.195.115.426.184.672.184.246 0 .477-.07.672-.184.383.242.651.704.651 1.243v.264a.263.263 0 01-.264.264c-.727 0-1.442.002-2.118 0a.263.263 0 01-.264-.264v-.264c0-.54.268-1 .65-1.243z"
                             style={{
                               lineHeight: "normal",
@@ -289,8 +300,8 @@ export default function Layout({ children }) {
                               textDecorationLine: "none",
                               WebkitTextDecorationStyle: "solid",
                               textDecorationStyle: "solid",
-                              WebkitTextDecorationColor: "#9CA3AF",
-                              textDecorationColor: "#9CA3AF",
+                              WebkitTextDecorationColor: "#f87171",
+                              textDecorationColor: "#f87171",
                               WebkitTextTransform: "none",
                               textTransform: "none",
                               WebkitTextOrientation: "mixed",
@@ -299,7 +310,7 @@ export default function Layout({ children }) {
                               shapePadding: "0",
                               isolation: "auto",
                               mixBlendMode: "normal",
-                              solidColor: "#9CA3AF",
+                              solidColor: "#f87171",
                               solidOpacity: "1",
                             }}
                             fillOpacity="1"
@@ -314,7 +325,7 @@ export default function Layout({ children }) {
                             strokeWidth="0.529"
                             baselineShift="baseline"
                             clipRule="nonzero"
-                            color="#9CA3AF"
+                            color="#f87171"
                             colorInterpolation="sRGB"
                             colorInterpolationFilters="linearRGB"
                             colorRendering="auto"
@@ -352,11 +363,11 @@ export default function Layout({ children }) {
                 <li>
                   <Link
                     href="/admin/adminquestion"
-                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminquestion' ? 'bg-red-100' : 'bg-white'}`}
+                    className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminquestion' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
-                      <svg className="w-6 h-6 text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#9CA3AF">
-                        <path d="M11.967 12.75C12.967 11.75 13.967 11.3546 13.967 10.25C13.967 9.14543 13.0716 8.25 11.967 8.25C11.0351 8.25 10.252 8.88739 10.03 9.75M11.967 15.75H11.977M21.0039 12C21.0039 16.9706 16.9745 21 12.0039 21C9.9675 21 3.00463 21 3.00463 21C3.00463 21 4.56382 17.2561 3.93982 16.0008C3.34076 14.7956 3.00391 13.4372 3.00391 12C3.00391 7.02944 7.03334 3 12.0039 3C16.9745 3 21.0039 7.02944 21.0039 12Z" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <svg className="w-6 h-6 text-red-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#f87171">
+                        <path d="M11.967 12.75C12.967 11.75 13.967 11.3546 13.967 10.25C13.967 9.14543 13.0716 8.25 11.967 8.25C11.0351 8.25 10.252 8.88739 10.03 9.75M11.967 15.75H11.977M21.0039 12C21.0039 16.9706 16.9745 21 12.0039 21C9.9675 21 3.00463 21 3.00463 21C3.00463 21 4.56382 17.2561 3.93982 16.0008C3.34076 14.7956 3.00391 13.4372 3.00391 12C3.00391 7.02944 7.03334 3 12.0039 3C16.9745 3 21.0039 7.02944 21.0039 12Z" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
                     <span className={`${!isSidebarOpen ? 'lg:hidden' : ''}`}>คำถามที่พบบ่อย</span>

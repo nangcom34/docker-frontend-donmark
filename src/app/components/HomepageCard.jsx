@@ -7,13 +7,13 @@ const HomepageCard = ({ data }) => {
 
   return (
     <section className="w-full max-h-full flex flex-col overflow-hidden">
-      <div className="w-full rounded-2xl shadow-md shadow-slate-400">
+      <div className="w-full flex items-center justify-center rounded-2xl">
         <Image
           src={`${URL_IMAGES}${data.file}`}
           alt={data.name}
           width={1024}
           height={768}
-          className="w-full object-cover object-center"
+          className="w-auto h-auto max-h-[45vh] object-cover object-center rounded-2xl shadow-md shadow-slate-400 sm:mt-5 md:mt-10"
           loading= "lazy"
         />
       </div>

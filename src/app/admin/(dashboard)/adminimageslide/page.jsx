@@ -68,12 +68,12 @@ const AdminImageSlide = () => {
     <main>
       
       <section className="flex flex-col justify-start px-5 overflow-hidden">
-        <p className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl mt-10">
+        <p className="text-center text-2xl font-bold text-red-600 sm:text-3xl mt-10">
         Promotion
         </p>
         <Link
           href={"/admin/addimageslide"}
-          className="btn btn-accent  mx-auto mt-10 mb-5 shadow-md max-w-[15rem] w-full border-2 border-b-green-400"
+          className="btn bg-indigo-600 border-0 text-white hover:text-black duration-300 mx-auto mt-10 mb-5 shadow-md max-w-[15rem] w-full"
         >
           เพิ่ม Promotion
         </Link>

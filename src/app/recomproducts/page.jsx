@@ -67,7 +67,7 @@ const RecommendProducts = () => {
       <Header />
       <Navbar />
       <section
-        className={`w-full max-w-screen-xl flex flex-col items-center justify-center mx-auto`}
+        className={`w-full max-w-screen-xl flex flex-col items-center justify-center mx-auto flex-grow`}
       >
         {" "}
         <hr className=" w-1/2 mx-auto" />
@@ -163,7 +163,7 @@ const RecommendProducts = () => {
                           id={`my_modal_${item._id}`}
                           className="modal m-auto"
                         >
-                          <div className="modal-box p-0 relative overflow-hidden flex">
+                          <div className="modal-box p-0 relative max-w-screen-lg overflow-hidden flex">
                             <ProductCard data={item} />
                           </div>
                         </dialog>

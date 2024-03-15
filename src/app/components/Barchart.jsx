@@ -4,7 +4,7 @@ import { Chart, CategoryScale, LinearScale, Title, BarElement } from "chart.js";
 
 const Barchart = ({ data }) => {
   Chart.register(CategoryScale, LinearScale, Title, BarElement);
-  const name = data.map((item) => item.name); // เลือกข้อมูล name เพื่อทำเป็น labels
+  const labels = data.map((item) => `${item.name} (${item.countView})`); // รวม labels และ countViews เข้าด้วยกัน
   const countViews = data.map((item) => item.countView); // เลือกข้อมูล countView มาใช้ใน datasets
   //console.log(data);
   //console.log(labels);
@@ -12,13 +12,13 @@ const Barchart = ({ data }) => {
 
   return (
     <div className="bg-white p-5 rounded-2xl shadow-md grid grid-cols-1">
-        <h3 className="text-sm md:text-lg font-semibold my-5 text-center">ยอดอ่านบทความ</h3>
+      <h3 className="text-sm md:text-lg font-semibold my-5 text-center">ยอดอ่านบทความ</h3>
       <Bar
         data={{
-          labels: name,
+          labels: labels,
           datasets: [
             {
-              label: "My First Dataset",
+              label: "บทความ",
               data: countViews,
               backgroundColor: [
                 "rgba(251,62,46, 0.2)",

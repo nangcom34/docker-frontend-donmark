@@ -118,8 +118,8 @@ const Header = () => {
             <Link
               href={"/about#sale"}
               className={`text-xs md:text-sm lg:text-md  hover:text-[#ED2024] hover:bg-white focus:text-[#ED2024] focus:bg-white ${pathname === "/about#sale"
-                  ? "text-[#ED2024] bg-white"
-                  : "text-white"
+                ? "text-[#ED2024] bg-white"
+                : "text-white"
                 }`}
             >
               ตัวแทนจำหน่าย
@@ -207,60 +207,54 @@ const Header = () => {
         </aside>
       </article>
       {isVisible && (
-        <section>
-          <button
-            className="btn btn-circle swap swap-rotatee bg-white z-10 fixed bottom-[15rem] right-10 w-14 h-14 text-red-600 border-red-600 max-sm:hidden"
-            onClick={toggleValue}
+        <section className="opacity-70 hover:opacity-100">
+
+          <label
+            className="btn btn-circle swap swap-rotate bg-white z-10 fixed bottom-[15rem] right-10 w-14 h-14 text-red-500 border-red-600 max-sm:hidden"
           >
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" defaultChecked={value} onChange={toggleValue} />
 
             {/* chat icon */}
-
             <svg
+              className="swap-off fill-current"
               id="Capa_1"
-              style={{ enableBackground: "new 0 0 58 58" }}
+              style={{ enableBackground: 'new 0 0 58 58' }}
               version="1.1"
               viewBox="0 0 58 58"
+              xmlSpace="preserve"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
-              className="swap-off fill-current"
             >
               <g>
                 <path
-                  d="M25,9.586C11.193,9.586,0,19.621,0,32c0,4.562,1.524,8.803,4.135,12.343C3.792,48.433,2.805,54.194,0,57c0,0,8.47-1.191,14.273-4.651c0.006-0.004,0.009-0.01,0.014-0.013c1.794-1.106,3.809-2.397,4.302-2.783c0.301-0.417,0.879-0.543,1.328-0.271c0.298,0.181,0.487,0.512,0.488,0.86c0.003,0.582-0.008,0.744-3.651,3.018c2.582,0.81,5.355,1.254,8.245,1.254c13.807,0,25-10.035,25-22.414S38.807,9.586,25,9.586z"
-                  style={{ fill: "#0391FD" }}
+                  d="M48,19.929v21.141C48,43.793,45.793,46,43.071,46H22L12,57V46H4.929C2.207,46,0,43.793,0,41.071   l0-21.141C0,17.207,2.207,15,4.929,15h38.141C45.793,15,48,17.207,48,19.929z"
+                  style={{ fill: '#0391FD' }}
                 />
                 <path
-                  d="M58,23.414C58,11.035,46.807,1,33,1c-9.97,0-18.575,5.234-22.589,12.804C14.518,11.153,19.553,9.586,25,9.586c13.807,0,25,10.035,25,22.414c0,4.735-1.642,9.124-4.437,12.743C51.162,47.448,58,48.414,58,48.414c-2.805-2.805-3.792-8.566-4.135-12.657C56.476,32.217,58,27.976,58,23.414z"
-                  style={{ fill: "#0F71D3" }}
+                  d="M53.071,1H14.929C12.207,1,10,3.207,10,5.93V15h33.071C45.793,15,48,17.207,48,19.93V32h5.071   C55.793,32,58,29.793,58,27.07V5.93C58,3.207,55.793,1,53.071,1z"
+                  style={{ fill: '#0F71D3' }}
                 />
                 <path
-                  d="M32.5,26h-14c-0.552,0-1-0.447-1-1s0.448-1,1-1h14c-0.552,0-1-0.447-1-1s0.448-1,1-1z"
-                  style={{ fill: "#FFFFFF" }}
+                  d="M25,26.015H11c-0.553,0-1-0.448-1-1s0.447-1,1-1h14c0.553,0,1,0.448,1,1S25.553,26.015,25,26.015z"
+                  style={{ fill: '#FFFFFF' }}
                 />
                 <path
-                  d="M38,33H13c-0.552,0-1-0.447-1-1s0.448-1,1-1h25c-0.552,0-1-0.447-1-1s0.448-1,1-1z"
-                  style={{ fill: "#FFFFFF" }}
+                  d="M38,32.015H11c-0.553,0-1-0.448-1-1s0.447-1,1-1h27c0.553,0,1,0.448,1,1S38.553,32.015,38,32.015z"
+                  style={{ fill: '#FFFFFF' }}
                 />
                 <path
-                  d="M38,40H13c-0.552,0-1-0.447-1-1s0.448-1,1-1h25c-0.552,0-1-0.447-1-1s0.448-1,1-1z"
-                  style={{ fill: "#FFFFFF" }}
+                  d="M38,38.015H11c-0.553,0-1-0.448-1-1s0.447-1,1-1h27c0.553,0,1,0.448,1,1S38.553,38.015,38,38.015z"
+                  style={{ fill: '#FFFFFF' }}
                 />
               </g>
             </svg>
+            
+
 
             {/* close icon */}
-            <svg
-              className="swap-on fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 512 512"
-            >
-              <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-            </svg>
-          </button>
+            <svg className="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" /></svg>
+          </label>
           <Link
             href={"https://page.line.me/donmark"}
             target="_black"
@@ -272,12 +266,12 @@ const Header = () => {
               width={100}
               height={100}
               className={` ${value === true
-                  ? "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-10 w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 object-fill"
-                  : "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-[1.5rem] w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 translate-x-80 object-fill"
+                ? "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-10 w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 object-fill"
+                : "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-[1.5rem] w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 translate-x-80 object-fill"
                 }   
               
               `}
-              loading= "lazy"
+              loading="lazy"
             />
           </Link>
         </section>
