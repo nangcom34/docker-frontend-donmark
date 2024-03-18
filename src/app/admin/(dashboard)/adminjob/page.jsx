@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URL, URL_IMAGES } from "../../../../../config/constants";
@@ -12,9 +11,6 @@ const AdminJob = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     loadData();
   }, []);
 
@@ -118,11 +114,9 @@ const AdminJob = () => {
                   }}
                   className="w-[30%] max-md:hidden flex items-center justify-center mx-5 cursor-pointer"
                 >
-                  <Image
+                  <img
                     src={`/images/job.png`}
                     alt={item.name}
-                    width={188}
-                    height={188}
                     className="w-full object-fill"
                     loading= "lazy"
                   />

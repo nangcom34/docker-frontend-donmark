@@ -10,7 +10,7 @@ const About = () => {
     <main className="flex flex-col min-h-screen">
       {" "}
       <Header />
-      <Navbar/>
+      <Navbar />
       <main className="flex-grow w-full ">
         <section className="flex items-center justify-center w-full max-w-screen-lg px-5 md:px-20 md:mt-24 md:mb-10 mx-auto mt-16">
           <ul>
@@ -32,15 +32,11 @@ const About = () => {
 
         <section className="flex flex-col items-center justify-center">
           <aside className="w-full max-w-screen-md px-8 my-5">
-            <Image
+            <img
               src="/images/about1.png"
               alt="about"
-              width={802}
-              height={356}
               className="w-full h-full object-fill object-center"
-              style={{
-                loading: "lazy",
-              }}
+              loading="lazy"
             />
           </aside>
           <aside className="w-full max-w-screen-lg px-4 mt-16">
@@ -59,41 +55,36 @@ const About = () => {
         <section className="grid grid-cols-10 w-full max-w-screen-lg mx-auto px-5 my-10">
           <aside className="col-span-10 sm:col-span-7 w-full">
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/about.png"
                 alt="about"
-                width={50}
-                height={50}
                 className="w-10 h-10 object-fill object-center"
-                style={{
-                  loading: "lazy",
-                }}
+                loading="lazy"
+
               />
               <p className="text-sm md:text-md lg:text-lg ">
                 มี QC ตรวจสอบคุณภาพสินค้า ทุกขั้นตอน ก่อนออกจากโรงงาน
               </p>
             </div>
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/about.png"
                 alt="about"
-                width={50}
-                height={50}
+
                 className="w-10 h-10 object-fill object-center"
-                style={{
-                  loading: "lazy",
-                }}
+
+                  loading= "lazy"
+
               />
               <p className="text-sm md:text-md lg:text-lg ">
                 ทดสอบคุณภาพคุณภาพสินค้าสมบูรณ์ 100%
               </p>
             </div>
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/about.png"
                 alt="about"
-                width={50}
-                height={50}
+
                 className="w-10 h-10 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -104,11 +95,10 @@ const About = () => {
               </p>
             </div>
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/about.png"
                 alt="about"
-                width={50}
-                height={50}
+
                 className="w-10 h-10 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -121,15 +111,12 @@ const About = () => {
           </aside>
           <aside className="col-span-10 sm:col-span-3 w-full flex items-center">
             {" "}
-            <Image
+            <img
               src="/images/about2.png"
               alt="about"
-              width={576}
-              height={356}
+
               className="w-auto h-auto object-fill object-center"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </aside>
         </section>
@@ -178,11 +165,10 @@ const About = () => {
               คุณเบียร์
             </h3>
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/call.png"
                 alt="call"
-                width={36}
-                height={36}
+
                 className="w-8 h-8 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -191,11 +177,10 @@ const About = () => {
               <p className="text-sm md:text-md lg:text-lg ml-5">0928205577</p>
             </div>{" "}
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/line.png"
                 alt="line"
-                width={36}
-                height={36}
+
                 className="w-8 h-8 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -204,11 +189,9 @@ const About = () => {
               <p className="text-sm md:text-md lg:text-lg ml-5">0928205577</p>
             </div>
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/mail.png"
                 alt="mail"
-                width={36}
-                height={36}
                 className="w-8 h-8 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -225,11 +208,9 @@ const About = () => {
               คุณเจน
             </h3>
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/call.png"
                 alt="call"
-                width={36}
-                height={36}
                 className="w-8 h-8 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -238,11 +219,9 @@ const About = () => {
               <p className="text-sm md:text-md lg:text-lg ml-5">0632161358</p>
             </div>{" "}
             <div className="flex items-center justify-start w-full ">
-              <Image
+              <img
                 src="/images/line.png"
                 alt="line"
-                width={36}
-                height={36}
                 className="w-8 h-8 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -253,11 +232,9 @@ const About = () => {
               </p>
             </div>
             <div className="flex items-center justify-start w-full">
-              <Image
+              <img
                 src="/images/mail.png"
                 alt="mail"
-                width={36}
-                height={36}
                 className="w-8 h-8 object-fill object-center"
                 style={{
                   loading: "lazy",
@@ -273,41 +250,29 @@ const About = () => {
         <section className="grid grid-cols-3 gap-5 md:gap-10 items-center content-center justify-center w-full max-w-screen-2xl mx-auto px-5 lg:px-[15rem] my-10">
           <article className="flex items-center justify-center w-full max-w-[200px] shadow-lg overflow-hidden mx-auto rounded-lg">
             {" "}
-            <Image
+            <img
               src="/images/Donmark.jpg"
               alt="donmark"
-              width={560}
-              height={64}
               className="w-auto h-auto"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
           <article className=" flex items-center justify-center w-full max-w-[200px] shadow-lg overflow-hidden mx-auto rounded-lg">
             {" "}
-            <Image
+            <img
               src="/images/DMG.png"
               alt="dmg"
-              width={360}
-              height={200}
               className="w-auto h-auto"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
           <article className=" flex items-center justify-center w-full max-w-[200px] shadow-lg overflow-hidden mx-auto rounded-lg">
             {" "}
-            <Image
+            <img
               src="/images/Fenix.png"
               alt="fenix"
-              width={346}
-              height={88}
               className="w-auto h-auto"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
         </section>
@@ -324,94 +289,66 @@ const About = () => {
         <section className="grid grid-cols-3 md:grid-cols-6 gap-5 lg:gap-20 w-full mx-auto px-5 lg:px-[15rem] my-10 max-w-screen-xl">
           <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
-            <Image
+            <img
               src="/images/HP.png"
               alt="HP"
-              width={500}
-              height={500}
               className="w-[500px] h-auto "
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
           <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
-            <Image
+            <img
               src="/images/SCG.png"
               alt="scg"
-              width={500}
-              height={500}
               className="w-[500px] h-auto "
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
           <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
-            <Image
+            <img
               src="/images/DH.png"
               alt="dohome"
-              width={500}
-              height={500}
               className="w-[500px] h-auto"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
           <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
-            <Image
+            <img
               src="/images/MH.png"
               alt="megahome"
-              width={500}
-              height={500}
               className="w-[500px] h-auto"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
           <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
-            <Image
+            <img
               src="/images/GB.png"
               alt="gobal"
-              width={500}
-              height={500}
               className="w-[500px] h-auto"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
           <article className="col-span-1 flex items-center justify-center w-[100px] shadow-sm shadow-slate-600 rounded-xl max-w-[100px] mx-auto">
             {" "}
-            <Image
+            <img
               src="/images/HS.png"
               alt="sukkapan"
-              width={500}
-              height={500}
               className="w-[500px] h-auto"
-              style={{
-                loading: "lazy",
-              }}
+              loading= "lazy"
             />
           </article>
         </section>
-        
+
         <section className="grid grid-cols-1 px-5 mx-auto max-w-screen-lg my-10">
-          <Image
+          <img
             src="/images/map.png"
             alt="map"
-            width={1024}
-            height={500}
             className="w-full h-auto"
-            style={{
-              loading: "lazy",
-            }}
+            loading= "lazy"
           />
         </section>
       </main>

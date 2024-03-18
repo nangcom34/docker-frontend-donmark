@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
@@ -44,19 +43,15 @@ const Navbar = () => {
           <div
             className={`w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative `}
           >
-            <Image
+            <img
               src={`/images/homepage2.png`}
               alt="homepage2"
-              width={400}
-              height={400}
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
               loading="lazy"
             />
-            <Image
+            <img
               src={`/images/homepage.png`}
               alt="homepage"
-              width={400}
-              height={400}
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
               loading="lazy"
             />
@@ -73,19 +68,16 @@ const Navbar = () => {
           <div
             className={`w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative `}
           >
-            <Image
+            <img
               src={`/images/sale2.png`}
               alt="sale2"
-              width={400}
-              height={400}
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
               loading="lazy"
             />
-            <Image
+            <img
               src={`/images/sale.png`}
               alt="sale"
-              width={400}
-              height={400}
+              
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
               loading="lazy"
             />
@@ -106,19 +98,17 @@ const Navbar = () => {
             id="icon"
             className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
           >
-            <Image
+            <img
               src={`/images/new2.png`}
               alt="new2"
-              width={400}
-              height={400}
+              
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
               loading="lazy"
             />
-            <Image
+            <img
               src={`/images/new.png`}
               alt="new"
-              width={400}
-              height={400}
+              
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
               loading="lazy"
             />
@@ -139,19 +129,17 @@ const Navbar = () => {
             id="icon"
             className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
           >
-            <Image
+            <img
               src={`/images/recom2.png`}
               alt="recom2"
-              width={400}
-              height={400}
+              
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
               loading="lazy"
             />
-            <Image
+            <img
               src={`/images/recom.png`}
               alt="recom"
-              width={400}
-              height={400}
+              
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
               loading="lazy"
             />
@@ -172,19 +160,17 @@ const Navbar = () => {
             id="icon"
             className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
           >
-            <Image
+            <img
               src={`/images/all2.png`}
               alt="all2"
-              width={400}
-              height={400}
+              
               className="absolute inset-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-0 duration-[800ms]"
               loading="lazy"
             />
-            <Image
+            <img
               src={`/images/all.png`}
               alt="all"
-              width={400}
-              height={400}
+              
               className="absolute inset-0 opacity-0 w-full h-auto object-fill object-center rounded-2xl group-hover:opacity-100 duration-[800ms]"
               loading="lazy"
             />

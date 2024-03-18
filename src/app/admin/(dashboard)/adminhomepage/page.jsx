@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URL, URL_IMAGES } from "../../../../../config/constants";
@@ -11,9 +10,6 @@ const AdminHomepage = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     loadData();
   }, []);
 
@@ -130,11 +126,9 @@ const AdminHomepage = () => {
                   <tr key={item._id}>
                     <td className="whitespace-nowrap text-center px-4 py-2 font-medium text-gray-900">
                       <div className="w-16 max-h-9 md:w-24 md:max-h-14 rounded mx-auto overflow-hidden">
-                        <Image
+                        <img
                           src={`${URL_IMAGES}${item.file}`}
                           alt={item.name}
-                          width={100}
-                          height={100}
                           className="w-full h-auto object-cover object-center"
                           loading= "lazy"
                         />

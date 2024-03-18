@@ -63,11 +63,9 @@ const Slide = () => {
             imageSlide.map((imageSlideItem) => (
               <SwiperSlide key={imageSlideItem._id}>
                 <Link href={imageSlideItem.urlname} target="_blank">
-                  <Image
+                  <img
                     src={`${URL_IMAGES}${imageSlideItem.file}`}
                     alt={imageSlideItem._id}
-                    width={1280}
-                    height={640}
                     className="mx-auto object-fit"
                     loading= "lazy"
                   />

@@ -2,7 +2,6 @@
 import { Noto_Sans_Thai } from "next/font/google";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
@@ -20,6 +19,9 @@ export default function Layout({ children }) {
 
 
   useEffect(() => {
+    if (!localStorage.donmarktoken) {
+      router.push("/login");
+    }
     // สร้าง setTimeout เพื่อเรียก handleLogout หลังจาก 3 ชั่วโมง
     const timeout = setTimeout(() => {
       handleLogout();
@@ -45,10 +47,10 @@ export default function Layout({ children }) {
         <title>Donmark || Admin</title>
       </head>
       <body className={notosansthai.className}>
-        <div className="flex h-screen overflow-auto">
+        <div className="flex h-screen overflow-hidden">
           {/* Sidebar */}
           <aside
-            className={`fixed inset-y-0 z-10 flex flex-col w-64 max-h-screen overflow-hidden transition-all transform bg-white border-r shadow-lg lg:z-auto lg:static lg:shadow-none ${isSidebarOpen ? '' : '-translate-x-full lg:translate-x-0 lg:w-20'
+            className={`fixed inset-y-0 z-10 flex flex-col w-64 h-full overflow-hidden transition-all transform bg-white border-r shadow-lg lg:z-auto lg:static lg:shadow-none ${isSidebarOpen ? '' : '-translate-x-full lg:translate-x-0 lg:w-20'
               }`}
 
           >
@@ -57,11 +59,9 @@ export default function Layout({ children }) {
             <header className={`flex flex-col items-center justify-center p-2 `}>
               <aside className={`${!isSidebarOpen ? 'lg:hidden' : 'avatar w-full mx-auto px-16 lg:px-12 mt-2'}`}>
                 <div className="w-full rounded-full ring ring-red-600   ">
-                  <Image
+                  <img
                     src={`/images/logo.png`}
                     alt="donmark"
-                    width={300}
-                    height={300}
                     className="w-full h-auto object-fill object-center p-3"
                     loading='lazy'
                   />
@@ -70,11 +70,9 @@ export default function Layout({ children }) {
 
               <span className="p-2 text-xl font-semibold leading-8 tracking-wider uppercase whitespace-nowrap">
                 <div className={`${isSidebarOpen ? 'hidden' : 'w-full rounded-full  '}`}>
-                  <Image
+                  <img
                     src={`/images/logo.png`}
                     alt="donmark"
-                    width={300}
-                    height={300}
                     className="w-full h-auto object-fill object-center p-3"
                     loading='lazy'
                   />
@@ -413,7 +411,7 @@ export default function Layout({ children }) {
 
 
           {/* Header */}
-          <aside className="flex flex-col flex-1 h-full overflow-hidden">
+          <aside className="flex flex-col flex-1 min-h-full overflow-hidden">
             {/* Navbar */}
             <header className="flex-shrink-0 border-b">
               <div className="flex items-center justify-between p-2">
@@ -485,7 +483,6 @@ export default function Layout({ children }) {
               {children}
             </main>
           </aside>
-
         </div>
       </body>
     </html>

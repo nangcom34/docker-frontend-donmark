@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
-
 import axios from "axios";
 import { API_URL, URL_IMAGES } from "../../config/constants";
 import Header from "./layouts/Header";
@@ -87,11 +85,9 @@ export default function Home() {
           <span className="loading loading-ring loading-md"></span>
           <span className="loading loading-ring loading-sm"></span>
         </aside>
-        <Image
+        <img
           src={`/images/logo.png`}
           alt="logo"
-          width={100}
-          height={100}
           className="w-[100px] object-cover"
           loading= "lazy"
         />
@@ -109,11 +105,9 @@ export default function Home() {
             key={index}
             className="flex flex-col items-center justify-center w-full max-w-screen-xl mx-auto mb-20 px-3"
           >
-            <Image
+            <img
               src={`${URL_IMAGES}${homepageTopItem.file}`}
-              alt={homepageTopItem._id}
-              width={1280}
-              height={768}
+              alt={homepageTopItem.file}
               className="w-full object-fill object-center"
               priority={true}
             />
@@ -146,11 +140,9 @@ export default function Home() {
                     className="w-[250px] h-[310px] hover:scale-105 duration-300 flex flex-col items-center justify-center cursor-pointer"
                   >
                     <aside className="w-[200px]">
-                      <Image
+                      <img
                         src={`${URL_IMAGES}${item.file}`}
-                        alt="home"
-                        width={200}
-                        height={200}
+                        alt={item.file}
                         className="w-[200px] h-[200px] object-cover object-center shadow-md align-middle"
                         loading= "lazy"
                       />

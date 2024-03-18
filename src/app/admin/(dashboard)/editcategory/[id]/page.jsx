@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
@@ -14,9 +12,6 @@ const EditCategory = ({ params }) => {
   });
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     axios
       .get(API_URL + "/category/" + params.id)
       .then((res) => {

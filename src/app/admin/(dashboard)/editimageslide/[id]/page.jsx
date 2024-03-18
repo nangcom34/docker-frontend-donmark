@@ -15,9 +15,6 @@ const EditImageSlide = ({ params }) => {
   const [fileOld, setFileOld] = useState();
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     axios
       .get(API_URL + "/imageSlide/" + params.id)
       .then((res) => {

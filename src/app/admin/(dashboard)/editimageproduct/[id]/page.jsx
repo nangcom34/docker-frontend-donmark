@@ -14,9 +14,6 @@ const EditImageProduct = ({ params }) => {
   const [fileOld, setFileOld] = useState();
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     axios
       .get(API_URL + "/imageProduct/" + params.id)
       .then((res) => {

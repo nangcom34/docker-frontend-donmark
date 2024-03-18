@@ -11,9 +11,6 @@ const AdminQuestion = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     loadData();
   }, []);
 

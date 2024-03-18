@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URL, URL_IMAGES } from "../../../../../config/constants";
@@ -10,9 +9,6 @@ const AdminImageSlide = () => {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     loadData();
   }, []);
 
@@ -85,12 +81,10 @@ const AdminImageSlide = () => {
                 className="mx-auto max-w-[300px] w-full flex flex-col items-center justify-between shadow-lg shadow-slate-400 rounded-2xl my-2 bg-slate-100"
               >
                 <div className="w-full flex items-center justify-center max-h-[300px] rounded-2xl mx-auto overflow-hidden ">
-                  <Image
+                  <img
                     src={`${URL_IMAGES}${item.file}`}
                     alt={item._id}
                     layout="responsive"
-                    width={300}
-                    height={400}
                     className="w-full h-auto object-cover object-center"
                     loading= "lazy"
                   />

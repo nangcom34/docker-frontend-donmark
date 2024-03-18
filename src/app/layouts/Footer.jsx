@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import { API_URL, URL_IMAGES } from "../../../config/constants";
@@ -84,7 +83,6 @@ const Footer = () => {
                   <span key={item._id}>
                     <Link
                       href={`${URL_IMAGES}${item.file}`}
-                      download
                       className="text-white text-xs md:text-sm lg:text-lg text-center hover:underline whitespace-normal"
                     >
                       (ดาวน์โหลด PDF)
@@ -120,11 +118,9 @@ const Footer = () => {
           </aside>
           <aside className="col-span-4 md:col-span-1 flex flex-col items-center justify-center">
             <article className="flex flex-col items-center justify-center">
-              <Image
+              <img
                 src={`/images/qr.png`}
                 alt="qr"
-                width={300}
-                height={300}
                 className="w-24 h-auto object-fill object-center rounded-md mb-1"
                 loading="lazy"
               />

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { API_URL } from "../../../config/constants";
@@ -65,11 +64,9 @@ const LoginPage = () => {
             action=""
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
           >
-             <Image
+             <img
             src={`/images/donmark.png`}
             alt="donmark"
-            width={1920}
-            height={1080}
             className="w-full h-auto object-fill object-center"
             loading= "lazy"
           />

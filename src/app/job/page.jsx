@@ -36,11 +36,9 @@ const Job = () => {
       <Header />
       <Navbar />
       <section className="flex items-center justify-center w-full max-w-screen-xl mx-auto mb-20">
-        <Image
+        <img
           src={`/images/jobtop.png`}
           alt="jobtop"
-          width={1280}
-          height={768}
           className="w-full h-auto object-cover object-center"
           loading="lazy"
         />
@@ -57,11 +55,9 @@ const Job = () => {
           <span className="loading loading-ring loading-md"></span>
           <span className="loading loading-ring loading-sm"></span>
         </aside>
-        <Image
+        <img
           src={`/images/logo.png`}
           alt="logo"
-          width={100}
-          height={100}
           className="w-[100px] object-cover"
           loading="lazy"
         />
@@ -84,11 +80,9 @@ const Job = () => {
           >
             <div className="w-full px-10 max-w-screen-lg h-auto relative rounded-[10px] border border-red-600 flex items-center justify-start overflow-auto py-5 bg-white">
               <div className="w-[30%] max-sm:hidden flex items-center justify-center mx-5 cursor-pointer">
-                <Image
+                <img
                   src={`/images/job.png`}
                   alt={item.name}
-                  width={188}
-                  height={188}
                   className="w-full object-fill"
                   loading="lazy"
                 />

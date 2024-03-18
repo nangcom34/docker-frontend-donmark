@@ -30,9 +30,6 @@ const EditJob = ({ params }) => {
   });
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     axios
       .get(API_URL + "/job/" + params.id)
       .then((res) => {

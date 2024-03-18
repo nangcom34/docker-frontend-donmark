@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Search from "../components/Search";
 import { usePathname } from "next/navigation";
 import axios from "axios";
@@ -260,11 +259,9 @@ const Header = () => {
             target="_black"
             className=" duration-500"
           >
-            <Image
+            <img
               src={`/images/line2.png`}
               alt="line"
-              width={100}
-              height={100}
               className={` ${value === true
                 ? "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-10 w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 object-fill"
                 : "rounded-full shadow-lg flex items-center justify-center fixed bottom-[20rem] right-[1.5rem] w-14 h-14 z-10 object-center text-white align-middle bg-red-600 hover:scale-105 duration-500 translate-x-80 object-fill"

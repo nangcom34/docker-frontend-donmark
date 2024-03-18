@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URL, URL_IMAGES } from "../../../../../config/constants";
@@ -13,9 +12,6 @@ const AdminAllProduct = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     loadData();
     loadCategory();
   }, []);
@@ -132,7 +128,7 @@ const AdminAllProduct = () => {
   ));
 
   return (
-    <main>
+    <main className="min-h-full bg-gray-50/50">
       <section className="pt-10">
         {" "}
         <p className="text-2xl font-bold w-full px-10 text-red-600">รายการสินค้าทั้งหมด</p>
@@ -193,12 +189,10 @@ const AdminAllProduct = () => {
                   <tr key={item._id}>
                     <td className="whitespace-nowrap text-center px-4 py-2 font-medium text-gray-900">
                       <div className="w-16 max-h-9 md:w-24 md:max-h-14 rounded mx-auto overflow-hidden">
-                        <Image
+                        <img
                           src={`${URL_IMAGES}${item.file}`}
                           alt={item.name}
-                          width={100}
-                          height={100}
-                          className="w-full h-auto object-cover object-center"
+                          className="w-auto h-auto object-cover object-center"
                           loading= "lazy"
                         />
                       </div>

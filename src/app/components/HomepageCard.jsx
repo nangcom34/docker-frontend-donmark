@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { URL_IMAGES } from "../../../config/constants";
 
 const HomepageCard = ({ data }) => {
@@ -8,11 +7,9 @@ const HomepageCard = ({ data }) => {
   return (
     <section className="w-full max-h-full flex flex-col overflow-hidden">
       <div className="w-full flex items-center justify-center rounded-2xl">
-        <Image
+        <img
           src={`${URL_IMAGES}${data.file}`}
           alt={data.name}
-          width={1024}
-          height={768}
           className="w-auto h-auto max-h-[45vh] object-cover object-center rounded-2xl shadow-md shadow-slate-400 sm:mt-5 md:mt-10"
           loading= "lazy"
         />

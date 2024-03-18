@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 const JobCard = ({ data }) => {
@@ -177,11 +176,9 @@ const JobCard = ({ data }) => {
             <div className="col-span-2 md:col-span-5 xl:col-span-8 flex items-center justify-center md:justify-start gap-4">
               <Link href={"https://page.line.me/donmark"} target="_black">
                 {" "}
-                <Image
+                <img
                   src={`/images/line.png`}
                   alt="line"
-                  width={30}
-                  height={30}
                   className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
                   loading="lazy"
                 />
@@ -191,11 +188,9 @@ const JobCard = ({ data }) => {
                 target="_black"
               >
                 {" "}
-                <Image
+                <img
                   src={`/images/fb.png`}
                   alt="fb"
-                  width={30}
-                  height={30}
                   className="w-[30px] h-[30px] object-cover object-center hover:scale-110 duration-300"
                   loading="lazy"
                 />

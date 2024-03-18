@@ -18,10 +18,7 @@ const Admin = () => {
   const [job, setJob] = useState([]);
   const [catalog, setCatalog] = useState([]);
   useEffect(() => {
-    // ตรวจสอบว่ามีโทเคนหรือไม่
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
+
     loadProduct();
     loadCategory();
     loadImages();
@@ -213,49 +210,10 @@ const Admin = () => {
 
   return (
     <>
-      <main className="min-h-screen bg-gray-50/50">
+      <main className="min-h-full bg-gray-50/50">
         <section className="pt-10 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5">
           {" "}
           <p className="text-2xl font-bold px-10 lg:col-span-2">Dashboard</p>
-          {catalog && catalog.map((item) => (
-            <div
-              key={item._id}
-              className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
-            >
-              <div className="p-4 text-center">
-                <p className="block antialiased text-lg font-semibold leading-normal">
-                  E-Catalog
-                </p>
-              </div>
-              <div className="border-t  p-4">
-                <Link
-                  href={`${URL_IMAGES}${item.file}`}
-                  download
-                  className="block antialiased text-base leading-relaxed font-normal hover:text-red-600"
-                >
-                  {item.file}
-                </Link>
-
-              </div>
-              <div className="border-t  p-4 grid grid-cols-col lg:grid-cols-2">
-                <p className="block antialiased  text-base leading-relaxed font-normal ">
-
-                  &nbsp;อัพเดทเมื่อ {" "}
-                  <strong className="text-green-500">
-                    {DateTime.fromISO(item.updatedAt)
-                      .setZone("Asia/Bangkok")
-                      .toRelative({ locale: "th" })}
-                  </strong>
-                </p>
-                <div className="flex items-center justify-center lg:justify-end"><Link
-                  href={`/admin/editcatalog/${item._id}`}
-                  className="btn btn-outline btn-primary btn-sm m-1"
-                >
-                  แก้ไข
-                </Link></div>
-              </div>
-            </div>
-          ))}
         </section>
         <section className="p-4">
           <article className="mt-12">
@@ -681,8 +639,7 @@ const Admin = () => {
                 </div>
               </div>
             </aside>
-
-            <aside className="mb-12 grid grid-cols-1 gap-6 xl:grid-cols-3">
+            <aside className="mb-12 grid grid-cols-1 gap-6 xl:grid-cols-2">
 
               <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md col-span-1">
                 <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-yellow-600 to-yellow-400 text-white shadow-yellow-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
@@ -733,7 +690,51 @@ const Admin = () => {
                   </p>
                 </div>
               </div>
-              <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+              {catalog && catalog.map((item) => (
+                <div
+                  key={item._id}
+                  className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md col-span-1"
+                >
+                  <div className="p-4 text-center">
+                    <p className="block antialiased text-lg font-semibold leading-normal">
+                      E-Catalog
+                    </p>
+                  </div>
+                  <div className="border-t  p-4 flex-grow flex items-center justify-center">
+                    <Link
+                      href={`${URL_IMAGES}${item.file}`}
+                      className="block antialiased text-base leading-relaxed font-normal hover:text-red-600"
+                    >
+                      {item.file}
+                    </Link>
+
+                  </div>
+                  <div className="border-t  p-4 grid grid-cols-col lg:grid-cols-2">
+                    <p className="block antialiased  text-base leading-relaxed font-normal ">
+
+                      &nbsp;อัพเดทเมื่อ {" "}
+                      <strong className="text-green-500">
+                        {DateTime.fromISO(item.updatedAt)
+                          .setZone("Asia/Bangkok")
+                          .toRelative({ locale: "th" })}
+                      </strong>
+                    </p>
+                    <div className="flex items-center justify-center lg:justify-end"><Link
+                      href={`/admin/editcatalog/${item._id}`}
+                      className="btn btn-outline btn-primary btn-sm m-1"
+                    >
+                      แก้ไข
+                    </Link></div>
+                  </div>
+                </div>
+              ))}
+
+
+            </aside>
+            <aside className="mb-12 grid grid-cols-1 gap-6">
+
+
+              <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden">
                 <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
                   <div>
                     <h6 className="block antialiased tracking-normal  text-base font-semibold leading-relaxed text-blue-gray-900 mb-1">

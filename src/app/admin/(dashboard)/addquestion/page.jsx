@@ -1,7 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React, {  useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
@@ -11,11 +9,6 @@ const AddQuestion = () => {
     const router = useRouter();
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
-    useEffect(() => {
-        if (!localStorage.donmarktoken) {
-            router.push("/login");
-        }
-    }, []);
     const handleSubmit = async (e) => {
         //console.log(name);
         e.preventDefault();

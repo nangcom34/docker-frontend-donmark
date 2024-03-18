@@ -15,9 +15,7 @@ const EditHomepage = ({ params }) => {
   const [fileOld, setFileOld] = useState();
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
+
     axios
       .get(API_URL + "/homepage/" + params.id)
       .then((res) => {

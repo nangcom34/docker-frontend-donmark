@@ -19,9 +19,6 @@ const EditProduct = ({ params }) => {
   const [fileOld, setFileOld] = useState();
 
   useEffect(() => {
-    if (!localStorage.donmarktoken) {
-      router.push("/login");
-    }
     loadCategory()
     axios
       .get(API_URL + "/product/" + params.id)

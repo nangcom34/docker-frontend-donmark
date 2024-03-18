@@ -47,11 +47,9 @@ export default function Home() {
           <span className="loading loading-ring loading-md"></span>
           <span className="loading loading-ring loading-sm"></span>
         </aside>
-        <Image
+        <img
           src={`/images/logo.png`}
           alt="logo"
-          width={100}
-          height={100}
           className="w-[100px] object-cover"
           loading="lazy"
         />
@@ -70,11 +68,9 @@ export default function Home() {
             className=" flex-grow flex items-center justify-center w-full max-w-screen-xl mx-auto"
           >
             {" "}
-            <Image
+            <img
               src={`${URL_IMAGES}${imageProductItem.file}`}
               alt={imageProductItem._id}
-              width={1280}
-              height={1280}
               className="w-full h-auto object-fill object-center"
               style={{
                 loading: "lazy",

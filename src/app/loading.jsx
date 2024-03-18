@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
 
@@ -16,11 +15,9 @@ const Loading = () => {
           <span className="loading loading-ring loading-md"></span>
           <span className="loading loading-ring loading-sm"></span>
         </aside>
-        <Image
+        <img
           src={`/images/logo.png`}
           alt="logo"
-          width={100}
-          height={100}
           className="w-[100px] object-cover"
           loading= "lazy"
         />
