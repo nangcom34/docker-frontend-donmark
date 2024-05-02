@@ -212,96 +212,86 @@ const AdminCategory = () => {
         </div>
 
         <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-
-
           {category &&
-            category
-              .filter((categoryItem) =>
-                subCategory && subCategory.some(
-                  (subCategoryItem) => subCategoryItem.category?._id === categoryItem._id
-                )
-              )
-              .map((categoryItem) => (
-                <article
-                  key={categoryItem._id}
-                  className="mx-auto w-full flex flex-col items-center shadow-lg shadow-slate-400 rounded-lg mb-2 bg-white py-5"
-                >
-                  <aside className="flex items-center justify-between w-full">
-                    <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center font-bold ml-5 md:ml-10">🌟หมวดหมู่หลัก : {categoryItem.name}</p>
-                    <div className="whitespace-nowrap px-4 py-2">
-                      <Link
-                        href={`/admin/editcategory/${categoryItem._id}`}
-                        className="btn btn-outline btn-primary btn-sm m-1"
-                      >
-                        แก้ไข
-                      </Link>
-                      <button
-                        className="btn btn-outline btn-error btn-sm"
-                        onClick={() => handleDeleteCategory(categoryItem._id)}
-                      >
-                        ลบ
-                      </button>
-                    </div>
-                  </aside>
-                  <ul className="flex flex-col items-start justify-start w-full">
-                    {subCategory &&
-                      subCategory
-                        .filter(
-                          (subCategoryItem) =>
-                            subCategoryItem.category?._id === categoryItem?._id
-                        )
-                        .map((subCategoryItem) => (
-                          <li key={subCategoryItem._id} className="flex flex-col items-start justify-start w-full px-14">
-                            <section className="flex items-center w-full">
-                              <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center whitespace-normal text-gray-600 font-semibold">⭐หมวดหมู่รอง : {subCategoryItem.name}</p>
-                              <div className="whitespace-nowrap px-4 py-2">
-                                <Link
-                                  href={`/admin/editcategory/${subCategoryItem._id}`}
-                                  className="btn btn-outline btn-primary btn-xs m-1"
-                                >
-                                  แก้ไข
-                                </Link>
-                                <button
-                                  className="btn btn-outline btn-error btn-xs"
-                                  onClick={() => handleDeleteSubCategory(subCategoryItem._id)}
-                                >
-                                  ลบ
-                                </button>
-                              </div>
-                            </section>
-                            <section className="flex flex-col items-start justify-start w-full">
-                              {subSubCategory &&
-                                subSubCategory
-                                  .filter((subSubCategoryItem) =>
-                                    subSubCategoryItem.subCategory?._id === subCategoryItem._id
-                                  )
-                                  .map((subSubCategoryItem) => (
-                                    <div key={subSubCategoryItem._id} className="flex flex-col items-start justify-start w-full px-5">
-                                      <section className="flex items-center w-full">
-                                        <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center whitespace-normal text-gray-500 font-medium">⚡หมวดหมู่ย่อย : {subSubCategoryItem.name}</p>
-                                        <div className="whitespace-nowrap px-4 py-2">
-                                          <Link
-                                            href={`/admin/editcategory/${subSubCategoryItem._id}`}
-                                            className="btn btn-outline btn-primary btn-xs m-1"
-                                          >
-                                            แก้ไข
-                                          </Link>
-                                          <button
-                                            className="btn btn-outline btn-error btn-xs"
-                                            onClick={() => handleDeleteSubSubCategory(subSubCategoryItem._id)}
-                                          >
-                                            ลบ
-                                          </button>
-                                        </div>
-                                      </section>
-                                    </div>
-                                  ))}
-                            </section>
-                          </li>
-                        ))}
-                  </ul>
-                </article>
-              ))}
+            category.map((categoryItem) => (
+              <article
+                key={categoryItem._id}
+                className="mx-auto w-full flex flex-col items-center shadow-lg shadow-slate-400 rounded-lg mb-2 bg-white py-5"
+              >
+                <aside className="flex items-center justify-between w-full">
+                  <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center font-bold ml-5 md:ml-10">🌟หมวดหมู่หลัก : {categoryItem.name}</p>
+                  <div className="whitespace-nowrap px-4 py-2">
+                    <Link
+                      href={`/admin/editcategory/${categoryItem._id}`}
+                      className="btn btn-outline btn-primary btn-sm m-1"
+                    >
+                      แก้ไข
+                    </Link>
+                    <button
+                      className="btn btn-outline btn-error btn-sm"
+                      onClick={() => handleDeleteCategory(categoryItem._id)}
+                    >
+                      ลบ
+                    </button>
+                  </div>
+                </aside>
+                <ul className="flex flex-col items-start justify-start w-full">
+                  {subCategory &&
+                    subCategory
+                      .filter((subCategoryItem) => subCategoryItem.category?._id === categoryItem._id)
+                      .map((subCategoryItem) => (
+                        <li key={subCategoryItem._id} className="flex flex-col items-start justify-start w-full px-14">
+                          <section className="flex items-center w-full">
+                            <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center whitespace-normal text-gray-600 font-semibold">⭐หมวดหมู่รอง : {subCategoryItem.name}</p>
+                            <div className="whitespace-nowrap px-4 py-2">
+                              <Link
+                                href={`/admin/editsubCategory/${subCategoryItem._id}`}
+                                className="btn btn-outline btn-primary btn-xs m-1"
+                              >
+                                แก้ไข
+                              </Link>
+                              <button
+                                className="btn btn-outline btn-error btn-xs"
+                                onClick={() => handleDeleteSubCategory(subCategoryItem._id)}
+                              >
+                                ลบ
+                              </button>
+                            </div>
+                          </section>
+                          <section className="flex flex-col items-start justify-start w-full">
+                            {subSubCategory &&
+                              subSubCategory
+                                .filter((subSubCategoryItem) => subSubCategoryItem.subCategory?._id === subCategoryItem._id)
+                                .map((subSubCategoryItem) => (
+                                  <div key={subSubCategoryItem._id} className="flex flex-col items-start justify-start w-full px-5">
+                                    <section className="flex items-center w-full">
+                                      <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center whitespace-normal text-gray-500 font-medium">⚡หมวดหมู่ย่อย : {subSubCategoryItem.name}</p>
+                                      <div className="whitespace-nowrap px-4 py-2">
+                                        <Link
+                                          href={`/admin/editsubSubCategory/${subSubCategoryItem._id}`}
+                                          className="btn btn-outline btn-primary btn-xs m-1"
+                                        >
+                                          แก้ไข
+                                        </Link>
+                                        <button
+                                          className="btn btn-outline btn-error btn-xs"
+                                          onClick={() => handleDeleteSubSubCategory(subSubCategoryItem._id)}
+                                        >
+                                          ลบ
+                                        </button>
+                                      </div>
+                                    </section>
+                                  </div>
+                                ))}
+                          </section>
+                        </li>
+                      ))}
+                </ul>
+              </article>
+            ))}
+
+
+
 
         </section>
       </section>
