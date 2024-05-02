@@ -37,7 +37,7 @@ const Question = () => {
         className={`${questions && questions.length === 0 ? "flex-grow mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
           }`}
       >
-       <aside className="flex items-center justify-center gap-2">
+        <aside className="flex items-center justify-center gap-2">
           <span className="loading loading-ring loading-sm"></span>
           <span className="loading loading-ring loading-md"></span>
           <span className="loading loading-ring loading-lg"></span>
@@ -59,7 +59,7 @@ const Question = () => {
         </aside>
       </section>
       <section className={`${questions && questions.length === 0 ? "hidden" : " flex-grow"}`}>
-        <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold text-center mt-16 mb-5 w-full">
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-center mt-16 mb-5 w-full">
           ❓ คำถามที่พบบ่อย ❔
         </h1>
         <article className="mx-auto px-5 max-w-screen-xl my-10 space-y-1">
@@ -76,14 +76,7 @@ const Question = () => {
                   ))}
                 </aside>
                 <aside className="collapse-content">
-                  <p className="text-sm md:text-lg lg:text-xl px-5">
-                    {item.answer.split("\n" || "\r\n").map((line, index) => (
-                      <React.Fragment key={index}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                  </p>
+                  <div className="" dangerouslySetInnerHTML={{ __html: item.answer }}></div>
                 </aside>
               </article>
             ))}

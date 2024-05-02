@@ -1,5 +1,7 @@
 "use client";
 import React, {  useState } from "react";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
@@ -61,13 +63,13 @@ const AddQuestion = () => {
                             </label>
 
                             <div className="relative">
-                                <textarea
-                                    onChange={(e) => setAnswer(e.target.value)}
+                            <ReactQuill
+                                    theme="snow"
                                     value={answer}
-                                    type="text"
-                                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                                    placeholder="คำตอบ"
-                                />
+                                    onChange={setAnswer}
+                                    placeholder="คำตอบ" 
+                                   
+                                    className="border-gray-200 shadow-sm bg-white rounded-lg"/>
                             </div>
                         </div>
 

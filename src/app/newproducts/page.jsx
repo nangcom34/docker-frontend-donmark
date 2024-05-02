@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "../layouts/Navbar";
+import Link from "next/link";
 import axios from "axios";
 import Header from "../layouts/Header";
 import Footer from "../layouts/Footer";
@@ -34,13 +35,15 @@ const NewProducts = () => {
     <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
+      <section className="flex items-center justify-center w-full max-w-screen-xl mx-auto">
       <Slide />
+      </section>
+      
       <section
-        className={`${
-          imageProduct.length === 0 ? "flex-grow mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
-        }`}
+        className={`${imageProduct.length === 0 ? "flex-grow mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
+          }`}
       >
-       <aside className="flex items-center justify-center gap-2">
+        <aside className="flex items-center justify-center gap-2">
           <span className="loading loading-ring loading-sm"></span>
           <span className="loading loading-ring loading-md"></span>
           <span className="loading loading-ring loading-lg"></span>
@@ -65,15 +68,17 @@ const NewProducts = () => {
         imageProduct.map((imageProductItem) => (
           <section
             key={imageProductItem._id}
-            className="flex-grow flex items-center justify-center w-full max-w-screen-xl mx-auto"
+            className="flex-grow flex items-center justify-center w-full max-w-screen-xl mx-auto bg-black"
           >
-            {" "}
-            <img
-              src={`${URL_IMAGES}${imageProductItem.file}`}
-              alt={imageProductItem._id}
-              className="w-full h-auto object-fill object-center"
-              loading= "lazy"
-            />
+            <Link href={imageProductItem.urlname} target="_blank">
+              <img
+                src={`${URL_IMAGES}${imageProductItem.file}`}
+                alt={imageProductItem._id}
+                className="w-full h-auto object-fill object-center hover:opacity-95"
+                loading="lazy"
+              />
+            </Link>
+
           </section>
         ))}
       <Footer />

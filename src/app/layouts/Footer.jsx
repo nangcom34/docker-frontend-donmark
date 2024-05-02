@@ -27,18 +27,19 @@ const Footer = () => {
   };
   return (
 
-      <main className="relative mt-5 z-20 w-full">
-        <section className="grid grid-cols-4 md:grid-cols-6 w-full rounded-t-3xl bg-[#ED2024]  pt-6 px-4 duration-500">
+    <main className="relative mt-5 z-20 w-full">
+      <section className="w-full bg-[#ED2024]">
+        <nav className="grid grid-cols-4 md:grid-cols-6 w-full rounded-t-3xl bg-[#ED2024]  pt-6 px-4 duration-500 max-w-screen-xl mx-auto">
           <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
             <Link
               href={"/about"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               ตัวแทนจำหน่าย
             </Link>
             <Link
               href={"/about"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               เกี่ยวกับเรา
             </Link>
@@ -46,19 +47,19 @@ const Footer = () => {
           <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
             <Link
               href={"/newproducts"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               สินค้า{" "}
-              <span className="text-red-400 badge text-xs md:text-sm lg:text-[16px]">
+              <span className="text-red-400 badge text-xs md:text-sm">
                 ใหม่
               </span>
             </Link>
             <Link
               href={"/saleproducts"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               สินค้า{" "}
-              <span className="text-red-400 badge text-xs md:text-sm lg:text-[16px]">
+              <span className="text-red-400 badge text-xs md:text-sm">
                 ลดราคา
               </span>
             </Link>
@@ -66,16 +67,16 @@ const Footer = () => {
           <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
             <Link
               href={"/recomproducts"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               สินค้า{" "}
-              <span className="text-red-400 badge text-xs md:text-sm lg:text-[16px]">
+              <span className="text-red-400 badge text-xs md:text-sm">
                 แนะนำ
               </span>
             </Link>
 
-            <span>
-              <Link href={"/allproducts"} className="mb-4 text-white text-center text-xs md:text-sm lg:text-lg whitespace-normal">
+            <span className="flex flex-col justify-center">
+              <Link href={"/allproducts"} className=" text-white text-center text-xs md:text-sm whitespace-normal">
                 E-Catalog{" "}
               </Link>
               {data &&
@@ -83,7 +84,7 @@ const Footer = () => {
                   <span key={item._id}>
                     <Link
                       href={`${URL_IMAGES}${item.file}`}
-                      className="text-white text-xs md:text-sm lg:text-lg text-center hover:underline whitespace-normal"
+                      className="text-white text-xs md:text-sm text-center hover:underline whitespace-normal"
                     >
                       (ดาวน์โหลด PDF)
                     </Link>
@@ -97,13 +98,13 @@ const Footer = () => {
           <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
             <Link
               href={"/doc"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               เอกสารรับรอง
             </Link>
             <Link
               href={"/job"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               สมัครงาน
             </Link>
@@ -111,7 +112,7 @@ const Footer = () => {
           <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
             <Link
               href={"/question"}
-              className="mb-4 text-white text-xs md:text-sm lg:text-lg"
+              className="mb-4 text-white text-xs md:text-sm"
             >
               คำถามที่พบบ่อย
             </Link>
@@ -128,6 +129,7 @@ const Footer = () => {
                 <Link
                   href={"https://www.facebook.com/donmarkOfficial/"}
                   target="_blank"
+                  className="hover:scale-125 duration-300"
                 >
                   <svg
                     width="25"
@@ -145,6 +147,7 @@ const Footer = () => {
                 <Link
                   href={"https://www.tiktok.com/@donmark.official/"}
                   target="_blank"
+                  className="hover:scale-125 duration-300"
                 >
                   <svg
                     width="25"
@@ -162,6 +165,7 @@ const Footer = () => {
                 <Link
                   href={"https://www.youtube.com/@DONMARKOfficial"}
                   target="_blank"
+                  className="hover:scale-125 duration-300"
                 >
                   <svg
                     width="25"
@@ -179,6 +183,7 @@ const Footer = () => {
                 <Link
                   href={"https://www.instagram.com/donmark_thailand/"}
                   target="_blank"
+                  className="hover:scale-125 duration-300"
                 >
                   <svg
                     width="25"
@@ -245,8 +250,10 @@ const Footer = () => {
               </svg>
             </Link>
           </aside>
-        </section>
-      </main>
+        </nav>
+      </section>
+
+    </main>
 
   );
 };

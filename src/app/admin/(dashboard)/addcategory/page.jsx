@@ -17,7 +17,7 @@ const AddCategory = () => {
       return;
     } else {
       await axios.post(API_URL + "/category", { name: name });
-      Swal.fire("สำเร็จ!", "หมวดหมู่แล้ว!", "success");
+      Swal.fire("สำเร็จ!", "เพิ่มหมวดหมู่แล้ว!", "success");
       router.push("/admin/admincategory");
       //setName("");
     }
@@ -50,7 +50,7 @@ const AddCategory = () => {
                   value={name}
                   type="text"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="ชื่อสินค้า"
+                  placeholder="ชื่อหมวดหมู่"
                 />
               </div>
             </div>
@@ -59,7 +59,7 @@ const AddCategory = () => {
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
             >
-              เพิ่มหมวดหมู่สินค้า
+              เพิ่มหมวดหลัก
             </button>
           </form>
         </aside>

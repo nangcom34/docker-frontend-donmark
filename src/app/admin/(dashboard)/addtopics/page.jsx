@@ -5,26 +5,28 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { API_URL } from "../../../../../config/constants";
 
-const AddImageProduct = () => {
+const AddTopics = () => {
   const router = useRouter();
-  const [urlName, setUrlName] = useState([]);
+  const [title, setTitle] = useState([]);
   const [file, setFile] = useState(null);
+
+
 
   const handleSubmit = async (e) => {
     //console.log(name, description, file.file);
     e.preventDefault();
 
-    if (!file) {
+    if (!title || !file) {
       Swal.fire("กรุณาใส่ข้อมูลให้ครบ!!");
       return;
     } else {
       const formData = new FormData();
-      formData.append("urlname", urlName);
+      formData.append("title", title);
       formData.append("file", file.file);
       //console.log(formData);
-      await axios.post(API_URL + "/imageProduct", formData);
-      Swal.fire("สำเร็จ!", "เพิ่มรูปสินค้าแล้ว!", "success");
-      router.push("/admin/adminimageproduct");
+      await axios.post(API_URL + "/topics", formData);
+      Swal.fire("สำเร็จ!", "เพิ่มข้อมูลแล้ว!", "success");
+      router.push("/admin/adminarticles");
       //setName("");
       //setDescription("");
     }
@@ -41,7 +43,7 @@ const AddImageProduct = () => {
       <article className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8">
         <aside className="mx-auto w-full max-w-lg">
           <p className="text-center text-2xl font-bold text-red-600 sm:text-3xl">
-            รูปสินค้าใหม่ / ลดราคา
+            บทความ
           </p>
 
           <form
@@ -50,22 +52,19 @@ const AddImageProduct = () => {
             action=""
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 bg-white"
           >
-            <p className="text-center text-lg font-medium">
-              เพิ่มรูปสินค้าใหม่ / ลดราคา
-            </p>
-
+            <p className="text-center text-lg font-medium">หัวข้อบทความ</p>
             <div>
-              <label htmlFor="urlName" className="sr-only">
-              urlName
+              <label htmlFor="title" className="sr-only">
+                title
               </label>
 
               <div className="relative">
-                <input
-                  onChange={(e) => setUrlName(e.target.value)}
-                  value={urlName}
+                <textarea
+                  onChange={(e) => setTitle(e.target.value)}
+                  value={title}
                   type="text"
                   className="input w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="URL"
+                  placeholder="ชื่อบทความ"
                 />
               </div>
             </div>
@@ -78,7 +77,7 @@ const AddImageProduct = () => {
               <div className="relative">
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">รูปสินค้า</span>
+                    <span className="label-text">รูป ( 4:3 )</span>
                   </label>
                   <input
                     name="file"
@@ -94,7 +93,7 @@ const AddImageProduct = () => {
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
             >
-              เพิ่มรูปสินค้า
+              เพิ่มหัวข้อบทความ
             </button>
           </form>
         </aside>
@@ -103,4 +102,4 @@ const AddImageProduct = () => {
   );
 };
 
-export default AddImageProduct;
+export default AddTopics;

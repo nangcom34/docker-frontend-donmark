@@ -47,7 +47,7 @@ export default function Layout({ children }) {
         <title>Donmark || Admin</title>
       </head>
       <body className={notosansthai.className}>
-        <div className="flex h-screen overflow-hidden">
+        <main className="flex h-screen overflow-hidden">
           {/* Sidebar */}
           <aside
             className={`fixed inset-y-0 z-10 flex flex-col w-64 h-full overflow-hidden transition-all transform bg-white border-r shadow-lg lg:z-auto lg:static lg:shadow-none ${isSidebarOpen ? '' : '-translate-x-full lg:translate-x-0 lg:w-20'
@@ -124,7 +124,7 @@ export default function Layout({ children }) {
 
                 <li>
                   <Link
-                    href="/admin/adminhomepage"
+                    href="/admin/adminarticles"
                     className={`${isSidebarOpen ? 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-start' : 'flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100 justify-center'} ${pathname === '/admin/adminhomepage' ? 'bg-red-50' : 'bg-white'}`}
                   >
                     <span>
@@ -479,11 +479,11 @@ export default function Layout({ children }) {
               </div>
             </header>
             {/* Main content */}
-            <main className="flex-1 overflow-y-auto bg-slate-300">
+            <main className="overflow-y-auto bg-slate-300 flex-grow">
               {children}
             </main>
           </aside>
-        </div>
+        </main>
       </body>
     </html>
   );

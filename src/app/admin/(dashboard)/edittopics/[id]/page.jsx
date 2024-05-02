@@ -5,55 +5,55 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { API_URL } from "../../../../../../config/constants";
 
-const EditImageProduct = ({ params }) => {
+const EditTopics = ({ params }) => {
   const router = useRouter();
-  const [imageProduct, setImageProduct] = useState({
-    urlname: "",
-    file: "",
+  const [topics, setTopics] = useState({
+    title: "",
+    thumb: "",
   });
 
   const [fileOld, setFileOld] = useState();
 
   useEffect(() => {
+
     axios
-      .get(API_URL + "/imageProduct/" + params.id)
+      .get(API_URL + "/topics/" + params.id)
       .then((res) => {
-        setImageProduct(res.data);
-        setFileOld(res.data.file);
+        setTopics(res.data);
+        setFileOld(res.data.thumb);
       })
       .catch((error) => console.log("error", error));
+      
   }, []);
- 
+
+  
   // console.log(product);
-  const { urlname } = imageProduct;
+  const { title } = topics;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    //console.log(product);
     //console.log(fileOld);
 
-    if (!imageProduct.file) {
-      Swal.fire("กรุณาใส่ข้อมูลให้ครบ!!");
-      return;
-    } else {
-      const formData = new FormData();
-      for (const key in imageProduct) {
-        formData.append(key, imageProduct[key]);
-      }
-      formData.append("fileOld", fileOld);
-      //console.log(formData);
-
-      await axios
-        .put(API_URL + "/imageProduct/" + params.id, formData)
-        .then((res) => {
-          Swal.fire("สำเร็จ!", "แก้ไขรูปสินค้าแล้ว!", "success");
-          router.push("/admin/adminimageproduct");
-        })
-        .catch((error) => console.log(error));
+    const formData = new FormData();
+    for (const key in topics) {
+      formData.append(key, topics[key]);
     }
+    formData.append("fileOld", fileOld);
+    //console.log(formData);
+
+    await axios
+      .put(API_URL + "/topics/" + params.id, formData)
+      .then((res) => {
+        Swal.fire("สำเร็จ!", "แก้ไขหัวข้อบทความแล้ว!", "success");
+        router.push("/admin/adminarticles");
+      })
+      .catch((error) => console.log(error));
   };
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     // console.log(e.target.files[0]);
     if (e.target.name === "file") {
-      setImageProduct({ ...imageProduct, [e.target.name]: e.target.files[0] });
+      setTopics({ ...topics, [e.target.name]: e.target.files[0] });
     }
   };
 
@@ -62,7 +62,7 @@ const EditImageProduct = ({ params }) => {
       <article className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8">
         <aside className="mx-auto w-full max-w-lg">
           <p className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-            รูปสินค้าใหม่ / ลดราคา
+          บทความ
           </p>
 
           <form
@@ -71,30 +71,29 @@ const EditImageProduct = ({ params }) => {
             action=""
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 bg-white"
           >
-            <p className="text-center text-lg font-medium">
-              แก้ไขรูปสินค้าใหม่ / ลดราคา
-            </p>
+            <p className="text-center text-lg font-medium">หัวข้อบทความ</p>
 
             <div>
-              <label htmlFor="urlname" className="sr-only">
-                urlname
+              <label htmlFor="title" className="sr-only">
+                title
               </label>
 
               <div className="relative">
-                <input
+                <textarea
                   onChange={(e) => {
-                    setImageProduct((imageProduct) => ({
-                      ...imageProduct,
-                      urlname: e.target.value,
+                    setTopics((topics) => ({
+                      ...topics,
+                      title: e.target.value,
                     }));
                   }}
-                  value={urlname}
+                  value={title}
                   type="text"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="url"
+                  placeholder="ชื่อบทความ"
                 />
               </div>
             </div>
+
 
             <div>
               <label htmlFor="file" className="sr-only">
@@ -104,7 +103,7 @@ const EditImageProduct = ({ params }) => {
               <div className="relative">
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">รูปสินค้า</span>
+                    <span className="label-text">รูป</span>
                   </label>
                   <input
                     name="file"
@@ -120,7 +119,7 @@ const EditImageProduct = ({ params }) => {
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
             >
-              แก้ไขรูปสินค้า
+              แก้ไขหัวข้อบทความ
             </button>
           </form>
         </aside>
@@ -129,4 +128,4 @@ const EditImageProduct = ({ params }) => {
   );
 };
 
-export default EditImageProduct;
+export default EditTopics ;

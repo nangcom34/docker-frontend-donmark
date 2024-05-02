@@ -14,6 +14,8 @@ const Search = () => {
 
     // ส่ง URL ที่อัปเดตไปยัง `router`
     router.push("/allproducts?" + searchParams.toString());
+    // รีเซ็ตค่า text state เป็นว่าง
+    setText("");
   };
 
   return (
@@ -26,7 +28,7 @@ const Search = () => {
             onChange={(e) => setText(e.target.value)}
             value={text}
             type="search"
-            className="input text-xs md:text-sm lg:text-md w-full rounded-md focus:outline-none bg-transparent placeholder:text-red-700"
+            className="input text-xs md:text-sm lg:text-md w-full rounded-md focus:border-none focus:outline-none bg-transparent placeholder:text-red-700"
             placeholder="ค้นหาสินค้า"
           />
           <div

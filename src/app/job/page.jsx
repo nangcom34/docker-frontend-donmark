@@ -37,7 +37,7 @@ const Job = () => {
       <Navbar />
       <section className="flex items-center justify-center w-full max-w-screen-xl mx-auto mb-20">
         <img
-          src={`/images/jobtop.png`}
+          src={`/images/jobtop.jpg`}
           alt="jobtop"
           className="w-full h-auto object-cover object-center"
           loading="lazy"
@@ -47,7 +47,7 @@ const Job = () => {
         className={`${job.length === 0 ? "flex-grow w-full mx-auto max-w-screen-xl flex flex-col items-center justify-center" : "hidden"
           }`}
       >
-        <h3 className="text-lg font-semibold">ไม่พบประกาศสมัครงาน</h3>
+        <h3 className="text-lg font-semibold">ยังไม่มีประกาศรับสมัครงาน</h3>
         <aside className="flex items-center justify-center gap-2">
           <span className="loading loading-ring loading-sm"></span>
           <span className="loading loading-ring loading-md"></span>

@@ -85,7 +85,7 @@ const Admin = () => {
   };
   const loadHomepage = async () => {
     await axios
-      .get(API_URL + "/homepage")
+      .get(API_URL + "/topics")
       .then((res) => {
         //console.log(res.data);
         setHomepage(res.data);
@@ -210,9 +210,8 @@ const Admin = () => {
 
   return (
     <>
-      <main className="min-h-full bg-gray-50/50">
+      <main>
         <section className="pt-10 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5">
-          {" "}
           <p className="text-2xl font-bold px-10 lg:col-span-2">Dashboard</p>
         </section>
         <section className="p-4">

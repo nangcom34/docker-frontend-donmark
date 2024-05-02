@@ -64,10 +64,10 @@ const AdminQuestion = () => {
       });
   };
 
- 
+
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 6;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
@@ -78,11 +78,10 @@ const AdminQuestion = () => {
   const renderPageNumbers = pageNumbers.map((number) => (
     <li
       key={number}
-      className={`inline-block w-8 h-8 text-center leading-8 ${
-        number === currentPage
+      className={`inline-block w-8 h-8 text-center leading-8 ${number === currentPage
           ? "bg-red-600 text-white"
           : "bg-white text-gray-900"
-      } rounded border border-gray-100 cursor-pointer`}
+        } rounded border border-gray-100 cursor-pointer`}
       onClick={() => setCurrentPage(number)}
     >
       {number}
@@ -95,7 +94,7 @@ const AdminQuestion = () => {
         {" "}
         <p className="text-2xl font-bold w-full px-10 text-red-600">คำถามที่พบบ่อย</p>
       </section>
-      
+
       <section className="flex flex-col justify-start px-5">
         <Link
           href={"/admin/addquestion"}
@@ -108,7 +107,7 @@ const AdminQuestion = () => {
           <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
             <thead className="">
               <tr>
-                
+
                 <th className="whitespace-nowrap text-left px-4 py-2 text-gray-500 text-sm sm:text-[15px] font-bold">
                   คำถาม
                 </th>
@@ -124,12 +123,12 @@ const AdminQuestion = () => {
               {currentItems &&
                 currentItems?.map((item) => (
                   <tr key={item._id}>
-                    
+
                     <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-[15rem] overflow-auto break-all">
                       {item.question}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 text-xs sm:text-[15px] max-w-[20rem] w-full overflow-auto break-all">
-                      {item.answer}
+                      <div className="" dangerouslySetInnerHTML={{ __html: item.answer }}></div>
                     </td>
 
                     <td className="whitespace-nowrap px-4 py-2">
@@ -155,9 +154,8 @@ const AdminQuestion = () => {
           <li>
             <a
               href="#"
-              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${
-                currentPage === 1 ? "cursor-not-allowed" : ""
-              }`}
+              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${currentPage === 1 ? "cursor-not-allowed" : ""
+                }`}
               onClick={() => {
                 if (currentPage > 1) {
                   setCurrentPage(currentPage - 1);
@@ -185,11 +183,10 @@ const AdminQuestion = () => {
           <li>
             <a
               href="#"
-              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${
-                currentPage === Math.ceil(data.length / itemsPerPage)
+              className={`inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 ${currentPage === Math.ceil(data.length / itemsPerPage)
                   ? "cursor-not-allowed"
                   : ""
-              }`}
+                }`}
               onClick={() => {
                 if (currentPage < Math.ceil(data.length / itemsPerPage)) {
                   setCurrentPage(currentPage + 1);

@@ -35,13 +35,13 @@ const Navbar = () => {
   //console.log(pathname)
   return (
     <main className="w-full">
-      <nav className=" flex items-center justify-center max-w-screen-lg mx-auto ">
+      <nav className=" grid grid-cols-5 gap-0 max-w-screen-lg mx-auto ">
         <Link
           href={"/"}
-          className={`${pathname === '/' ? 'bg-red-500 bg-opacity-30' : 'bg-white'} flex flex-col items-center justify-center hover:bg-[#ED2024] p-4 duration-[800ms] w-auto sm:w-[120px] md:w-[170px] group `}
+          className={`${pathname === '/' ? 'bg-red-500 bg-opacity-30' : 'bg-white'} flex flex-col items-center justify-center hover:bg-[#ED2024] p-4 duration-[800ms] w-auto  group `}
         >
           <div
-            className={`w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative `}
+            className={`w-[20px] h-[20px] md:w-[30px] md:h-[30px] relative `}
           >
             <img
               src={`/images/homepage2.png`}
@@ -56,17 +56,17 @@ const Navbar = () => {
               loading="lazy"
             />
           </div>
-          <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
+          <p className="text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white mt-2">
             ข่าวสาร
           </p>
         </Link>
 
         <Link
           href={"/saleproducts"}
-          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto sm:w-[120px] md:w-[170px] group ${pathname === '/saleproducts' ? 'bg-red-500 bg-opacity-30' : 'bg-white'}`}
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto  group ${pathname === '/saleproducts' ? 'bg-red-500 bg-opacity-30' : 'bg-white'}`}
         >
           <div
-            className={`w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative `}
+            className={`w-[20px] h-[20px] md:w-[30px] md:h-[30px] relative `}
           >
             <img
               src={`/images/sale2.png`}
@@ -82,9 +82,9 @@ const Navbar = () => {
               loading="lazy"
             />
           </div>
-          <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
+          <p className="text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white mt-2">
             สินค้า
-            <span className="text-red-500 text-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
+            <span className="text-red-500 text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
               ลดราคา
             </span>
           </p>
@@ -92,11 +92,11 @@ const Navbar = () => {
 
         <Link
           href={"/newproducts"}
-          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto sm:w-[120px] md:w-[170px] group ${pathname === "/newproducts" ? "bg-red-500 bg-opacity-30" : "bg-white"}`}
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto  group ${pathname === "/newproducts" ? "bg-red-500 bg-opacity-30" : "bg-white"}`}
         >
           <div
             id="icon"
-            className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
+            className="w-[20px] h-[20px] md:w-[30px] md:h-[30px] relative"
           >
             <img
               src={`/images/new2.png`}
@@ -113,9 +113,9 @@ const Navbar = () => {
               loading="lazy"
             />
           </div>
-          <p className=" text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
+          <p className=" text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white mt-2">
             สินค้า
-            <span className="text-red-500 text-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
+            <span className="text-red-500 text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
               ใหม่
             </span>
           </p>
@@ -123,11 +123,11 @@ const Navbar = () => {
 
         <Link
           href={"/recomproducts"}
-          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto sm:w-[120px] md:w-[170px] group ${pathname === "/recomproducts" ? "bg-red-500 bg-opacity-30" : "bg-white"}`}
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto  group ${pathname === "/recomproducts" ? "bg-red-500 bg-opacity-30" : "bg-white"}`}
         >
           <div
             id="icon"
-            className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
+            className="w-[20px] h-[20px] md:w-[30px] md:h-[30px] relative"
           >
             <img
               src={`/images/recom2.png`}
@@ -144,9 +144,9 @@ const Navbar = () => {
               loading="lazy"
             />
           </div>
-          <p className=" text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
+          <p className=" text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white mt-2">
             สินค้า
-            <span className="text-red-500 text-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
+            <span className="text-red-500 text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
               แนะนำ
             </span>
           </p>
@@ -154,11 +154,11 @@ const Navbar = () => {
 
         <Link
           href={"/allproducts"}
-          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto sm:w-[120px] md:w-[170px] group ${pathname === "/allproducts" ? "bg-red-500 bg-opacity-30" : "bg-white"}`}
+          className={`flex flex-col items-center justify-center  hover:bg-[#ED2024] p-4 duration-[800ms] w-auto  group ${pathname === "/allproducts" ? "bg-red-500 bg-opacity-30" : "bg-white"}`}
         >
           <div
             id="icon"
-            className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] relative"
+            className="w-[20px] h-[20px] md:w-[30px] md:h-[30px] relative"
           >
             <img
               src={`/images/all2.png`}
@@ -175,7 +175,7 @@ const Navbar = () => {
               loading="lazy"
             />
           </div>
-          <p className=" text-center text-xs sm:text-sm md:text-lg group-hover:text-white mt-2">
+          <p className=" text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white mt-2">
             สินค้าทั้งหมด
           </p>
         </Link>
@@ -190,16 +190,16 @@ const Navbar = () => {
           <ul className="menu menu-horizontal flex items-center justify-center flex-nowrap">
             <li>
               <Link href={"/"} className={`w-auto sm:w-[120px] md:w-[150px] lg:w-[170px] flex item-center justify-center flex-nowrap hover:bg-red-600 rounded-t-md group ${pathname === '/' ? 'bg-red-500 bg-opacity-30' : ''}`}>
-                <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                <p className="text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                   ข่าวสาร
                 </p>
               </Link>
             </li>
             <li>
               <Link href={"/saleproducts"} className={`w-auto sm:w-[120px] md:w-[150px] lg:w-[170px] flex item-center justify-center flex-nowrap hover:bg-red-600 rounded-t-md group ${pathname === '/saleproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
-                <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                <p className="text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                   สินค้า
-                  <span className="text-red-500 text-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
+                  <span className="text-red-500 text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                     ลดราคา
                   </span>
                 </p>
@@ -208,9 +208,9 @@ const Navbar = () => {
             <li>
               <Link href={"/newproducts"} className={`w-auto sm:w-[120px] md:w-[150px] lg:w-[170px] flex item-center justify-center flex-nowrap hover:bg-red-600 rounded-t-md group ${pathname === '/newproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
                 {" "}
-                <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                <p className="text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                   สินค้า
-                  <span className="text-red-500 text-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
+                  <span className="text-red-500 text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                     ใหม่
                   </span>
                 </p>
@@ -219,9 +219,9 @@ const Navbar = () => {
             <li>
               <Link href={"/recomproducts"} className={`w-auto sm:w-[120px] md:w-[150px] lg:w-[170px] flex item-center justify-center flex-nowrap hover:bg-red-600 rounded-t-md group ${pathname === '/recomproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
                 {" "}
-                <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                <p className="text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                   สินค้า
-                  <span className="text-red-500 text-center  text-xs sm:text-sm md:text-lg group-hover:text-white">
+                  <span className="text-red-500 text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                     แนะนำ
                   </span>
                 </p>
@@ -229,7 +229,7 @@ const Navbar = () => {
             </li>
             <li >
               <Link href={"/allproducts"} className={`w-auto sm:w-[120px] md:w-[150px] lg:w-[170px] flex item-center justify-center flex-nowrap hover:bg-red-600 rounded-t-md group ${pathname === '/allproducts' ? 'bg-red-500 bg-opacity-30' : ''}`}>
-                <p className="text-center text-xs sm:text-sm md:text-lg group-hover:text-white">
+                <p className="text-center text-xs sm:text-sm md:text-[16px] group-hover:text-white">
                   สินค้าทั้งหมด
                 </p>
               </Link>
@@ -242,7 +242,7 @@ const Navbar = () => {
         <button
           onClick={scrollToTop}
           className={` ${isScrolled
-            ? "btn btn-circle btn-base-300 fixed w-14 h-14 hidden sm:flex items-center justify-center bottom-44 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500"
+            ? "btn btn-circle btn-base-300 fixed w-14 h-14 hidden sm:flex items-center justify-center bottom-44 right-10 z-50 text-white align-middle bg-red-600 hover:bg-red-500 opacity-70 hover:opacity-100"
             : "hidden"
             }`}
         >

@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
@@ -22,7 +24,7 @@ const EditQuestion = ({ params }) => {
   }, []);
 
   // console.log(questions);
-  const { question,answer } = questions;
+  const { question, answer } = questions;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +44,7 @@ const EditQuestion = ({ params }) => {
       <article className="mx-auto w-full px-4 py-16 sm:px-6 lg:px-8">
         <aside className="mx-auto w-full max-w-lg">
           <p className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
-          คำถามที่พบบ่อย
+            คำถามที่พบบ่อย
           </p>
 
           <form
@@ -55,7 +57,7 @@ const EditQuestion = ({ params }) => {
 
             <div>
               <label htmlFor="question" className="sr-only">
-              question
+                question
               </label>
 
               <div className="relative">
@@ -76,21 +78,21 @@ const EditQuestion = ({ params }) => {
 
             <div>
               <label htmlFor="answer" className="sr-only">
-              answer
+                answer
               </label>
 
               <div className="relative">
-                <textarea
-                  onChange={(e) => {
+                <ReactQuill
+                  theme="snow"
+                  placeholder="คำตอบ"
+                  onChange={(content, delta, source, editor) => {
                     setQuestions((questions) => ({
                       ...questions,
-                      answer: e.target.value,
+                      answer: content,
                     }));
                   }}
                   value={answer}
-                  type="text"
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                  placeholder="คำตอบ"
+                  className="border-gray-200 shadow-sm "
                 />
               </div>
             </div>

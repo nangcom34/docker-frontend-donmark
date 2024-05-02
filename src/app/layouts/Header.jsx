@@ -56,11 +56,11 @@ const Header = () => {
     }
   };
   return (
-    <header className="navbar bg-[#ED2024] sticky top-0 z-30 duration-500 w-full">
-      <article className="flex-1 ml-5">
+    <header className="navbar bg-[#ED2024] sticky top-0 duration-500 w-full z-20">
+      <article className="flex-1 ml-5 -z-20">
         <Link
           href={"/"}
-          className="btn btn-ghost normal-case text-xl w-24 sm:w-36 md:w-56 relative duration-500"
+          className="btn btn-ghost normal-case w-24 sm:w-36 md:w-56 relative duration-500 -z-10 border"
         >
           <svg
             width="170"
@@ -111,7 +111,7 @@ const Header = () => {
       </article>
 
       <Search />
-      <article className="flex-none mr-5">
+      <nav className="flex-none mr-5">
         <ul className="menu menu-horizontal px-1 max-sm:hidden ">
           <li>
             <Link
@@ -143,7 +143,7 @@ const Header = () => {
             </Link>
           </li>
         </ul>
-        <aside className="dropdown dropdown-end sm:hidden">
+        <aside className="dropdown dropdown-end sm:hidden z-30">
           <label tabIndex={0} className="btn btn-ghost px-2 py-1">
             <div className="w-8 rounded-xl">
               <svg
@@ -159,7 +159,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-40 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
               <Link href={"/"} >
@@ -204,7 +204,7 @@ const Header = () => {
             </li>
           </ul>
         </aside>
-      </article>
+      </nav>
       {isVisible && (
         <section className="opacity-70 hover:opacity-100">
 

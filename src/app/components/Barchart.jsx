@@ -4,7 +4,7 @@ import { Chart, CategoryScale, LinearScale, Title, BarElement } from "chart.js";
 
 const Barchart = ({ data }) => {
   Chart.register(CategoryScale, LinearScale, Title, BarElement);
-  const labels = data.map((item) => `${item.name} (${item.countView})`); // รวม labels และ countViews เข้าด้วยกัน
+  const labels = data.map((item) => `${item.title} (${item.countView})`); // รวม labels และ countViews เข้าด้วยกัน
   const countViews = data.map((item) => item.countView); // เลือกข้อมูล countView มาใช้ใน datasets
   //console.log(data);
   //console.log(labels);

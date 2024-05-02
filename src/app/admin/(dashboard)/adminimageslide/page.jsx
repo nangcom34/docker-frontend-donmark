@@ -62,10 +62,10 @@ const AdminImageSlide = () => {
 
   return (
     <main>
-      
+
       <section className="flex flex-col justify-start px-5 overflow-hidden">
         <p className="text-center text-2xl font-bold text-red-600 sm:text-3xl mt-10">
-        Promotion
+          Promotion
         </p>
         <Link
           href={"/admin/addimageslide"}
@@ -86,13 +86,13 @@ const AdminImageSlide = () => {
                     alt={item._id}
                     layout="responsive"
                     className="w-full h-auto object-cover object-center"
-                    loading= "lazy"
+                    loading="lazy"
                   />
                 </div>
                 <div className="px-4 py-2 max-w-sm w-full overflow-auto break-all text-center mt-2">
                   <p className="truncate px-2">{item.urlname}</p>
-                     
-                    </div>
+
+                </div>
                 <div className="whitespace-nowrap px-4 py-2">
                   <Link
                     href={`/admin/editimageslide/${item._id}`}

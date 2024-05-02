@@ -106,7 +106,7 @@ const AdminImageProduct = () => {
                     alt={item._id}
                     layout="responsive"
                     className="w-full h-auto object-cover object-center"
-                    loading= "lazy"
+                    loading="lazy"
                   />
                 </div>
                 <div className="px-4 py-2 max-w-sm w-full overflow-auto break-all text-center mt-2">
@@ -121,6 +121,10 @@ const AdminImageProduct = () => {
                     />
                     <span className="label-text">สินค้าลดราคา</span>
                   </label>
+
+                </div>
+                <div className="px-4 py-2 max-w-sm w-full overflow-auto break-all text-center mt-2">
+                  <p className="truncate px-2">{item.urlname}</p>
 
                 </div>
                 <div className="whitespace-nowrap px-4 py-2">
