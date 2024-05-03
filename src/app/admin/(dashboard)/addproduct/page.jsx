@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import dynamic from 'next/dynamic'; // Import dynamic from next/dynamic
 
+import 'react-quill/dist/quill.snow.css';
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";

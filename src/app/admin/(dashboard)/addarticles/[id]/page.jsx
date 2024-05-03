@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
+import 'react-quill/dist/quill.snow.css';
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
