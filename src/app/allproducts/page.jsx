@@ -642,7 +642,7 @@ const AllProducts = () => {
                       <span className="loading loading-ring loading-sm"></span>
                     </aside>
                   </section>
-                  <section className="mt-6 grid grid-cols-2 gap-x-2 gap-y-7 sm:grid-cols-3 lg:grid-cols-4 flex-grow">
+                  <section className="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-4 flex-grow">
                     {currentItems && currentItems.map((productItem) => (
                       <Link
                         href={`/product/${productItem._id}`}
@@ -656,7 +656,7 @@ const AllProducts = () => {
                             className="h-32 sm:h-44 w-full object-cover object-center duration-500 rounded-lg"
                           />
                         </aside>
-                        <div className="mt-4 flex justify-center">
+                        <div className="mt-4 flex justify-center px-3">
                           <div>
                             <h3 className="text-sm text-gray-700 text-center font-medium group-hover:text-red-600">
 
