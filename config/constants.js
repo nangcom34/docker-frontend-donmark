@@ -5,9 +5,9 @@ export const URL_IMAGES="http://localhost:5000/uploads/"
 
 
 
-// https://demo-backend-donmark.onrender.com/api
+// https://test-backend-donmark.onrender.com//api
 
-// https://demo-backend-donmark.onrender.com/uploads/
+// https://test-backend-donmark.onrender.com//uploads/
 
 // http://localhost:5000/api
 
