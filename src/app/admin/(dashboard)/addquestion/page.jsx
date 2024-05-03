@@ -6,6 +6,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { API_URL } from "../../../../../config/constants";
+import dynamic from 'next/dynamic';
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const AddQuestion = () => {
     const router = useRouter();

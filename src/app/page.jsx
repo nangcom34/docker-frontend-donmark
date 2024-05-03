@@ -58,7 +58,7 @@ export default function Home() {
     <main className="flex flex-col min-h-screen">
       <Header />
       <Navbar />
-      <section className="flex items-center justify-center w-full max-w-screen-xl mx-auto px-3">
+      <section className="flex-grow flex items-center justify-center w-full max-w-screen-xl mx-auto px-3">
         <ArticlesSlide />
       </section>
 
