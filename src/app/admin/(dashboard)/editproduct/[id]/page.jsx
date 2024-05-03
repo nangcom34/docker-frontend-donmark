@@ -12,6 +12,7 @@ const EditProduct = ({ params }) => {
   const [product, setProduct] = useState({
     name: "",
     description: "",
+    brand: "",
     type: "",
     material: "",
     model: "",
@@ -116,7 +117,7 @@ const EditProduct = ({ params }) => {
 
     formData.append("name", product.name);
     formData.append("description", product.description);
-    formData.append("category", product.category);
+    formData.append("brand", product.brand);
     formData.append("type", product.type);
     formData.append("material", product.material);
     formData.append("model", product.model);
@@ -126,6 +127,7 @@ const EditProduct = ({ params }) => {
     formData.append("weight", product.weight);
     formData.append("barcode", product.barcode);
     formData.append("productCode", product.productCode);
+    formData.append("category", product.category);
     formData.append("subCategory", product.subCategory);
     formData.append("subSubCategory", product.subSubCategory);
 
@@ -210,9 +212,9 @@ const EditProduct = ({ params }) => {
                       name: e.target.value,
                     }));
                   }}
-                  value={name}
+                  value={product.name}
                   type="text"
-                  class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
+                  class="border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3  text-sm shadow-sm w-full"
                   placeholder="ชื่อสินค้า"
                 />
 
@@ -233,10 +235,36 @@ const EditProduct = ({ params }) => {
                   onChange={(e) => {
                     setProduct((product) => ({
                       ...product,
+                      brand: e.target.value,
+                    }));
+                  }}
+                  value={product.brand}
+                  type="text"
+                  class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
+                  placeholder="แบรนด์"
+                />
+
+                <span
+                  class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
+                >
+                  แบรนด์
+                </span>
+              </label>
+
+            </div>
+
+            <div>
+              <label
+                class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-red-500 focus-within:ring-1 focus-within:ring-red-500"
+              >
+                <input
+                  onChange={(e) => {
+                    setProduct((product) => ({
+                      ...product,
                       type: e.target.value,
                     }));
                   }}
-                  value={type}
+                  value={product.type}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="ประเภท"
@@ -262,7 +290,7 @@ const EditProduct = ({ params }) => {
                       material: e.target.value,
                     }));
                   }}
-                  value={material}
+                  value={product.material}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="วัสดุที่ใช้ผลิต"
@@ -287,7 +315,7 @@ const EditProduct = ({ params }) => {
                       model: e.target.value,
                     }));
                   }}
-                  value={model}
+                  value={product.model}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="รุ่น"
@@ -312,7 +340,7 @@ const EditProduct = ({ params }) => {
                       weight: e.target.value,
                     }));
                   }}
-                  value={weight}
+                  value={product.weight}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="น้ำหนัก"
@@ -338,7 +366,7 @@ const EditProduct = ({ params }) => {
                       barcode: e.target.value,
                     }));
                   }}
-                  value={barcode}
+                  value={product.barcode}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="รหัสบาร์โค้ด"
@@ -363,7 +391,7 @@ const EditProduct = ({ params }) => {
                       productCode: e.target.value,
                     }));
                   }}
-                  value={productCode}
+                  value={product.productCode}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="รหัสสินค้า"
@@ -388,7 +416,7 @@ const EditProduct = ({ params }) => {
                       wide: e.target.value,
                     }));
                   }}
-                  value={wide}
+                  value={product.wide}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="ความกว้าง"
@@ -413,7 +441,7 @@ const EditProduct = ({ params }) => {
                       long: e.target.value,
                     }));
                   }}
-                  value={long}
+                  value={product.long}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="ความยาว"
@@ -427,7 +455,7 @@ const EditProduct = ({ params }) => {
               </label>
             </div>
 
-            <div className="md:col-span-2">
+            <div>
               <label
                 class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-red-500 focus-within:ring-1 focus-within:ring-red-500"
               >
@@ -438,7 +466,7 @@ const EditProduct = ({ params }) => {
                       high: e.target.value,
                     }));
                   }}
-                  value={high}
+                  value={product.high}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
                   placeholder="ความสูง"
@@ -467,7 +495,7 @@ const EditProduct = ({ params }) => {
                       description: content,
                     }));
                   }}
-                  value={description}
+                  value={product.description}
                   className="border-gray-200 shadow-sm "
                 />
                 {/* <textarea
@@ -586,7 +614,7 @@ const EditProduct = ({ params }) => {
             </div>
             <button
               type="submit"
-              className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+              className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white md:col-span-2"
             >
               แก้ไขสินค้า
             </button>

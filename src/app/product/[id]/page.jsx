@@ -85,6 +85,13 @@ const Product = ({ params }) => {
                                         </div>
                                         : null
                                     }
+                                       {product.brand
+                                        ? <div className="grid gap-1 py-3 even:bg-gray-50 grid-cols-3 sm:gap-4">
+                                            <dt className="text-gray-700">แบรนด์</dt>
+                                            <dd className="text-gray-900 font-medium col-span-2">{product.brand}</dd>
+                                        </div>
+                                        : null
+                                    }
                                       {product.type
                                         ? <div className="grid gap-1 py-3 even:bg-gray-50 grid-cols-3 sm:gap-4">
                                             <dt className="text-gray-700">ประเภท</dt>

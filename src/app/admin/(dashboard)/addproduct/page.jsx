@@ -12,6 +12,7 @@ const AddProduct = () => {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
   const [type, setType] = useState("");
   const [material, setMaterial] = useState("");
   const [model, setModel] = useState("");
@@ -89,7 +90,7 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !description || !files.length || !category || !subCategory || !type || !material || !model || !weight || !barcode || !productCode) {
+    if (!name || !description || !files.length || !category || !subCategory || !type || !material || !model || !weight || !barcode || !productCode || !brand) {
       Swal.fire("กรุณาใส่ข้อมูลที่จำเป็นให้ครบ!!");
       return;
     }
@@ -97,6 +98,7 @@ const AddProduct = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
+    formData.append("brand", brand);
     formData.append("type", type);
     formData.append("material", material);
     formData.append("model", model);
@@ -184,6 +186,22 @@ const AddProduct = () => {
                   type="text"
                   className="input w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm focus:border-red-500 focus:outline-red-500"
                   placeholder="ชื่อสินค้า"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="brand" className="sr-only">
+              brand
+              </label>
+
+              <div className="relative">
+                <input
+                  onChange={(e) => setBrand(e.target.value)}
+                  value={brand}
+                  type="text"
+                  className="input w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm focus:border-red-500 focus:outline-red-500"
+                  placeholder="แบรนด์"
                 />
               </div>
             </div>
@@ -316,7 +334,7 @@ const AddProduct = () => {
               </div>
             </div>
 
-            <div className="md:col-span-2">
+            <div>
               <label htmlFor="high" className="sr-only">
                 high
               </label>

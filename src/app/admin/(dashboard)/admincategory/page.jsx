@@ -219,7 +219,7 @@ const AdminCategory = () => {
                 className="mx-auto w-full flex flex-col items-center shadow-lg shadow-slate-400 rounded-lg mb-2 bg-white py-5"
               >
                 <aside className="flex items-center justify-between w-full">
-                  <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center font-bold ml-5 md:ml-10">🌟หมวดหมู่หลัก : {categoryItem.name}</p>
+                  <p className="text-xs sm:text-sm md:text-[16px] font-bold ml-5 md:ml-10">🌟หมวดหมู่หลัก : {categoryItem.name}</p>
                   <div className="whitespace-nowrap px-4 py-2">
                     <Link
                       href={`/admin/editcategory/${categoryItem._id}`}
@@ -240,9 +240,9 @@ const AdminCategory = () => {
                     subCategory
                       .filter((subCategoryItem) => subCategoryItem.category?._id === categoryItem._id)
                       .map((subCategoryItem) => (
-                        <li key={subCategoryItem._id} className="flex flex-col items-start justify-start w-full px-14">
+                        <li key={subCategoryItem._id} className="flex flex-col items-start justify-center w-full px-14">
                           <section className="flex items-center w-full">
-                            <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center whitespace-normal text-gray-600 font-semibold">⭐หมวดหมู่รอง : {subCategoryItem.name}</p>
+                            <p className="text-xs sm:text-sm text-gray-600 font-semibold">⭐หมวดหมู่รอง : {subCategoryItem.name}</p>
                             <div className="whitespace-nowrap px-4 py-2">
                               <Link
                                 href={`/admin/editsubCategory/${subCategoryItem._id}`}
@@ -265,7 +265,7 @@ const AdminCategory = () => {
                                 .map((subSubCategoryItem) => (
                                   <div key={subSubCategoryItem._id} className="flex flex-col items-start justify-start w-full px-5">
                                     <section className="flex items-center w-full">
-                                      <p className="text-xs sm:text-sm md:text-md xl:text-lg text-center whitespace-normal text-gray-500 font-medium">⚡หมวดหมู่ย่อย : {subSubCategoryItem.name}</p>
+                                      <p className="text-xs sm:text-sm text-gray-500 font-medium">⚡หมวดหมู่ย่อย : {subSubCategoryItem.name}</p>
                                       <div className="whitespace-nowrap px-4 py-2">
                                         <Link
                                           href={`/admin/editsubSubCategory/${subSubCategoryItem._id}`}
