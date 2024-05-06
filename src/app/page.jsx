@@ -97,7 +97,7 @@ export default function Home() {
                 <Link
                   key={index}
                   href={`/article/${item._id}`}
-                  className="overflow-hidden rounded-lg shadow transition hover:shadow-lg group relative"
+                  className="overflow-hidden rounded-lg shadow transition hover:shadow-lg group"
                 >
                   <img
                     src={`${URL_IMAGES}${item.thumb}`}
@@ -106,12 +106,12 @@ export default function Home() {
                   />
 
                   <aside className="bg-white p-4 sm:p-6">
-                    <h3 className="mt-0.5 text-sm md:text-[16px] text-gray-900 group-hover:text-red-600 mb-10">{item.title}</h3>
+                    <h3 className="mt-0.5 text-sm md:text-[16px] text-gray-900 group-hover:text-red-600">{item.title}</h3>
 
                   </aside>
-                  <aside className="p-5 w-full absolute bottom-0 ">
-                    <div className=" border-b border-gray-500 py-5 my-3"></div>
-                    <div className="flex items-center justify-between w-full px-3">
+                  <aside className="w-full pb-3">
+                    <div className=" border-b border-gray-500 pb-5 mb-3 mx-5"></div>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full px-3">
                       <div className="flex items-center gap-1">
                         <svg
                           xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-500">
