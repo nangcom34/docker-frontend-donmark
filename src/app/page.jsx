@@ -102,7 +102,7 @@ export default function Home() {
                   <img
                     src={`${URL_IMAGES}${item.thumb}`}
                     alt={`${item.title}`}
-                    className="h-32 md:h-56 w-full object-cover"
+                    className="h-auto w-full object-cover"
                   />
 
                   <aside className="bg-white p-4 sm:p-6">
