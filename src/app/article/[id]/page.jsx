@@ -105,14 +105,14 @@ export default function ArticlePage({ params }) {
                         <article key={index}>
                             <h3 className="text-center text-lg md:text-xl lg:text-2xl font-bold my-7">{item.title}</h3>
                             <div className="" dangerouslySetInnerHTML={{ __html: item.description }}></div>
-                            <div className="my-7 w-full">
+                            <div className="my-7 w-full grid grid-cols-1 sm:grid-cols-2 gap-2">
                                 {item.images.map((imagesItem, imagesIndex) => (
                                     <img
                                         key={imagesIndex}
                                         src={`${URL_IMAGES}${imagesItem}`}
                                         alt={`${imagesItem}`}
                                         loading="lazy"
-                                        className="w-full object-cover rounded-lg my-2"
+                                        className="w-full object-cover rounded-lg"
                                     />
                                 ))}
                             </div>

@@ -88,7 +88,7 @@ export default function Home() {
         </aside>
       </section>
 
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 gap-y-8 md:gap-y-20 my-10 lg:gap-x-4 max-w-screen-xl mx-auto px-2">
+      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-5 gap-y-8 md:gap-y-20 my-10 lg:gap-x-8 max-w-screen-xl mx-auto px-5">
         {topics &&
           topics.map((item, index) => {
             if (item._id !== topicsTop[0]?._id && item._id !== topicsTop[1]?._id && item._id !== topicsTop[2]?._id) {
@@ -105,7 +105,7 @@ export default function Home() {
                     className="h-auto w-full object-cover"
                   />
 
-                  <aside className="bg-white p-4 sm:p-6">
+                  <aside className="bg-white mt-3 px-4 sm:p-x6">
                     <h3 className="mt-0.5 text-sm md:text-[16px] text-gray-900 group-hover:text-red-600">{item.title}</h3>
 
                   </aside>
