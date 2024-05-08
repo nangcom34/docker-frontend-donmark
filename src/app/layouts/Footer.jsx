@@ -3,13 +3,19 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { API_URL, URL_IMAGES } from "../../../config/constants";
+import { ChevronDoubleDownIcon } from "@heroicons/react/20/solid";
 
 const Footer = () => {
   const [data, setData] = useState([]);
+  const [isScrolledBottom, setIsScrolledBottom] = useState(true);
 
   useEffect(() => {
     loadData();
+    window.addEventListener('scroll', handleScroll); // เพิ่ม event listener เมื่อ scroll
+    return () => window.removeEventListener('scroll', handleScroll); // ลบ event listener เมื่อ unmount
   }, []);
+
+
   const loadData = async () => {
     await axios
       .post(API_URL + "/catalogby", {
@@ -25,9 +31,36 @@ const Footer = () => {
         console.log(error);
       });
   };
+
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const footerElement = document.getElementById('footer'); // ดึงข้อมูลของ footer element
+
+    // ตรวจสอบว่าเลื่อนผ่าน id footer หรือไม่
+    const isScrolledPastFooter = footerElement && scrollTop > footerElement.offsetTop;
+
+    // ตั้งค่าตามเงื่อนไข
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setIsScrolledBottom(false);
+    } else if (isScrolledPastFooter) {
+      setIsScrolledBottom(true);
+    } else {
+      setIsScrolledBottom(true);
+    }
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight - window.innerHeight,
+      behavior: "smooth",
+    });
+
+  };
   return (
 
-    <main className="relative mt-5 z-20 w-full">
+    <main id="footer" className="relative mt-5 z-20 w-full">
       <section className="w-full bg-[#ED2024]">
         <nav className="grid grid-cols-4 md:grid-cols-6 w-full rounded-t-3xl bg-[#ED2024]  pt-6 px-4 duration-500 max-w-screen-xl mx-auto">
           <aside className="col-span-2 md:col-span-1 flex flex-col items-center justify-center">
@@ -251,6 +284,31 @@ const Footer = () => {
             </Link>
           </aside>
         </nav>
+      </section>
+
+      <section>
+        <button
+          onClick={scrollToBottom}
+          className={` ${isScrolledBottom
+            ? "fixed flex items-center justify-center bottom-0 left-1/2 -translate-x-1/2 z-50 text-white bg-[#ED2024] hover:bg-white group hover:ring ring-[#ED2024] px-5 rounded-t-lg duration-300"
+            : "hidden"
+            }`}
+        >
+          <ChevronDoubleDownIcon className="h-6 w-6" />
+          <span>
+            <img
+              src={`/images/logoW.png`}
+              alt="Logo-Donmark-White"
+              className="w-9 md:w-11 h-auto duration-300 group-hover:hidden"
+              loading="lazy" />
+            <img
+              src={`/images/logo.png`}
+              alt="Logo-Donmark"
+              className="w-9 md:w-11 h-auto group-hover:scale-125 group-hover:duration-500 duration-500 hidden group-hover:block"
+              loading="lazy" />
+          </span>
+          <ChevronDoubleDownIcon className="h-6 w-6" />
+        </button>
       </section>
 
     </main>
