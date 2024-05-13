@@ -30,11 +30,11 @@ const Product = ({ params }) => {
     const loadProduct = async () => {
         setLoading(true);
 
-        console.log(params.id);
+        //console.log(params.id);
         await axios
             .post(API_URL + "/productone", { id: params.id })
             .then(async (res) => {
-                console.log(res.data);
+                //console.log(res.data);
                 setProduct(res.data);
                 setLoading(false);
 

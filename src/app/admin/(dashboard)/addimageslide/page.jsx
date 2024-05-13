@@ -78,7 +78,7 @@ const ImageSlide = () => {
               <div className="relative">
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">รูป Promotion</span>
+                    <span className="label-text">รูป Promotion (16 : 9)</span>
                   </label>
                   <input
                     name="file"

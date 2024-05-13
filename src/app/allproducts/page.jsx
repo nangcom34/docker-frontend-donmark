@@ -48,12 +48,12 @@ const AllProducts = () => {
     let newSearch = searchParams.get("query") || ''; // ดึงค่า query จาก searchParams
     setSearch(newSearch); // อัปเดตค่า search
     setCurrentPage(1);
-    console.log("newSearch", newSearch)
+    //console.log("newSearch", newSearch)
   }, [searchParams]);
 
   useEffect(() => {
     setQuery(search);
-    console.log("search", search)
+    console.log("search--->", search)
   }, [search]);
 
   useEffect(() => {
