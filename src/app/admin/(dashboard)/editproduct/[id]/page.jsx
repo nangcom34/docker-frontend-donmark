@@ -397,13 +397,13 @@ const EditProduct = ({ params }) => {
                   value={product.productCode}
                   type="text"
                   class="peer border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 p-3 pe-12 text-sm shadow-sm"
-                  placeholder="รหัสสินค้า"
+                  placeholder="มอก."
                 />
 
                 <span
                   class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs"
                 >
-                  รหัสสินค้า
+                  มอก.
                 </span>
               </label>
             </div>

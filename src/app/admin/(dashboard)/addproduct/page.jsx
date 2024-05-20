@@ -274,7 +274,7 @@ const AddProduct = () => {
 
             <div>
               <label htmlFor="productCode" className="sr-only">
-                productCode
+                มอก.
               </label>
 
               <div className="relative">
@@ -283,7 +283,7 @@ const AddProduct = () => {
                   value={productCode}
                   type="text"
                   className="input w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm focus:border-red-500 focus:outline-red-500"
-                  placeholder="รหัสสินค้า"
+                  placeholder="มอก."
                 />
               </div>
             </div>

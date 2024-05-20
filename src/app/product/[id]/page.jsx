@@ -144,7 +144,7 @@ const Product = ({ params }) => {
                                         }
                                         {product.productCode
                                             ? <div className="grid gap-1 py-3 even:bg-gray-50 grid-cols-3 sm:gap-4">
-                                                <dt className="text-gray-700">รหัสสินค้า</dt>
+                                                <dt className="text-gray-700">มอก.</dt>
                                                 <dd className="text-gray-900 font-medium col-span-2">{product.productCode}</dd>
                                             </div>
                                             : null
