@@ -120,7 +120,7 @@ const AdminArticle = ({ params }) => {
                 <Link
                     href={`/admin/addarticles/${params.id}`}
 
-                    className="btn btn-sm sm:btn-md text-xs sm:text-sm md:text-md xl:text-lg bg-indigo-600 border-0 text-white hover:text-black duration-300 shadow-lg shadow-indigo-600/40 max-w-[12rem] w-full "
+                    className="btn btn-sm sm:btn-md text-xs sm:text-sm md:text-md bg-indigo-600 border-0 text-white hover:text-black duration-300 shadow-lg shadow-indigo-600/40 max-w-[12rem] w-full "
                 >
                     เพิ่มรายละเอียดบทความ
                 </Link>

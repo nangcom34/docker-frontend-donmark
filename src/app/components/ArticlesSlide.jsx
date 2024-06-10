@@ -45,7 +45,7 @@ const ArticlesSlide = () => {
     const loadTopicsTop = async () => {
         await axios
             .post(API_URL + "/topicsby", {
-                limit: 3,
+                limit: 1,
                 sort: "countView",
                 order: "desc",
             })
@@ -161,7 +161,7 @@ const ArticlesSlide = () => {
                                             </Link>
 
                                         </div>
-                                        <div className="flex items-start justify-center w-full scale-50 z-30 mb-5"><ButtonSlide /></div>
+                                       
                                     </aside>
                                 </article>
 

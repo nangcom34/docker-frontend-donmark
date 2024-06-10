@@ -24,7 +24,7 @@ export default function Home() {
   const loadTopicsTop = async () => {
     await axios
       .post(API_URL + "/topicsby", {
-        limit: 3,
+        limit: 1,
         sort: "countView",
         order: "desc",
       })
@@ -91,7 +91,7 @@ export default function Home() {
       <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-5 gap-y-8 md:gap-y-20 my-10 lg:gap-x-8 max-w-screen-xl mx-auto px-5">
         {topics &&
           topics.map((item, index) => {
-            if (item._id !== topicsTop[0]?._id && item._id !== topicsTop[1]?._id && item._id !== topicsTop[2]?._id) {
+            if (item._id !== topicsTop[0]?._id ) {
               return (
 
                 <Link
